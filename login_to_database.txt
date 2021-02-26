@@ -1,0 +1,2 @@
+psql -h csce-315-db.engr.tamu.edu -U <username> -d postgres
+note: replace "." and "-" chars with "_"
