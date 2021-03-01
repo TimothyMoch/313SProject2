@@ -29,13 +29,13 @@ SELECT itemcode FROM items WHERE itemname CONTAINS 'shake';
 SELECT recommendations.itemname, customers.lname FROM recommendations JOIN customers ON customers.customerid = recommendations.customerid;
 SELECT price FROM recommendations WHERE itemname CONTAINS 'WHATA';
 
--- Querying condiments information from condiments table
-SELECT orderid FROM condiments WHERE condimentslist CONTAINS 'pickles';
-SELECT otherComments FROM condiments;
+-- Querying attributes information from attributes table
+SELECT orderid FROM attributes WHERE attributelist CONTAINS 'pickles';
+SELECT othercomments FROM attributes;
 
--- Querying allowed item condiments fom aicondiments table
-SELECT itemcode WHERE condimentName='mustard';
-SELECT condimentname WHERE itemcode CONTAINS 'D';
+-- Querying allowed item attributes fom aiattributes table
+SELECT itemcode WHERE attributename='mustard';
+SELECT attributename WHERE itemcode CONTAINS 'D';
 
 -- Querying trending items from trending table
 SELECT itemname FROM trending WHERE trendingrank >= 5;
