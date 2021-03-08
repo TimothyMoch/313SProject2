@@ -131,7 +131,7 @@ public class Customers extends javax.swing.JFrame {
 
         leftBar.setBackground(new java.awt.Color(3, 13, 36));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Timot\\OneDrive\\Desktop\\Spring 2021\\Labs\\315 Projects\\Database Project\\313SProject2\\images\\whataburgerLogo_white.png")); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon("/Users/ryanomalley/Documents/College/2020-2021/Spring 2021/CSCE 315/Project 2/313SProject2/images/whataburgerLogo_white.png")); // NOI18N
 
         Button5.setBackground(new java.awt.Color(3, 13, 36));
         Button5.setForeground(new java.awt.Color(255, 119, 15));
@@ -318,7 +318,7 @@ public class Customers extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(30, 42, 70));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Timot\\OneDrive\\Desktop\\Spring 2021\\Labs\\315 Projects\\Database Project\\313SProject2\\images\\Patty Melt.jpg")); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon("/Users/ryanomalley/Documents/College/2020-2021/Spring 2021/CSCE 315/Project 2/313SProject2/images/Patty Melt.jpg")); // NOI18N
         jLabel14.setText("jLabel14");
 
         jLabel15.setBackground(new java.awt.Color(30, 42, 70));

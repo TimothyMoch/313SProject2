@@ -79,6 +79,8 @@ public class Menu extends javax.swing.JFrame {
 
         leftBar.setBackground(new java.awt.Color(3, 13, 36));
 
+        jLabel12.setIcon(new javax.swing.ImageIcon("/Users/ryanomalley/Documents/College/2020-2021/Spring 2021/CSCE 315/Project 2/313SProject2/images/whataburgerLogo_white.png")); // NOI18N
+
         Button5.setBackground(new java.awt.Color(3, 13, 36));
         Button5.setForeground(new java.awt.Color(255, 255, 255));
         Button5.setText("Customers");
@@ -168,6 +170,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(30, 42, 70));
 
         jButton4.setBackground(new java.awt.Color(40, 52, 80));
+        jButton4.setIcon(new javax.swing.ImageIcon("/Users/ryanomalley/Documents/College/2020-2021/Spring 2021/CSCE 315/Project 2/313SProject2/images/Patty Melt.jpg")); // NOI18N
 
         jLabel9.setBackground(new java.awt.Color(45, 67, 95));
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -199,6 +202,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(30, 42, 70));
 
         jButton13.setBackground(new java.awt.Color(40, 52, 80));
+        jButton13.setIcon(new javax.swing.ImageIcon("/Users/ryanomalley/Documents/College/2020-2021/Spring 2021/CSCE 315/Project 2/313SProject2/images/Patty Melt.jpg")); // NOI18N
 
         jLabel17.setBackground(new java.awt.Color(45, 67, 95));
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -230,6 +234,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(30, 42, 70));
 
         jButton14.setBackground(new java.awt.Color(40, 52, 80));
+        jButton14.setIcon(new javax.swing.ImageIcon("/Users/ryanomalley/Documents/College/2020-2021/Spring 2021/CSCE 315/Project 2/313SProject2/images/Patty Melt.jpg")); // NOI18N
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -274,7 +279,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,7 +289,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addContainerGap(339, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Entrees", jPanel1);
@@ -318,7 +323,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
 
         rightBar.setBackground(new java.awt.Color(3, 13, 36));
@@ -423,6 +428,7 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(30, 42, 70));
 
+        jLabel14.setIcon(new javax.swing.ImageIcon("/Users/ryanomalley/Documents/College/2020-2021/Spring 2021/CSCE 315/Project 2/313SProject2/images/Patty Melt.jpg")); // NOI18N
         jLabel14.setText("jLabel14");
 
         jLabel15.setBackground(new java.awt.Color(30, 42, 70));
