@@ -1,0 +1,18 @@
+How to use the code in \Rohits_Connection_Code
+
+1. Compile the .java files with
+
+	$ javac  .\jdbcpostgreSQL.java
+
+	This will create .class files. The .class files are neccessary to run the program.
+	
+2. Run the code with 
+
+	$ java -cp ".;postgresql-42.2.8.jar" jdbcpostgreSQL
+
+
+
+Queries are made starting on line 22 of jdbcpostgreSQL.java. It should be pretty self explanatory how they work. 
+the goal is to integrate the code in this directory into the GUI.
+
+I have my credentials included in dbSetup.java. You can use your own if you want.
