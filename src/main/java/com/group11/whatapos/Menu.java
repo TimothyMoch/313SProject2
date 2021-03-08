@@ -5,6 +5,9 @@
  */
 package com.group11.whatapos;
 
+// Importing other modules here
+import com.group11.whatapos.model.database;
+
 /**
  *
  * @author Ryan
@@ -77,7 +80,7 @@ public class Menu extends javax.swing.JFrame {
 
         leftBar.setBackground(new java.awt.Color(3, 13, 36));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Timot\\OneDrive\\Desktop\\Spring 2021\\Labs\\315 Projects\\Database Project\\313SProject2\\images\\whataburgerLogo_white.png")); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon("/home/skeet/Documents/csce315-projects/313SProject2/images/whataburgerLogo_white.png")); // NOI18N
 
         Button5.setBackground(new java.awt.Color(3, 13, 36));
         Button5.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,14 +185,13 @@ public class Menu extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(30, 42, 70));
 
         jButton4.setBackground(new java.awt.Color(40, 52, 80));
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Timot\\OneDrive\\Desktop\\Spring 2021\\Labs\\315 Projects\\Database Project\\313SProject2\\images\\Patty Melt.jpg")); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon("/home/skeet/Documents/csce315-projects/313SProject2/images/Patty Melt.jpg")); // NOI18N
 
         jLabel9.setBackground(new java.awt.Color(45, 67, 95));
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Patty Melt: 7.25");
         jLabel9.setToolTipText("");
-        jLabel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -215,14 +217,13 @@ public class Menu extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(30, 42, 70));
 
         jButton13.setBackground(new java.awt.Color(40, 52, 80));
-        jButton13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Timot\\OneDrive\\Desktop\\Spring 2021\\Labs\\315 Projects\\Database Project\\313SProject2\\images\\Patty Melt.jpg")); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon("/home/skeet/Documents/csce315-projects/313SProject2/images/Patty Melt.jpg")); // NOI18N
 
         jLabel17.setBackground(new java.awt.Color(45, 67, 95));
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Patty Melt: 7.25");
         jLabel17.setToolTipText("");
-        jLabel17.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -248,14 +249,18 @@ public class Menu extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(30, 42, 70));
 
         jButton14.setBackground(new java.awt.Color(40, 52, 80));
-        jButton14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Timot\\OneDrive\\Desktop\\Spring 2021\\Labs\\315 Projects\\Database Project\\313SProject2\\images\\Patty Melt.jpg")); // NOI18N
+        jButton14.setIcon(new javax.swing.ImageIcon("/home/skeet/Documents/csce315-projects/313SProject2/images/Patty Melt.jpg")); // NOI18N
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         jLabel18.setBackground(new java.awt.Color(45, 67, 95));
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Patty Melt: 7.25");
         jLabel18.setToolTipText("");
-        jLabel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -289,7 +294,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,7 +304,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addContainerGap(343, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Entrees", jPanel1);
@@ -438,7 +443,6 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(30, 42, 70));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Timot\\OneDrive\\Desktop\\Spring 2021\\Labs\\315 Projects\\Database Project\\313SProject2\\images\\Patty Melt.jpg")); // NOI18N
         jLabel14.setText("jLabel14");
 
         jLabel15.setBackground(new java.awt.Color(30, 42, 70));
@@ -587,6 +591,13 @@ public class Menu extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // XXX Temp: Just connecting to the db and doing a simple query...
+        database dbcon = new database();
+        dbcon.closeConnection();
+        
+    }//GEN-LAST:event_jButton14ActionPerformed
 
     /**
      * @param args the command line arguments

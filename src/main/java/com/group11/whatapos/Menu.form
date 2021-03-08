@@ -108,7 +108,7 @@
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Timot\OneDrive\Desktop\Spring 2021\Labs\315 Projects\Database Project\313SProject2\images\whataburgerLogo_white.png"/>
+              <Image iconType="2" name="/home/skeet/Documents/csce315-projects/313SProject2/images/whataburgerLogo_white.png"/>
             </Property>
           </Properties>
         </Component>
@@ -277,7 +277,7 @@
                           <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="217" max="32767" attributes="0"/>
+                          <EmptySpace pref="196" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -290,7 +290,7 @@
                               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="345" max="32767" attributes="0"/>
+                          <EmptySpace pref="343" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -335,7 +335,7 @@
                           <Color blue="50" green="34" red="28" type="rgb"/>
                         </Property>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="C:\Users\Timot\OneDrive\Desktop\Spring 2021\Labs\315 Projects\Database Project\313SProject2\images\Patty Melt.jpg"/>
+                          <Image iconType="2" name="/home/skeet/Documents/csce315-projects/313SProject2/images/Patty Melt.jpg"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -352,11 +352,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Patty Melt: 7.25"/>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                            <BevelBorder/>
-                          </Border>
-                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -400,7 +395,7 @@
                           <Color blue="50" green="34" red="28" type="rgb"/>
                         </Property>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="C:\Users\Timot\OneDrive\Desktop\Spring 2021\Labs\315 Projects\Database Project\313SProject2\images\Patty Melt.jpg"/>
+                          <Image iconType="2" name="/home/skeet/Documents/csce315-projects/313SProject2/images/Patty Melt.jpg"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -417,11 +412,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Patty Melt: 7.25"/>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                            <BevelBorder/>
-                          </Border>
-                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -465,9 +455,12 @@
                           <Color blue="50" green="34" red="28" type="rgb"/>
                         </Property>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="C:\Users\Timot\OneDrive\Desktop\Spring 2021\Labs\315 Projects\Database Project\313SProject2\images\Patty Melt.jpg"/>
+                          <Image iconType="2" name="/home/skeet/Documents/csce315-projects/313SProject2/images/Patty Melt.jpg"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton14ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel18">
                       <Properties>
@@ -482,11 +475,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Patty Melt: 7.25"/>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                            <BevelBorder/>
-                          </Border>
-                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -759,9 +747,6 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Timot\OneDrive\Desktop\Spring 2021\Labs\315 Projects\Database Project\313SProject2\images\Patty Melt.jpg"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="jLabel14"/>
               </Properties>
             </Component>
