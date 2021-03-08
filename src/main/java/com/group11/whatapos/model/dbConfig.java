@@ -10,8 +10,8 @@ package com.group11.whatapos.model;
  * @author ryanomalley
  */
 public class dbConfig {
-    public static final String user = "";
-    public static final String pswd = "";
+    public static final String user = "rdomalley";
+    public static final String pswd = "AlphaMReads55Pounds";
     public static final String url = "jdbc:postgresql://csce-315-db.engr.tamu.edu/db904_group11_project2";
     
 }
