@@ -34,7 +34,6 @@ public class Menu extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         Button5 = new javax.swing.JButton();
-        Button4 = new javax.swing.JButton();
         Button6 = new javax.swing.JButton();
         Button7 = new javax.swing.JButton();
         mainContent = new javax.swing.JPanel();
@@ -80,8 +79,6 @@ public class Menu extends javax.swing.JFrame {
 
         leftBar.setBackground(new java.awt.Color(3, 13, 36));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("/home/skeet/Documents/csce315-projects/313SProject2/images/whataburgerLogo_white.png")); // NOI18N
-
         Button5.setBackground(new java.awt.Color(3, 13, 36));
         Button5.setForeground(new java.awt.Color(255, 255, 255));
         Button5.setText("Customers");
@@ -90,17 +87,6 @@ public class Menu extends javax.swing.JFrame {
         Button5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button5ActionPerformed(evt);
-            }
-        });
-
-        Button4.setBackground(new java.awt.Color(3, 13, 36));
-        Button4.setForeground(new java.awt.Color(255, 255, 255));
-        Button4.setText("Employees");
-        Button4.setToolTipText("");
-        Button4.setBorder(null);
-        Button4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button4ActionPerformed(evt);
             }
         });
 
@@ -141,7 +127,6 @@ public class Menu extends javax.swing.JFrame {
                                 .addGap(69, 69, 69)
                                 .addComponent(jLabel8)))
                         .addGap(0, 45, Short.MAX_VALUE))
-                    .addComponent(Button4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Button6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Button5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Button7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -160,8 +145,6 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(Button5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Button6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -185,7 +168,6 @@ public class Menu extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(30, 42, 70));
 
         jButton4.setBackground(new java.awt.Color(40, 52, 80));
-        jButton4.setIcon(new javax.swing.ImageIcon("/home/skeet/Documents/csce315-projects/313SProject2/images/Patty Melt.jpg")); // NOI18N
 
         jLabel9.setBackground(new java.awt.Color(45, 67, 95));
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -217,7 +199,6 @@ public class Menu extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(30, 42, 70));
 
         jButton13.setBackground(new java.awt.Color(40, 52, 80));
-        jButton13.setIcon(new javax.swing.ImageIcon("/home/skeet/Documents/csce315-projects/313SProject2/images/Patty Melt.jpg")); // NOI18N
 
         jLabel17.setBackground(new java.awt.Color(45, 67, 95));
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -249,7 +230,6 @@ public class Menu extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(30, 42, 70));
 
         jButton14.setBackground(new java.awt.Color(40, 52, 80));
-        jButton14.setIcon(new javax.swing.ImageIcon("/home/skeet/Documents/csce315-projects/313SProject2/images/Patty Melt.jpg")); // NOI18N
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -294,7 +274,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(297, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,7 +284,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addContainerGap(382, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Entrees", jPanel1);
@@ -338,7 +318,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
 
         rightBar.setBackground(new java.awt.Color(3, 13, 36));
@@ -531,7 +511,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 377, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 409, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -567,10 +547,6 @@ public class Menu extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void Button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Button4ActionPerformed
 
     private void Button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button5ActionPerformed
         // TODO add your handling code here:
@@ -635,7 +611,6 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button4;
     private javax.swing.JButton Button5;
     private javax.swing.JButton Button6;
     private javax.swing.JButton Button7;
