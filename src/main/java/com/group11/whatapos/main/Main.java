@@ -17,6 +17,7 @@
 package com.group11.whatapos.main;
 
 import com.group11.whatapos.model.*;
+import com.group11.whatapos.view.*;
 
 
 /**
@@ -30,6 +31,8 @@ public class Main {
         menuModel menu = new menuModel(db);
         menu.refreshMenu();
         menu.printMenu();
+        Menu menuPage = new Menu();
+        menuPage.setVisible(true);
         db.closeConnection();
     }
 }
