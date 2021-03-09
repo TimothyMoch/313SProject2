@@ -32,7 +32,6 @@ public class Main {
         menu.refreshMenu();
         menu.printMenu();
         Menu menuPage = new Menu();
-        menuPage.setVisible(true);
-        db.closeConnection();
+        menuPage.runFrame();
     }
 }
