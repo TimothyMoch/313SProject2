@@ -15,15 +15,18 @@ public class database {
   protected String database_url;
   private Connection conn = null;
 
+  /*
+  database() : constructor
+  description : creates and configures a database object, which is used to create connections to the AWS database
+  
+  */
   public database(){
       database_username = dbConfig.user;
       database_password = dbConfig.pswd;
       database_url = dbConfig.url;
-      createConnection();
-
   }
 
-  private void createConnection(){
+  public void createConnection(){
       try {
           Class.forName("org.postgresql.Driver");
           conn = DriverManager.getConnection(database_url, database_username, database_password);

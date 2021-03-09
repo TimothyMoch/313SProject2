@@ -1,7 +1,5 @@
 package com.group11.whatapos.model;
 
-import com.group11.whatapos.model.database;
-
 import java.sql.*;
 
 public class itemModel {
@@ -15,15 +13,12 @@ public class itemModel {
         conn = _db.returnConnection();
         itemCode = _itemCode;
         itemCat = _itemCode.charAt(0);
-        refreshItem();
-        printItemDetails();
     }
 
     /* Queries database for latest item details */
     public void refreshItem() {
-        String query =  "SELECT *" +
-                "from item" +
-                "where itemcode = " + itemCode + ";";
+        
+        String query =  "SELECT * from item where itemcode = '" + itemCode + "';";
 
         /* Wrapped in Try/Catch statement due to IDE warning */
         try{

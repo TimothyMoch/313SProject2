@@ -296,9 +296,6 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Timot\OneDrive\Desktop\Spring 2021\Labs\315 Projects\Database Project\313SProject2\images\Patty Melt.jpg"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="jLabel14"/>
               </Properties>
             </Component>
@@ -421,11 +418,6 @@
         <Component class="javax.swing.JLabel" name="jLabel8">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Timot\OneDrive\Desktop\Spring 2021\Labs\315 Projects\Database Project\313SProject2\images\whataburgerLogo_white.png"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="Button5">
           <Properties>
@@ -620,9 +612,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Timot\OneDrive\Desktop\Spring 2021\Labs\315 Projects\Database Project\313SProject2\images\Patty Melt.jpg"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="jLabel14"/>
           </Properties>
         </Component>
