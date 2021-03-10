@@ -32,38 +32,27 @@ public final class viewController {
         ordersView = new Orders();
         
         menuView.runFrame();
-        customerView.runFrame();
-        customerView.setVisible(false);
-        ordersView.runFrame();
-        ordersView.setVisible(false);
     }
     
     public static void closeAllFrames(){
-        if(customerView != null){
-            customerView.setVisible(false);
-        }
-        if(ordersView != null){
-            ordersView.setVisible(false);
-        }
-        if(menuView != null){
-            menuView.setVisible(false);
-        }
+        customerView.setVisible(false);
+        ordersView.setVisible(false);
+        menuView.setVisible(false);
     }
     
     public static void changeToCustomerView(){
         closeAllFrames();
-        customerView.setVisible(true);
+        customerView.runFrame();
     }
     
     public static void changeToMenuView(){
         closeAllFrames();
-        menuView.setVisible(true);
+        menuView.runFrame();
     }
     
     public static void changeToOrdersView(){
         closeAllFrames();
-        ordersView.setVisible(true);      
+        ordersView.runFrame();   
     }
-    
     
 }
