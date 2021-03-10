@@ -6,8 +6,7 @@
 package com.group11.whatapos.view;
 
 // Importing other modules here
-import com.group11.whatapos.model.database;
-
+import com.group11.whatapos.controller.*;
 /**
  *
  * @author Ryan
@@ -547,11 +546,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void customersPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customersPageBtnActionPerformed
-        // TODO add your handling code here:
+        viewController.changeToCustomerView();
     }//GEN-LAST:event_customersPageBtnActionPerformed
 
     private void ordersPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordersPageBtnActionPerformed
-        // TODO add your handling code here:
+        viewController.changeToOrdersView();
     }//GEN-LAST:event_ordersPageBtnActionPerformed
 
     private void menuPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPageBtnActionPerformed
@@ -567,9 +566,6 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteItemBtnActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // XXX Temp: Just connecting to the db and doing a simple query...
-        database dbcon = new database();
-        dbcon.closeConnection();
         
     }//GEN-LAST:event_jButton14ActionPerformed
     public void closeFrame(){
