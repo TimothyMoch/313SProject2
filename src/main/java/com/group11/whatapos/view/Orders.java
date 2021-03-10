@@ -6,6 +6,8 @@
 package com.group11.whatapos.view;
 
 import com.group11.whatapos.controller.viewController;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -17,14 +19,6 @@ public class Orders extends javax.swing.JFrame {
      * Creates new form Orders
      */
     public Orders() {
-        initComponents();
-    }
-    
-    public void closeFrame(){
-    setVisible(false); //you can't see me!
-    dispose(); //Destroy the JFrame object
-    }
-    public void runFrame(){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -49,11 +43,17 @@ public class Orders extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Orders().setVisible(true);
-            }
-        });
+        initComponents();
+    }
+    
+    public void closeFrame(){
+    this.setVisible(false); //you can't see me!
+    this.dispose(); //Destroy the JFrame object
+    }
+    public void runFrame(){
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize(screenSize.width, screenSize.height);
+        this.setVisible(true);
     }
 
     /**
@@ -446,7 +446,7 @@ public class Orders extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(leftBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mainContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rightBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
