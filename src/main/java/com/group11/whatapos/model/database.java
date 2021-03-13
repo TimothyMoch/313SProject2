@@ -10,23 +10,28 @@ CSCE 315
 2/7/2020 Update for AWS
  */
 public class database {
-  protected String database_username;
-  protected String database_password;
-  protected String database_url;
-  private Connection conn = null;
-
+  protected static String database_username;
+  protected static String database_password;
+  protected static String database_url;
+  private static Connection conn = null;
+  private static database instance = new database();
+  
   /*
   database() : constructor
   description : creates and configures a database object, which is used to create connections to the AWS database
   
   */
-  public database(){
+  private database(){
       database_username = dbConfig.user;
       database_password = dbConfig.pswd;
       database_url = dbConfig.url;
   }
+  
+  public static database getInstance(){
+      return instance;
+  }
 
-  public void createConnection(){
+  public static void createConnection(){
       try {
           Class.forName("org.postgresql.Driver");
           conn = DriverManager.getConnection(database_url, database_username, database_password);
@@ -39,7 +44,7 @@ public class database {
       System.out.println("Database opened successfully");
   }
 
-  public void closeConnection(){
+  public static void closeConnection(){
       try {
           conn.close();
           System.out.println("Connection Closed.");
@@ -48,7 +53,7 @@ public class database {
       }
   }
 
-  public Connection returnConnection(){
+  public static Connection returnConnection(){
       return conn;
   }
 
