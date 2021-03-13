@@ -64,14 +64,27 @@ public class orderModel {
      */
     public void updateDatabase(){
         setDate();
+        //update orders and "order count" tables
         for (int i = 0; i < itemCodes.size(); ++i){
+
+            //this statement updates the orders table in the database
             try {
-                String query = "INSERT INTO orders(orderid, customerid, orderdate, itemcode, itemnum)"
-                        + "VALUES (" + orderid + ", " + customerid + ", " + date + ", " + itemCodes.get(i) + ", " + (i + 1) + ")";
+                String query = "INSERT INTO orders(orderid, customerid, orderdate, itemcode, itemnum) "
+                        + "VALUES (" + orderid + ", " + customerid + ", " + date + ", " + itemCodes.get(i) + ", " + (i + 1) + ");";
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
+                stmt.executeQuery(query);
             } catch (SQLException ex) {
-                Logger.getLogger(orderModel.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(order.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            //this statement updates the order table in the database
+            try {
+                String query = "UPDATE \"order count\"" + " SET ordercount = ordercount + 1 "
+                            + "WHERE itemcode = " + itemCodes.get(i) + ";";
+                Statement stmt = conn.createStatement();
+                stmt.executeQuery(query);
+            } catch (SQLException ex) {
+                Logger.getLogger(order.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
