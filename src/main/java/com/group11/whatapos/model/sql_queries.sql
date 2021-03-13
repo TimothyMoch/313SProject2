@@ -11,7 +11,7 @@ WHERE
 DELETE FROM
 	recommendations
 WHERE
-	customerid = curr_custid AND MAX(orderdate) AND COUNT(*) WHERE ;
+	customerid = curr_custid;
 	
 --add new recommendations
 INSERT INTO recommendations(customerid, itemcode, orderdate)
