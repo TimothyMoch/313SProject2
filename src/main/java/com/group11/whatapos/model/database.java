@@ -13,7 +13,7 @@ public class database {
   protected static String database_username;
   protected static String database_password;
   protected static String database_url;
-  private static Connection conn = null;
+  private Connection conn = null;
   private static database instance = new database();
   
   /*
@@ -31,7 +31,7 @@ public class database {
       return instance;
   }
 
-  public static void createConnection(){
+  public void createConnection(){
       try {
           Class.forName("org.postgresql.Driver");
           conn = DriverManager.getConnection(database_url, database_username, database_password);
@@ -44,7 +44,7 @@ public class database {
       System.out.println("Database opened successfully");
   }
 
-  public static void closeConnection(){
+  public void closeConnection(){
       try {
           conn.close();
           System.out.println("Connection Closed.");
@@ -53,7 +53,7 @@ public class database {
       }
   }
 
-  public static Connection returnConnection(){
+  public Connection returnConnection(){
       return conn;
   }
 
