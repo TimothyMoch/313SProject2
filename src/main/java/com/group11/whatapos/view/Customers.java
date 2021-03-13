@@ -7,8 +7,12 @@ package com.group11.whatapos.view;
 import com.group11.whatapos.controller.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import static java.lang.Math.ceil;
+import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -18,6 +22,40 @@ import javax.swing.table.TableRowSorter;
  * @author Timot
  */
 public class Customers extends javax.swing.JFrame {
+    class Pagination {
+        public JButton backButton;
+        public JButton nextButton;
+        public JButton goToButton;
+        public JTextField pageNumber;
+        public int currentPage;
+        public int maxPages;
+        public int pageSize;
+        
+        public Pagination(JButton _backButton, JButton _nextButton, JButton _goToButton, int pageSize){
+            currentPage = 0;
+            backButton = _backButton;
+            nextButton = _nextButton;
+            goToButton = _goToButton;
+            getMaxPages();
+        }
+        
+        public void getMaxPages(){
+            double numItems = customerTableController.numRows();
+            maxPages = (int) ceil(numItems / pageSize);
+            System.out.println(maxPages);
+        }
+        
+        public void backPage(){
+            if(currentPage != 0){
+                
+            }
+        }
+        
+        public void nextPage(){
+            
+        }
+        
+    }
     /**
      * Creates new form Customers
      */
@@ -60,10 +98,15 @@ public class Customers extends javax.swing.JFrame {
 
         mainContainer = new javax.swing.JPanel();
         loadTable();
+        searchButton = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         customerTable = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
+        pagination_pageBack = new javax.swing.JButton();
+        pagination_pageNum = new javax.swing.JTextField();
+        pagination_pageNext = new javax.swing.JButton();
+        pagination_goTo = new javax.swing.JButton();
+        maxPages = new javax.swing.JLabel();
         leftBar = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -100,6 +143,15 @@ public class Customers extends javax.swing.JFrame {
         });
 
         mainContainer.setBackground(new java.awt.Color(30, 42, 70));
+
+        searchButton.setBackground(new java.awt.Color(255, 118, 15));
+        searchButton.setForeground(new java.awt.Color(255, 255, 255));
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         searchField.setToolTipText("Search Customers");
         searchField.addActionListener(new java.awt.event.ActionListener() {
@@ -143,8 +195,21 @@ public class Customers extends javax.swing.JFrame {
         customerTable.setSelectionBackground(new java.awt.Color(30, 42, 70));
         jScrollPane1.setViewportView(customerTable);
 
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Search");
+        pagination_pageBack.setText("<");
+        pagination_pageBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagination_pageBackActionPerformed(evt);
+            }
+        });
+
+        pagination_pageNum.setText("jTextField1");
+
+        pagination_pageNext.setText(">");
+
+        pagination_goTo.setText("Go To");
+
+        maxPages.setForeground(new java.awt.Color(204, 204, 204));
+        maxPages.setText("/Max");
 
         javax.swing.GroupLayout mainContainerLayout = new javax.swing.GroupLayout(mainContainer);
         mainContainer.setLayout(mainContainerLayout);
@@ -152,10 +217,22 @@ public class Customers extends javax.swing.JFrame {
             mainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainContainerLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(mainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addComponent(pagination_pageBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pagination_pageNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(maxPages)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pagination_goTo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pagination_pageNext)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainContainerLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(searchButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
             .addGroup(mainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mainContainerLayout.createSequentialGroup()
                     .addGap(32, 32, 32)
@@ -165,11 +242,18 @@ public class Customers extends javax.swing.JFrame {
         mainContainerLayout.setVerticalGroup(
             mainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainContainerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9)
-                .addGap(3, 3, 3)
-                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(538, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addGroup(mainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(mainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pagination_pageBack)
+                    .addComponent(pagination_pageNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pagination_pageNext)
+                    .addComponent(pagination_goTo)
+                    .addComponent(maxPages))
+                .addGap(19, 19, 19))
             .addGroup(mainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mainContainerLayout.createSequentialGroup()
                     .addGap(125, 125, 125)
@@ -247,7 +331,7 @@ public class Customers extends javax.swing.JFrame {
                 .addComponent(Button5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Button6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
 
         rightBar.setBackground(new java.awt.Color(3, 13, 36));
@@ -494,15 +578,26 @@ public class Customers extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentShown
 
     private void searchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyPressed
-        String text = searchField.getText();
-        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(customerTable.getModel());
-        customerTable.setRowSorter(rowSorter);
-        if (text.trim().length() == 0) {
-           rowSorter.setRowFilter(null);
-        } else {
-           rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-        }
+
     }//GEN-LAST:event_searchFieldKeyPressed
+
+    private void pagination_pageBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagination_pageBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pagination_pageBackActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        String text = searchField.getText();
+        DefaultTableModel model = (DefaultTableModel) customerTable.getModel();
+        //Reset
+        if(text.length() == 0){
+            customerTableController.refreshCustomers(model);
+        }
+        else {
+            ArrayList<String> searchResults = customerTableController.searchCustomer(text);
+            customerTableController.updateTable(model, searchResults);
+        }
+    }//GEN-LAST:event_searchButtonActionPerformed
     private void loadTable(){
     }
     public void closeFrame(){
@@ -514,6 +609,8 @@ public class Customers extends javax.swing.JFrame {
         this.setSize(screenSize.width, screenSize.height);
         this.setVisible(true);
     }
+    
+    private Pagination tablePagination;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button5;
@@ -538,7 +635,6 @@ public class Customers extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -546,7 +642,13 @@ public class Customers extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel leftBar;
     private javax.swing.JPanel mainContainer;
+    private javax.swing.JLabel maxPages;
+    private javax.swing.JButton pagination_goTo;
+    private javax.swing.JButton pagination_pageBack;
+    private javax.swing.JButton pagination_pageNext;
+    private javax.swing.JTextField pagination_pageNum;
     private javax.swing.JPanel rightBar;
+    private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
     // End of variables declaration//GEN-END:variables
 }

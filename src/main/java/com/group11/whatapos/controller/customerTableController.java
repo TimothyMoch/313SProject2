@@ -28,6 +28,48 @@ import javax.swing.table.TableModel;
  * @author ryanomalley
  */
 public final class customerTableController {
+    public static int PAGELENGTH = 30;
+    
+    public static int numRows(){
+        int numberRows = 0;
+        database db = database.getInstance();
+        Connection conn = db.returnConnection();
+        
+        String query = "SELECT COUNT(*) from customers;";
+        /* Wrapped in Try/Catch statement due to IDE warning */
+        try{
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                numberRows = rs.getInt("count");
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return numberRows;
+    }
+    
+    public static ArrayList<String> searchCustomer(String name){
+        String query = "SELECT * from customers where customerfirstname LIKE '%" + name.toUpperCase() + "%' or customerlastname LIKE '%" + name.toUpperCase() + "%' LIMIT " + PAGELENGTH + ";";
+        ArrayList<String> result = new ArrayList<>();
+        Connection conn = database.getInstance().returnConnection();
+        try{
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                String currCustomer = rs.getString("customerfirstname") + " " + rs.getString("customerlastname");
+                result.add(currCustomer);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return result;
+    }
+    
     public static ArrayList<String> grabCustomers(int numCustomers, int offset){
         database db = database.getInstance();
         Connection conn = db.returnConnection();
@@ -57,12 +99,19 @@ public final class customerTableController {
         //Remove rows one by one from the end of the table
         for (int i = rowCount - 1; i >= 0; i--) {
             customerTable.removeRow(i);
-}
+        }
+    }
+    
+    public static void updateTable(DefaultTableModel customerTable, ArrayList<String> data){
+        clearTable(customerTable);
+        for(int i = 0; i < PAGELENGTH; ++i){
+            customerTable.addRow((new Object[]{data.get(i)}));
+        }
     }
     public static void refreshCustomers(DefaultTableModel customerTable){
         clearTable(customerTable);
         ArrayList<String> customerList = grabCustomers(30, 0);
-        for(int i = 0; i < 30; ++i){
+        for(int i = 0; i < PAGELENGTH; ++i){
             customerTable.addRow((new Object[]{customerList.get(i)}));
         }
     }
