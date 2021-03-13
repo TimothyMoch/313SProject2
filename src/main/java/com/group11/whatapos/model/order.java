@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import main.java.com.group11.whatapos.model.recommendations;
+import com.group11.whatapos.model.recommendations;
 
 public class order {
     private Connection conn;
@@ -40,7 +40,7 @@ public class order {
         orderid = "order-" + UUID.randomUUID().toString();
         customerid = _customerid;
         ArrayList<String> itemCodes = new ArrayList<String>();
-        recommended = recomendations(_customerid, _db);
+        //recommended = recomendations(_customerid, _db);
     }
 
     /**

@@ -1,4 +1,4 @@
-package main.java.com.group11.whatapos.model;
+package com.group11.whatapos.model;
 
 /*
  * This class will be used to pass recommendations
@@ -29,7 +29,7 @@ public class recommendations {
     public recommendations(String _customerid, database _db){
         conn = _db.returnConnection();
         customerid = _customerid;
-
+        String itemCode = "";
         try {
             String query = "SELECT itemcode, orderdate " +
                             "FROM recommendations " +
@@ -38,7 +38,7 @@ public class recommendations {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while(rs.next()) {
-                itemCode.add(rs.getString("itemcode"));
+                //itemCode.add(rs.getString("itemcode"));
                 dates.add(rs.getDate("orderdate"));
             }
         } catch (SQLException ex) {
