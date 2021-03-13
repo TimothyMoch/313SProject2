@@ -9,6 +9,8 @@ package com.group11.whatapos.model;
  */
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class order {
     private Connection conn;
@@ -34,7 +36,7 @@ public class order {
         conn = _db.returnConnection();
         orderid = "order-" + UUID.randomUUID().toString();
         customerid = _customerid;
-        ArrayList<String> itemCodes = new ArrayList<string>();
+        ArrayList<String> itemCodes = new ArrayList<String>();
     }
 
     /**
@@ -63,10 +65,14 @@ public class order {
     public void updateDatabase(){
         setDate();
         for (int i = 0; i < itemCodes.size(); ++i){
-            String query = "INSERT INTO orders(orderid, customerid, orderdate, itemcode, itemnum)"
-            + "VALUES (" + orderid + ", " + customerid + ", " + date + ", " + itemCodes.get(i) + ", " + (i + 1) + ")";
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            try {
+                String query = "INSERT INTO orders(orderid, customerid, orderdate, itemcode, itemnum)"
+                        + "VALUES (" + orderid + ", " + customerid + ", " + date + ", " + itemCodes.get(i) + ", " + (i + 1) + ")";
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+            } catch (SQLException ex) {
+                Logger.getLogger(order.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
     }
