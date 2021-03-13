@@ -1,3 +1,5 @@
+package com.group11.whatapos.model;
+
 /*
  *This class represents the ordering process
  *Whenever an order is created, this class is
@@ -5,7 +7,7 @@
  *the queries that occur when the order is
  *added to the database.
  */
-import java.sql;
+import java.sql.*;
 import java.util.*;
 
 public class order {
