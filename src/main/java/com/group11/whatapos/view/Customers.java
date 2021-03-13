@@ -121,14 +121,14 @@ public class Customers extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name"
+                "Name", "Customer ID"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
