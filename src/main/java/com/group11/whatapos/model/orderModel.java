@@ -56,7 +56,7 @@ public class orderModel {
      * @param comments String
      */
     public void addItemAttributes(String attributes, String comments){
-        itemAttributesModel newAttributes = itemAttributesModel(attributes, comments);
+        itemAttributesModel newAttributes = new itemAttributesModel(attributes, comments);
         itemAttributesList.add(newAttributes);
     }
 
@@ -72,7 +72,7 @@ public class orderModel {
     /**
      * @return Date
      */
-    public Date getDate(){
+    public java.sql.Date getDate(){
         return date;
     }
 
@@ -93,7 +93,7 @@ public class orderModel {
                 Statement stmt = conn.createStatement();
                 stmt.executeQuery(query);
             } catch (SQLException ex) {
-                Logger.getLogger(order.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(orderModel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             //this statement updates the order table in the database
@@ -103,18 +103,18 @@ public class orderModel {
                 Statement stmt = conn.createStatement();
                 stmt.executeQuery(query);
             } catch (SQLException ex) {
-                Logger.getLogger(order.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(orderModel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             //this statement updates the item attribute table in the database
             try {
                 String query = "INSERT INTO \"item attributes\"(orderid, itemnum, attributelist, othercomments)"
                         + "VALUES (\'" + orderid + "\', " + (i + 1) + ", " + date + ", \'"
-                        + itemAttributesList.getItemAttributes(i) + "\', \'" + itemAttributesList.getOtherComments(i) + "\');";
+                        + itemAttributesList.get(i).getItemAttributes() + "\', \'" + itemAttributesList.get(i).getOtherComments() + "\');";
                 Statement stmt = conn.createStatement();
                 stmt.executeQuery(query);
             } catch (SQLException ex) {
-                Logger.getLogger(order.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(orderModel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

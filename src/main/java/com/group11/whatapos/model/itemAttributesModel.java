@@ -31,14 +31,14 @@ public class itemAttributesModel{
     /**
      * @return String of item attributes for a singular item
      */
-    public getItemAttributes(){
+    public String getItemAttributes(){
         return itemAttributes;
     }
 
     /**
      * @return String of other comments made by customer for a singular item
      */
-    public getOtherComments(){
+    public String getOtherComments(){
         return otherComments;
     }
 }
