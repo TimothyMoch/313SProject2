@@ -14,22 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.group11.whatapos.main;
-
-import com.group11.whatapos.model.*;
-import com.group11.whatapos.view.*;
-import com.group11.whatapos.controller.*;
-
+package com.group11.whatapos.model;
 
 /**
  *
  * @author ryanomalley
  */
-public class Main {
-    public static void main(String args[]){
-        database db = database.getInstance();
-        db.createConnection();
-        menuModel menu = new menuModel(db);
-        viewController view = new viewController();
-    }
+public class orderListModel {
+    
 }

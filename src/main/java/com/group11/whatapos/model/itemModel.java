@@ -9,8 +9,8 @@ public class itemModel {
     private double price;
     private Connection conn;
 
-    public itemModel(database _db, String _itemCode){
-        conn = _db.returnConnection();
+    public itemModel(String _itemCode){
+        conn = database.getInstance().returnConnection();
         itemCode = _itemCode;
         itemCat = _itemCode.charAt(0);
     }

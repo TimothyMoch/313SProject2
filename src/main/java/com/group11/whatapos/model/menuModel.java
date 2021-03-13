@@ -22,7 +22,7 @@ public class menuModel {
             String currentItemCode = itemCodes.get(i);
             //Add item to map, since it does not exist
             if(!items.containsKey(currentItemCode)){
-                items.put(currentItemCode, new itemModel(db, currentItemCode));
+                items.put(currentItemCode, new itemModel(currentItemCode));
             }
             else{
                 items.get(currentItemCode).refreshItem();
