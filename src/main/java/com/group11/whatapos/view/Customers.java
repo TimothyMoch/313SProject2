@@ -284,8 +284,8 @@ public class Customers extends javax.swing.JFrame {
                     .addComponent(itemsPerPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addGap(36, 36, 36))
         );
 
         leftBar.setBackground(new java.awt.Color(3, 13, 36));
@@ -305,9 +305,8 @@ public class Customers extends javax.swing.JFrame {
 
         Button6.setBackground(new java.awt.Color(3, 13, 36));
         Button6.setForeground(new java.awt.Color(255, 255, 255));
-        Button6.setText("Orders");
+        Button6.setText("Orders & Trends");
         Button6.setToolTipText("");
-        Button6.setBorder(null);
         Button6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button6ActionPerformed(evt);

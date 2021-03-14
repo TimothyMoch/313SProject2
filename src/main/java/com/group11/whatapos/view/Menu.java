@@ -118,9 +118,8 @@ public class Menu extends javax.swing.JFrame {
 
         ordersPageBtn.setBackground(new java.awt.Color(3, 13, 36));
         ordersPageBtn.setForeground(new java.awt.Color(255, 255, 255));
-        ordersPageBtn.setText("Orders");
+        ordersPageBtn.setText("Orders & Trends");
         ordersPageBtn.setToolTipText("");
-        ordersPageBtn.setBorder(null);
         ordersPageBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ordersPageBtnActionPerformed(evt);

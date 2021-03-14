@@ -153,6 +153,9 @@ public class Orders extends javax.swing.JFrame {
         trendingItemName = new javax.swing.JLabel();
         trendingItemCount = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        worstItemCount = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        worstItemName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -164,9 +167,9 @@ public class Orders extends javax.swing.JFrame {
         mainContainer.setBackground(new java.awt.Color(30, 42, 70));
 
         searchField.setToolTipText("Search Customers");
-        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                searchFieldKeyTyped(evt);
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
             }
         });
 
@@ -315,9 +318,13 @@ public class Orders extends javax.swing.JFrame {
 
         orderPageButton.setBackground(new java.awt.Color(3, 13, 36));
         orderPageButton.setForeground(new java.awt.Color(255, 119, 15));
-        orderPageButton.setText("Orders");
+        orderPageButton.setText("Orders & Trends");
         orderPageButton.setToolTipText("");
-        orderPageButton.setBorder(null);
+        orderPageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderPageButtonActionPerformed(evt);
+            }
+        });
 
         Button7.setBackground(new java.awt.Color(3, 13, 36));
         Button7.setForeground(new java.awt.Color(255, 255, 255));
@@ -373,7 +380,7 @@ public class Orders extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(52, 63, 89));
 
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("Trending Item");
+        jLabel1.setText("Best Performing");
 
         trendingItemName.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         trendingItemName.setForeground(new java.awt.Color(255, 255, 255));
@@ -387,36 +394,59 @@ public class Orders extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(trendingItemCount)
                     .addComponent(trendingItemName)
                     .addComponent(jLabel1))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(16, 16, 16)
                 .addComponent(trendingItemName)
                 .addGap(4, 4, 4)
                 .addComponent(trendingItemCount)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(52, 63, 89));
+
+        worstItemCount.setForeground(new java.awt.Color(255, 255, 255));
+        worstItemCount.setText("...");
+
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setText("Worst Performing");
+
+        worstItemName.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        worstItemName.setForeground(new java.awt.Color(255, 255, 255));
+        worstItemName.setText("...");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(worstItemCount)
+                    .addComponent(worstItemName)
+                    .addComponent(jLabel2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 112, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel2)
+                .addGap(16, 16, 16)
+                .addComponent(worstItemName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(worstItemCount)
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -424,20 +454,20 @@ public class Orders extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -445,7 +475,7 @@ public class Orders extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
@@ -453,8 +483,8 @@ public class Orders extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(430, 430, 430))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -489,7 +519,10 @@ public class Orders extends javax.swing.JFrame {
 
     //Frame shown
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        orderTableController.handleItemTrends(this);
+        // Creates seperate threads to aid performance
+        new Thread(() -> {
+            orderTableController.handleItemTrends(this);
+        }).start();
         DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
         orderTableController.PAGELENGTH = parseInt(itemsPerPage.getSelectedItem().toString());
         tablePagination = new Pagination();
@@ -500,20 +533,6 @@ public class Orders extends javax.swing.JFrame {
     private void pagination_pageBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagination_pageBackActionPerformed
         tablePagination.backPage(this);
     }//GEN-LAST:event_pagination_pageBackActionPerformed
-
-    private void searchFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyTyped
-        // TODO add your handling code here:
-        String text = searchField.getText();
-        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
-        //Reset
-        if(text.length() == 0){
-            orderTableController.refreshOrders(model, tablePagination.currentOffset);
-        }
-        else {
-            ArrayList<orderModel> searchResults = orderTableController.searchOrder(text);
-            orderTableController.updateTable(model, searchResults);
-        }
-    }//GEN-LAST:event_searchFieldKeyTyped
 
     private void pagination_pageNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagination_pageNextActionPerformed
         tablePagination.nextPage(this);
@@ -535,6 +554,25 @@ public class Orders extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pagination_pageNumActionPerformed
 
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        // TODO add your handling code here:
+                // TODO add your handling code here:
+        String text = searchField.getText();
+        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
+        //Reset
+        if(text.length() == 0){
+            orderTableController.refreshOrders(model, tablePagination.currentOffset);
+        }
+        else {
+            ArrayList<orderModel> searchResults = orderTableController.searchOrder(text);
+            orderTableController.updateTable(model, searchResults);
+        }
+    }//GEN-LAST:event_searchFieldActionPerformed
+
+    private void orderPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderPageButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orderPageButtonActionPerformed
+
     public void closeFrame(){
         this.setVisible(false); //you can't see me!
         this.dispose(); //Destroy the JFrame object
@@ -554,6 +592,7 @@ public class Orders extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel10;
     public javax.swing.JLabel jLabel12;
+    public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel8;
     public javax.swing.JLabel jLabel9;
     public javax.swing.JPanel jPanel1;
@@ -573,6 +612,8 @@ public class Orders extends javax.swing.JFrame {
     public javax.swing.JTextField searchField;
     public javax.swing.JLabel trendingItemCount;
     public javax.swing.JLabel trendingItemName;
+    public javax.swing.JLabel worstItemCount;
+    public javax.swing.JLabel worstItemName;
     // End of variables declaration//GEN-END:variables
 
 }
