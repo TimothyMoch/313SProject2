@@ -217,13 +217,23 @@ public final class orderTableController {
             orderTable.removeRow(i);
         }
     }
-    
+    /**
+     * Given a list of customers and the table, inserts customers as rows
+     * @param customerTable Table model to insert rows into
+     * @param data The customer models to insert into the table
+     */
+ 
     public static void updateTable(DefaultTableModel orderTable, ArrayList<orderTableModel> data){
         clearTable(orderTable);
         for(int i = 0; i < PAGELENGTH && i < data.size(); ++i){
             orderTable.addRow((new Object[]{data.get(i).orderID, data.get(i).customerID, data.get(i).orderDate, data.get(i).itemCode}));
         }
     }
+    /**
+     * Updates the table based on the offset
+     * @param orderTable Table model to insert rows into
+     * @param offset Offset of models
+     */  
     public static void refreshOrders(DefaultTableModel orderTable, int offset){
         clearTable(orderTable);
         ArrayList<orderTableModel> orderList = grabOrders(offset);
