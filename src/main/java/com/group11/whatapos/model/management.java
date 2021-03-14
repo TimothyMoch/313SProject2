@@ -6,10 +6,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class management{
+    public static Connection conn = database.getInstance().returnConnection();
     
     public void addItemtoMenu(String itemCode, String itemName, double price){
         try {
-            String query = "INSERT INTO item(itemname, itemcode, price) VALUES (\'" + new_itemname + "\', \'" + new_itemcode +"\', " + new_price + ");";
+            String query = "INSERT INTO item(itemname, itemcode, price) VALUES (\'" + itemName + "\', \'" + itemCode +"\', " + price + ");";
             Statement stmt = conn.createStatement();
             stmt.executeQuery(query);
 
@@ -31,6 +32,7 @@ public class management{
      * @return ArrayList<String> of top 2 trending and bottom 2 trending
      * in order: {top1, top2, bottom1, bottom2}
      */
+/*
     public ArrayList<String> getTrending(){
         ArrayList<String> trendingItems = new ArrayList<String>();
 
@@ -49,7 +51,7 @@ public class management{
 
         return trendingItems;
     }
-
+*/
     /**
      * allows management to change price for item.
      * @param item String
