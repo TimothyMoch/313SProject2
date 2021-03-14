@@ -14,12 +14,12 @@ import java.util.logging.Logger;
  */
 
 public class orderModel {
-    private Connection conn;
-    private String orderid;
-    private String customerid;
-    private java.sql.Date date; //updated at the end of the order
-    private ArrayList<String> itemCodes; //itemnum is represented by the index of the item in the array + 1
-    private ArrayList<itemAttributesModel> itemAttributesList; //represents item attributes for all items of one order, index rules still follow
+    public Connection conn;
+    public String orderid;
+    public String customerid;
+    public java.sql.Date date; //updated at the end of the order
+    public ArrayList<itemModel> items; //itemnum is represented by the index of the item in the array + 1
+    public ArrayList<itemAttributesModel> itemAttributesList; //represents item attributes for all items of one order, index rules still follow
 
     /**
      * order constructor takes 2 argument
@@ -37,17 +37,30 @@ public class orderModel {
         conn = database.getInstance().returnConnection();
         orderid = "order-" + UUID.randomUUID().toString();
         customerid = _customerid;
-        ArrayList<String> itemCodes = new ArrayList<String>();
+        date = new java.sql.Date(0);
+        ArrayList<itemModel> items = new ArrayList<itemModel>();
         ArrayList<itemAttributesModel> itemAttributesList = new ArrayList<itemAttributesModel>();
     }
 
     /**
-     * This function adds the given itemcode to the
-     * itemCode arraylist for an order.
-     * @param itemCode String
+     * This function adds the given item model to
+     * the array of items for this order.
+     * @param item itemModel
      */
-    public void addItem(String itemCode){
-        itemCodes.add(itemCode);
+    public void addItem(itemModel item){
+        items.add(item);
+    }
+
+    /**
+     * removes an item from the order at a specific index.
+     * returns that item.
+     * @param index int
+     * @return itemModel
+     */
+    public itemModel removeItem(int index){
+        itemModel removedItem = items.get(index);
+        items.remove(index);
+        return removedItem;
     }
 
     /**
@@ -70,26 +83,19 @@ public class orderModel {
     }
 
     /**
-     * @return Date
-     */
-    public java.sql.Date getDate(){
-        return date;
-    }
-
-    /**
      * Updates the orders table in the database with the order information.
      * This does not currently update the itemAttributes table, the recommendations table,
      * the order count table, or the 
      */
-    public void updateDatabase(){
+    public void writeToDatabase(){
         setDate();
         //update orders and "order count" tables
-        for (int i = 0; i < itemCodes.size(); ++i){
+        for (int i = 0; i < items.size(); ++i){
 
             //this statement updates the orders table in the database
             try {
                 String query = "INSERT INTO orders(orderid, customerid, orderdate, itemcode, itemnum) "
-                        + "VALUES (\'" + orderid + "\', \'" + customerid + "\', " + date + ", \'" + itemCodes.get(i) + "\', " + (i + 1) + ");";
+                        + "VALUES (\'" + orderid + "\', \'" + customerid + "\', " + date + ", \'" + items.get(i).itemCode + "\', " + (i + 1) + ");";
                 Statement stmt = conn.createStatement();
                 stmt.executeQuery(query);
             } catch (SQLException ex) {
@@ -99,7 +105,7 @@ public class orderModel {
             //this statement updates the order table in the database
             try {
                 String query = "UPDATE \"order count\"" + " SET ordercount = ordercount + 1 "
-                            + "WHERE itemcode = \'" + itemCodes.get(i) + "\';";
+                            + "WHERE itemcode = \'" + items.get(i).itemCode + "\';";
                 Statement stmt = conn.createStatement();
                 stmt.executeQuery(query);
             } catch (SQLException ex) {
@@ -117,5 +123,16 @@ public class orderModel {
                 Logger.getLogger(orderModel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    /**
+     * clears the order of all information.
+     */
+    public void deleteOrder(){
+        //conn;
+        orderid = "";
+        customerid = "";
+        items.clear();
+        itemAttributesList.clear();
     }
 }

@@ -61,4 +61,3 @@ public class itemModel {
     }
 
 }
-© 2021 GitHub, Inc.
