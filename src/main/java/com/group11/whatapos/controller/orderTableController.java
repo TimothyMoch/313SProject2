@@ -113,9 +113,9 @@ public final class orderTableController {
             return numberRows;
     }
     
-    public static ArrayList<orderModel> searchOrder(String text){
+    public static ArrayList<orderTableModel> searchOrder(String text){
         String query = "SELECT * from orders where orderid LIKE '%" + text + "%' LIMIT " + PAGELENGTH + ";";
-        ArrayList<orderModel> result = new ArrayList<>();
+        ArrayList<orderTableModel> result = new ArrayList<>();
         Connection conn = database.getInstance().returnConnection();
         try{
             Statement stmt = conn.createStatement();
@@ -126,7 +126,7 @@ public final class orderTableController {
                 String customerID = rs.getString("customerid");
                 String orderDate = rs.getString("orderdate");
                 String itemCode = rs.getString("itemcode");
-                result.add(new orderModel(orderID, customerID, orderDate, itemCode));
+                result.add(new orderTableModel(orderID, customerID, orderDate, itemCode));
             }
 
         } catch (SQLException throwables) {
@@ -135,10 +135,10 @@ public final class orderTableController {
         return result;
     }
     
-    public static ArrayList<orderModel> grabOrders(int offset){
+    public static ArrayList<orderTableModel> grabOrders(int offset){
         database db = database.getInstance();
         Connection conn = db.returnConnection();
-        ArrayList<orderModel> orders = new ArrayList<>();
+        ArrayList<orderTableModel> orders = new ArrayList<>();
         
         String query = "SELECT * FROM orders LIMIT " + PAGELENGTH + " OFFSET " + offset + ";";
         /* Wrapped in Try/Catch statement due to IDE warning */
@@ -151,7 +151,7 @@ public final class orderTableController {
                 String customerID = rs.getString("customerid");
                 String orderDate = rs.getString("orderdate");
                 String itemCode = rs.getString("itemcode");
-                orders.add(new orderModel(orderID, customerID, orderDate, itemCode));
+                orders.add(new orderTableModel(orderID, customerID, orderDate, itemCode));
             }
 
         } catch (SQLException throwables) {
@@ -169,7 +169,7 @@ public final class orderTableController {
         }
     }
     
-    public static void updateTable(DefaultTableModel orderTable, ArrayList<orderModel> data){
+    public static void updateTable(DefaultTableModel orderTable, ArrayList<orderTableModel> data){
         clearTable(orderTable);
         for(int i = 0; i < PAGELENGTH && i < data.size(); ++i){
             orderTable.addRow((new Object[]{data.get(i).orderID, data.get(i).customerID, data.get(i).orderDate, data.get(i).itemCode}));
@@ -177,7 +177,7 @@ public final class orderTableController {
     }
     public static void refreshOrders(DefaultTableModel orderTable, int offset){
         clearTable(orderTable);
-        ArrayList<orderModel> orderList = grabOrders(offset);
+        ArrayList<orderTableModel> orderList = grabOrders(offset);
         for(int i = 0; i < orderList.size(); ++i){
             orderTable.addRow((new Object[]{orderList.get(i).orderID, orderList.get(i).customerID, orderList.get(i).orderDate, orderList.get(i).itemCode}));
         }

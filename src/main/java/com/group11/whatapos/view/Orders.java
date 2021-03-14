@@ -6,7 +6,7 @@
 package com.group11.whatapos.view;
 import com.group11.whatapos.controller.*;
 import com.group11.whatapos.model.customerModel;
-import com.group11.whatapos.model.orderModel;
+import com.group11.whatapos.model.orderTableModel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import static java.lang.Integer.parseInt;
@@ -564,7 +564,7 @@ public class Orders extends javax.swing.JFrame {
             orderTableController.refreshOrders(model, tablePagination.currentOffset);
         }
         else {
-            ArrayList<orderModel> searchResults = orderTableController.searchOrder(text);
+            ArrayList<orderTableModel> searchResults = orderTableController.searchOrder(text);
             orderTableController.updateTable(model, searchResults);
         }
     }//GEN-LAST:event_searchFieldActionPerformed

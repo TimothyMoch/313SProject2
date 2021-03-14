@@ -355,8 +355,7 @@ public class Menu extends javax.swing.JFrame {
 
         checkoutBtn.setBackground(new java.awt.Color(255, 119, 15));
         checkoutBtn.setForeground(new java.awt.Color(255, 255, 255));
-        checkoutBtn.setText("Continue to Checkout");
-        checkoutBtn.setBorder(null);
+        checkoutBtn.setText("Complete Order");
 
         jPanel2.setBackground(new java.awt.Color(30, 42, 70));
 

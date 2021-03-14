@@ -16,10 +16,26 @@
  */
 package com.group11.whatapos.model;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
 /**
  *
  * @author ryanomalley
  */
-public class orderListModel {
+public class orderTableModel {
+    public String orderID;
+    public String customerID;
+    public String orderDate;
+    public String itemCode;
     
+    public orderTableModel(String _orderID, String _customerID, String _orderDate, String _itemCode){
+        orderID = _orderID;
+        customerID = _customerID;
+        orderDate = _orderDate;
+        itemCode = _itemCode;
+    }
 }

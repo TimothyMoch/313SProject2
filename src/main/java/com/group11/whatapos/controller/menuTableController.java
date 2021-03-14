@@ -26,6 +26,8 @@ import javax.swing.table.TableCellRenderer;
 import com.group11.whatapos.dependencies.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JTable;
@@ -44,6 +46,9 @@ public final class menuTableController {
     }
     
     public static void refreshTables(Menu frame){
+        Map<char, JTable> tables = new HashMap<>();
+        tables.add
+        
         DefaultTableModel entreeTable = (DefaultTableModel) frame.entreesTable.getModel();
         clearTable(entreeTable);
         populateTable(entreeTable, 'E');
