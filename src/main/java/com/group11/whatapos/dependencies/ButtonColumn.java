@@ -138,12 +138,12 @@ public class ButtonColumn extends AbstractCellEditor
 		if (isSelected)
 		{
 			renderButton.setForeground(table.getSelectionForeground());
-	 		renderButton.setBackground(table.getSelectionBackground());
+	 		renderButton.setBackground(new Color(255,119,15));
 		}
 		else
 		{
 			renderButton.setForeground(table.getForeground());
-			renderButton.setBackground(UIManager.getColor("Button.background"));
+			renderButton.setBackground(new Color(255,119,15));
 		}
 
 		if (hasFocus)

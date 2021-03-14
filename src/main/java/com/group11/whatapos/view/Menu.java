@@ -66,6 +66,15 @@ public class Menu extends javax.swing.JFrame {
         entreesTab = new javax.swing.JPanel();
         entreesContainer = new javax.swing.JScrollPane();
         entreesTable = new javax.swing.JTable();
+        sideTab = new javax.swing.JPanel();
+        sideContainer = new javax.swing.JScrollPane();
+        sideTable = new javax.swing.JTable();
+        drinkTab = new javax.swing.JPanel();
+        drinkContainer = new javax.swing.JScrollPane();
+        drinkTable = new javax.swing.JTable();
+        desertTab = new javax.swing.JPanel();
+        desertContainer = new javax.swing.JScrollPane();
+        desertTable = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         rightBar = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -225,6 +234,147 @@ public class Menu extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Entrees", entreesTab);
+
+        sideTab.setBackground(new java.awt.Color(30, 42, 70));
+
+        sideTable.setBackground(new java.awt.Color(30, 42, 70));
+        sideTable.setForeground(new java.awt.Color(255, 255, 255));
+        sideTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item Code", "Item Name", "Item Price", "Add to Cart"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        sideTable.setGridColor(new java.awt.Color(30, 42, 70));
+        sideTable.setRowHeight(32);
+        sideTable.setRowSelectionAllowed(false);
+        sideTable.setShowGrid(false);
+        sideTable.setShowHorizontalLines(true);
+        sideTable.setShowVerticalLines(true);
+        sideContainer.setViewportView(sideTable);
+
+        javax.swing.GroupLayout sideTabLayout = new javax.swing.GroupLayout(sideTab);
+        sideTab.setLayout(sideTabLayout);
+        sideTabLayout.setHorizontalGroup(
+            sideTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sideTabLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(sideContainer)
+                .addGap(0, 0, 0))
+        );
+        sideTabLayout.setVerticalGroup(
+            sideTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sideTabLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(sideContainer)
+                .addGap(0, 0, 0))
+        );
+
+        jTabbedPane1.addTab("Sides", sideTab);
+
+        drinkTab.setBackground(new java.awt.Color(30, 42, 70));
+
+        drinkTable.setBackground(new java.awt.Color(30, 42, 70));
+        drinkTable.setForeground(new java.awt.Color(255, 255, 255));
+        drinkTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item Code", "Item Name", "Item Price", "Add to Cart"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        drinkTable.setGridColor(new java.awt.Color(30, 42, 70));
+        drinkTable.setRowHeight(32);
+        drinkTable.setRowSelectionAllowed(false);
+        drinkTable.setShowGrid(false);
+        drinkTable.setShowHorizontalLines(true);
+        drinkTable.setShowVerticalLines(true);
+        drinkContainer.setViewportView(drinkTable);
+
+        javax.swing.GroupLayout drinkTabLayout = new javax.swing.GroupLayout(drinkTab);
+        drinkTab.setLayout(drinkTabLayout);
+        drinkTabLayout.setHorizontalGroup(
+            drinkTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, drinkTabLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(drinkContainer)
+                .addGap(0, 0, 0))
+        );
+        drinkTabLayout.setVerticalGroup(
+            drinkTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, drinkTabLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(drinkContainer)
+                .addGap(0, 0, 0))
+        );
+
+        jTabbedPane1.addTab("Drinks", drinkTab);
+
+        desertTab.setBackground(new java.awt.Color(30, 42, 70));
+
+        desertTable.setBackground(new java.awt.Color(30, 42, 70));
+        desertTable.setForeground(new java.awt.Color(255, 255, 255));
+        desertTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item Code", "Item Name", "Item Price", "Add to Cart"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        desertTable.setGridColor(new java.awt.Color(30, 42, 70));
+        desertTable.setRowHeight(32);
+        desertTable.setRowSelectionAllowed(false);
+        desertTable.setShowGrid(false);
+        desertTable.setShowHorizontalLines(true);
+        desertTable.setShowVerticalLines(true);
+        desertContainer.setViewportView(desertTable);
+
+        javax.swing.GroupLayout desertTabLayout = new javax.swing.GroupLayout(desertTab);
+        desertTab.setLayout(desertTabLayout);
+        desertTabLayout.setHorizontalGroup(
+            desertTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desertTabLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(desertContainer)
+                .addGap(0, 0, 0))
+        );
+        desertTabLayout.setVerticalGroup(
+            desertTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desertTabLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(desertContainer)
+                .addGap(0, 0, 0))
+        );
+
+        jTabbedPane1.addTab("Desert", desertTab);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -525,6 +675,12 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton customersPageBtn;
     public javax.swing.JButton decItemBtn;
     public javax.swing.JButton deleteItemBtn;
+    public javax.swing.JScrollPane desertContainer;
+    public javax.swing.JPanel desertTab;
+    public javax.swing.JTable desertTable;
+    public javax.swing.JScrollPane drinkContainer;
+    public javax.swing.JPanel drinkTab;
+    public javax.swing.JTable drinkTable;
     public javax.swing.JScrollPane entreesContainer;
     public javax.swing.JPanel entreesTab;
     public javax.swing.JTable entreesTable;
@@ -550,6 +706,9 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JLabel salesTax;
     public javax.swing.JLabel salesTaxLabel;
     public javax.swing.JButton searchBtn;
+    public javax.swing.JScrollPane sideContainer;
+    public javax.swing.JPanel sideTab;
+    public javax.swing.JTable sideTable;
     public javax.swing.JLabel subtotal;
     public javax.swing.JLabel subtotalLabel;
     public javax.swing.JLabel total;

@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.*;
 import javax.swing.table.TableCellRenderer;
 import com.group11.whatapos.dependencies.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
@@ -46,10 +47,20 @@ public final class menuTableController {
     }
     
     public static void refreshTables(Menu frame){
-        Map<char, JTable> tables = new HashMap<>();
-        tables.add
+        Map<Character, JTable> tables = new HashMap<>();
+        //
+        tables.put('E', frame.entreesTable);
+        tables.put('S', frame.sideTable);
+        tables.put('B', frame.drinkTable);
+        tables.put('D', frame.desertTable);
         
-        DefaultTableModel entreeTable = (DefaultTableModel) frame.entreesTable.getModel();
+        for(var table : tables.entrySet()){
+            char category = table.getKey();
+            DefaultTableModel model = (DefaultTableModel) table.getValue().getModel();
+            populateTable(model, category);
+            ButtonColumn buttonColumn = new ButtonColumn(table.getValue(), null, 3);
+        }
+        /*DefaultTableModel entreeTable = (DefaultTableModel) frame.entreesTable.getModel();
         clearTable(entreeTable);
         populateTable(entreeTable, 'E');
         
@@ -64,7 +75,7 @@ public final class menuTableController {
         };
 
         ButtonColumn buttonColumn = new ButtonColumn(frame.entreesTable, delete, 3);
-        buttonColumn.setMnemonic(KeyEvent.VK_D);
+        buttonColumn.setMnemonic(KeyEvent.VK_D);*/
     }
     /**
      * 
@@ -79,7 +90,7 @@ public final class menuTableController {
         
         for(itemModel item: menuModel.items.values()){
             if(item.itemCat == category){
-                table.addRow(new Object[]{item.itemCode, item.itemName, item.price, new JButton("Add to Order")});
+                table.addRow(new Object[]{item.itemCode, item.itemName, item.price, "Add to Order"});
             }
         }
     }
