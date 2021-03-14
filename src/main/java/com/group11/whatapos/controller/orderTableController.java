@@ -222,7 +222,6 @@ public final class orderTableController {
      * @param customerTable Table model to insert rows into
      * @param data The customer models to insert into the table
      */
- 
     public static void updateTable(DefaultTableModel orderTable, ArrayList<orderTableModel> data){
         clearTable(orderTable);
         for(int i = 0; i < PAGELENGTH && i < data.size(); ++i){
