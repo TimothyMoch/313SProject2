@@ -101,7 +101,7 @@ public class Menu extends javax.swing.JFrame {
         itemCount = new javax.swing.JLabel();
         deleteItemBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        currentOrderTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(30, 42, 70));
@@ -590,7 +590,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        currentOrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -606,7 +606,7 @@ public class Menu extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(currentOrderTable);
 
         javax.swing.GroupLayout rightBarLayout = new javax.swing.GroupLayout(rightBar);
         rightBar.setLayout(rightBarLayout);
@@ -689,6 +689,7 @@ public class Menu extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         menuTableController.refreshTables(this);
+        currentOrderController.refreshTables(this);
     }//GEN-LAST:event_formComponentShown
 
     private void refreshItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshItemsActionPerformed
@@ -713,6 +714,7 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel appLogo;
     public javax.swing.JButton checkoutBtn;
+    public javax.swing.JTable currentOrderTable;
     public javax.swing.JButton customersPageBtn;
     public javax.swing.JButton decItemBtn;
     public javax.swing.JButton deleteItemBtn;
@@ -737,7 +739,6 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JPanel jPanel5;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTabbedPane jTabbedPane1;
-    public javax.swing.JTable jTable1;
     public javax.swing.JTextField jTextField1;
     public javax.swing.JPanel leftBar;
     public javax.swing.JPanel mainContent;

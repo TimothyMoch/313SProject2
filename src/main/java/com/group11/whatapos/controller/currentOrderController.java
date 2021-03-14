@@ -37,7 +37,7 @@ import javax.swing.JTable;
  * @author Scott Carrion
  */
 public final class currentOrderController {
-        public static void clearTable(DefaultTableModel table){
+    public static void clearTable(DefaultTableModel table){
         int rowCount = table.getRowCount();
         //Remove rows one by one from the end of the table
         for (int i = rowCount - 1; i >= 0; i--) {
@@ -45,14 +45,7 @@ public final class currentOrderController {
         }
     }
         
-        public static void refreshTables(Menu frame){
-        Map<Character, JTable> tables = new HashMap<>();
-        // Stores all the tables on the Menu page
-        tables.put('E', frame.entreesTable);
-        tables.put('S', frame.sideTable);
-        tables.put('B', frame.drinkTable);
-        tables.put('D', frame.desertTable);
-        
+    public static void refreshTables(Menu frame){
         Action saySomething = new AbstractAction()
         {
             public void actionPerformed(ActionEvent e)
@@ -70,36 +63,21 @@ public final class currentOrderController {
             }
         };
         // Iterate through all the tables on Menu Page
-        for(var table : tables.entrySet()){
-            int lastColumn = table.getValue().getColumnCount() - 1;
-            // Grab the category
-            char category = table.getKey();
-            // Get the models for the populateTable() method
-            DefaultTableModel model = (DefaultTableModel) table.getValue().getModel();
-            // Add items to the table
-            populateTable(model, category);
-            // Set the last column to button
-            ButtonColumn buttonColumn = new ButtonColumn(table.getValue(), saySomething, lastColumn);
-        }
-
-
+        JTable table = frame.currentOrderTable;
+        int lastColumn = table.getColumnCount() - 1;
+        // Get the models for the populateTable() method
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        // Add items to the table
+        populateTable(model);
+        // Set the last column to button
+        ButtonColumn buttonColumn = new ButtonColumn(table, saySomething, lastColumn);
     }
     /**
      * 
      * @param frame The menu frame in the project
      */
-    private static void populateTable(DefaultTableModel table, char category){
-        
-        // Grab items from database if menuModel is blank
-        if(menuModel.items.size() == 0){
-            menuModel.refreshMenu();
-        }
-        
-        for(itemModel item: menuModel.items.values()){
-            if(item.itemCat == category){
-                table.addRow(new Object[]{item.itemCode, item.itemName, item.price, "Add to Order"});
-            }
-        }
+    private static void populateTable(DefaultTableModel table){
+        table.addRow(new Object[]{"e2", "test", "4.50", "X"});
     }
     
 }
