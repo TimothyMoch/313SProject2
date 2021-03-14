@@ -16,7 +16,9 @@
  */
 package com.group11.whatapos.controller;
 
+import com.group11.whatapos.model.database;
 import com.group11.whatapos.view.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author ryanomalley
