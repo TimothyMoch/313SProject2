@@ -22,7 +22,7 @@ public class orderModel {
     public ArrayList<itemAttributesModel> itemAttributesList; //represents item attributes for all items of one order, index rules still follow
 
     /**
-     * order constructor takes 2 argument
+     * order constructor takes 2 arguments
      * and creates a new order with a new orderid
      * for the given customer. The other argument is to connect to the database
      * The date is added when the customer checks out.
@@ -40,6 +40,7 @@ public class orderModel {
         date = new java.sql.Date(0);
         ArrayList<itemModel> items = new ArrayList<itemModel>();
         ArrayList<itemAttributesModel> itemAttributesList = new ArrayList<itemAttributesModel>();
+        System.out.println("orderModel constructor called!");
     }
 
     /**

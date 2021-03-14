@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 ryanomalley
+ * Copyright (C) 2021 Scott Carrion
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.group11.whatapos.controller;
-
 import com.group11.whatapos.dependencies.ButtonColumn;
 import com.group11.whatapos.view.*;
 import com.group11.whatapos.model.*;
@@ -35,18 +34,18 @@ import javax.swing.JTable;
 
 /**
  *
- * @author ryanomalley
+ * @author Scott Carrion
  */
-public final class menuTableController {
-    public static void clearTable(DefaultTableModel table){
+public final class currentOrderController {
+        public static void clearTable(DefaultTableModel table){
         int rowCount = table.getRowCount();
         //Remove rows one by one from the end of the table
         for (int i = rowCount - 1; i >= 0; i--) {
             table.removeRow(i);
         }
     }
-    
-    public static void refreshTables(Menu frame){
+        
+        public static void refreshTables(Menu frame){
         Map<Character, JTable> tables = new HashMap<>();
         // Stores all the tables on the Menu page
         tables.put('E', frame.entreesTable);
