@@ -46,6 +46,7 @@ public final class currentOrderController {
     }
         
     public static void refreshTables(Menu frame){
+        // Define callbacks for each button click
         Action saySomething = new AbstractAction()
         {
             public void actionPerformed(ActionEvent e)
@@ -62,22 +63,78 @@ public final class currentOrderController {
                 System.out.println(table.getValueAt(rowClicked, 1));
             }
         };
+        
+        Action minusPressed = new AbstractAction()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                /*
+                // This deletes row data
+                JTable table = (JTable)e.getSource();
+                int modelRow = Integer.valueOf( e.getActionCommand() );
+                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                */
+                System.out.println("Minus clicked!");
+                //JTable table = (JTable)e.getSource();
+                //int rowClicked = Integer.valueOf(e.getActionCommand());
+                //System.out.println(table.getValueAt(rowClicked, 1));
+            }
+        };
+        
+        Action plusPressed = new AbstractAction()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                /*
+                // This deletes row data
+                JTable table = (JTable)e.getSource();
+                int modelRow = Integer.valueOf( e.getActionCommand() );
+                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                */
+                System.out.println("Plus clicked!");
+                //JTable table = (JTable)e.getSource();
+                //int rowClicked = Integer.valueOf(e.getActionCommand());
+                //System.out.println(table.getValueAt(rowClicked, 1));
+            }
+        };
+        
+        Action xPressed = new AbstractAction()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                /*
+                // This deletes row data
+                JTable table = (JTable)e.getSource();
+                int modelRow = Integer.valueOf( e.getActionCommand() );
+                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                */
+                System.out.println("X clicked!");
+                //JTable table = (JTable)e.getSource();
+                //int rowClicked = Integer.valueOf(e.getActionCommand());
+                //System.out.println(table.getValueAt(rowClicked, 1));
+            }
+        };
+        
+        
         // Iterate through all the tables on Menu Page
         JTable table = frame.currentOrderTable;
-        int lastColumn = table.getColumnCount() - 1;
+        //int lastColumn = table.getColumnCount() - 1;
         // Get the models for the populateTable() method
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         // Add items to the table
         populateTable(model);
-        // Set the last column to button
-        ButtonColumn buttonColumn = new ButtonColumn(table, saySomething, lastColumn);
+        
+        // Set the 3rd, 5th, and 6th columns to buttons (-, +, and x)
+        ButtonColumn minusColumn = new ButtonColumn(table, minusPressed, 2);
+        ButtonColumn plusColumn = new ButtonColumn(table, plusPressed, 4);
+        ButtonColumn xColumn = new ButtonColumn(table, xPressed, 5);
     }
     /**
      * 
      * @param frame The menu frame in the project
      */
     private static void populateTable(DefaultTableModel table){
-        table.addRow(new Object[]{"e2", "test", "4.50", "X"});
+        table.addRow(new Object[]{"Patty Melt", "3.99", "-", "1", "+", "X"});
     }
     
 }
