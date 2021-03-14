@@ -37,6 +37,9 @@ import javax.swing.JTable;
  * @author Scott Carrion
  */
 public final class currentOrderController {
+    // There will only be one current order at a time, so it is static and publicly accessible through the currentOrderController
+    public static orderModel currentOrder = new orderModel("DEBUG_CUSTOMERID");  // TODO: PUT ACTUAL CUSTOMER ID HERE LATER
+    
     public static void clearTable(DefaultTableModel table){
         int rowCount = table.getRowCount();
         //Remove rows one by one from the end of the table
@@ -44,26 +47,9 @@ public final class currentOrderController {
             table.removeRow(i);
         }
     }
-        
-    public static void refreshTables(Menu frame){
-        // Define callbacks for each button click
-        Action saySomething = new AbstractAction()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                /*
-                // This deletes row data
-                JTable table = (JTable)e.getSource();
-                int modelRow = Integer.valueOf( e.getActionCommand() );
-                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-                */
-                System.out.println("Hi you clicked on an item! Check it out:");
-                JTable table = (JTable)e.getSource();
-                int rowClicked = Integer.valueOf(e.getActionCommand());
-                System.out.println(table.getValueAt(rowClicked, 1));
-            }
-        };
-        
+    
+    public static void refreshTable(Menu frame) {
+        // Define callbacks for each button click    
         Action minusPressed = new AbstractAction()
         {
             public void actionPerformed(ActionEvent e)
@@ -109,6 +95,9 @@ public final class currentOrderController {
                 ((DefaultTableModel)table.getModel()).removeRow(modelRow);
                 */
                 System.out.println("X clicked!");
+                System.out.println("Testing interfacing with orderModel class...\nCurrent Customer ID is:");
+                System.out.println(currentOrderController.currentOrder.customerid);
+                // FIXME: WANT TO USE THIS BUT HOW? System.out.println(orderModel.customerid);
                 //JTable table = (JTable)e.getSource();
                 //int rowClicked = Integer.valueOf(e.getActionCommand());
                 //System.out.println(table.getValueAt(rowClicked, 1));
@@ -133,7 +122,7 @@ public final class currentOrderController {
      * 
      * @param frame The menu frame in the project
      */
-    private static void populateTable(DefaultTableModel table){
+    private static void populateTable(DefaultTableModel table) {
         table.addRow(new Object[]{"Patty Melt", "3.99", "-", "1", "+", "X"});
     }
     

@@ -8,6 +8,7 @@ package com.group11.whatapos.view;
 // Importing other modules here
 import com.group11.whatapos.controller.*;
 import com.group11.whatapos.model.menuModel;
+import com.group11.whatapos.model.orderModel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 /**
@@ -703,7 +704,7 @@ public class Menu extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         menuTableController.refreshTables(this);
-        currentOrderController.refreshTables(this);
+        currentOrderController.refreshTable(this);
     }//GEN-LAST:event_formComponentShown
 
     private void refreshItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshItemsActionPerformed
