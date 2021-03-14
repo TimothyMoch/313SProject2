@@ -38,54 +38,84 @@ public final class orderTableController {
      * @see JFrame
      */
     public static void handleItemTrends(Orders frame){
+        
+        String query = "SELECT * from \"order count\" order by ordercount;";
         Connection conn = database.getInstance().returnConnection();
-        String trendingItemQuery = "SELECT *\n" + "FROM \"order count\"\n" + "WHERE ordercount = (SELECT MAX(ordercount) FROM \"order count\");";
-        /* Wrapped in Try/Catch statement due to IDE warning */
-        String trendingItemCode = "";
-        String trendingItemCount = "";
-        try{
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(trendingItemQuery);
-
-            while (rs.next()) {
-                trendingItemCode = rs.getString("itemcode");
-                trendingItemCount = rs.getString("ordercount");
-            }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        String worstItemQuery = "SELECT *\n" + "FROM \"order count\"\n" + "WHERE ordercount = (SELECT MIN(ordercount) FROM \"order count\");";
-        /* Wrapped in Try/Catch statement due to IDE warning */
+        String bestItemCode = "";
+        String bestItemCount = "";
+        String secondBestItemCode = "";
+        String secondBestItemCount = "";
+        
         String worstItemCode = "";
         String worstItemCount = "";
+        String secondWorstItemCode = "";
+        String secondWorstItemCount = "";
+        
+        /* Wrapped in Try/Catch statement due to IDE warning */
         try{
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(worstItemQuery);
-
-            while (rs.next()) {
-                worstItemCode = rs.getString("itemcode");
-                worstItemCount = rs.getString("ordercount");
-            }
+            ResultSet rs = stmt.executeQuery(query);
+            
+            //Get the first two rows for worst items
+            rs.next();
+            worstItemCode = rs.getString("itemcode");
+            worstItemCount = rs.getString("ordercount");
+            //Advances to 2nd row for 2nd worst item
+            rs.next();
+            secondWorstItemCode = rs.getString("itemcode");
+            secondWorstItemCount = rs.getString("ordercount");/*
+            //Advances to last row for best item
+            rs.last();
+            bestItemCode = rs.getString("itemcode");
+            bestItemCount = rs.getString("ordercount");
+            //Advances back one for 2nd best item
+            rs.previous();
+            bestItemCode = rs.getString("itemcode");
+            bestItemCount = rs.getString("ordercount");*/
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        
+        query = "SELECT * from \"order count\" order by ordercount DESC;";
+        
+                /* Wrapped in Try/Catch statement due to IDE warning */
+        try{
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            //Advances to first row for best item
+            rs.next();
+            bestItemCode = rs.getString("itemcode");
+            bestItemCount = rs.getString("ordercount");
+            //Advances to second row for 2nd best item
+            rs.next();
+            secondBestItemCode = rs.getString("itemcode");
+            secondBestItemCount = rs.getString("ordercount");
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        
         //Grab menu item names from the map
         if(menuModel.items.size() == 0){
             menuModel.refreshMenu();
         }
-        String trendingItemName = menuModel.items.get(trendingItemCode).itemName;
-        String worstItemName = menuModel.items.get(worstItemCode).itemName;   
         
-
-
-        
+        String bestItemName = menuModel.items.get(bestItemCode).itemName;
+        String secondBestItemName = menuModel.items.get(secondBestItemCode).itemName;
+        String worstItemName = menuModel.items.get(worstItemCode).itemName;
+        String secondWorstItemName = menuModel.items.get(secondWorstItemCode).itemName;  
         //Updates the label text to display trends on screen
-        frame.trendingItemName.setText(trendingItemName);
-        frame.trendingItemCount.setText(trendingItemCount + " sales");
+        frame.trendingItemName.setText(bestItemName);
+        frame.trendingItemCount.setText(bestItemCount + " sales");
+        frame.secondTrendingItemName.setText(secondBestItemName);
+        frame.secondTrendingItemCount.setText(secondBestItemCount + " sales");
+        
         frame.worstItemName.setText(worstItemName);
         frame.worstItemCount.setText(worstItemCount + " sales");
+        frame.secondWorstItemName.setText(secondWorstItemName);
+        frame.secondWorstItemCount.setText(secondWorstItemCount + " sales");
     }
     /**
      * 
