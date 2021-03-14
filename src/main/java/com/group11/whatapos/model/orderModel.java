@@ -74,6 +74,17 @@ public class orderModel {
     }
 
     /**
+     * Removes attributes for an item from the order.
+     * @param index int
+     * @return itemAttributesModel
+     */
+    public itemAttributesModel removeItemAttributes(int index){
+        itemATtributesModel removedAttributes = itemAttributesList.get(index);
+        itemAttributesList.remove(index);
+        return removedAttributes;
+    }
+
+    /**
      * sets the date of the order to the current system date.
      * Used in updateDatabase function to set the date of the transaction.
      */
