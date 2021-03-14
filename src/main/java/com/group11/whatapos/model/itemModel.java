@@ -3,16 +3,17 @@ package com.group11.whatapos.model;
 import java.sql.*;
 
 public class itemModel {
-    private String itemName;
-    private String itemCode;
-    private char itemCat;
-    private double price;
-    private Connection conn;
+    public String itemName;
+    public String itemCode;
+    public char itemCat;
+    public double price;
+    public Connection conn;
 
     public itemModel(String _itemCode){
         conn = database.getInstance().returnConnection();
         itemCode = _itemCode;
         itemCat = _itemCode.charAt(0);
+        refreshItem();
     }
 
     /* Queries database for latest item details */
