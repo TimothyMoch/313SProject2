@@ -4,18 +4,19 @@ import java.sql.*;
 import java.util.*;
 
 public class itemModel {
-    private String itemName;
-    private String itemCode;
-    private char itemCat;
-    private double price;
-    private Connection conn;
-    private ArrayList<String> allowedItemAttributes;
+    public String itemName;
+    public String itemCode;
+    public char itemCat;
+    public double price;
+    public Connection conn;
+    public ArrayList<String> allowedItemAttributes;
 
     public itemModel(String _itemCode){
         conn = database.getInstance().returnConnection();
         itemCode = _itemCode;
         itemCat = _itemCode.charAt(0);
-
+        allowedItemAttributes = new ArrayList<String>();
+        refreshItem();
     }
 
     /* Queries database for latest item details */
@@ -50,7 +51,7 @@ public class itemModel {
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }//end this is for allowed item attributes
+        }
     }
 
     public void printItemDetails(){
@@ -60,3 +61,4 @@ public class itemModel {
     }
 
 }
+© 2021 GitHub, Inc.
