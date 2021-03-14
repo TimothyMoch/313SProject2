@@ -27,12 +27,11 @@ VALUES (new_itemcode, 0);
 
 --change item price
 UPDATE item
-SET price = new_price;
+SET price = new_price
 WHERE itemcode = curr_item;
 	
 --add order
 --this repeats until checkout == true
---the database is updated as an item is added to the order
 INSERT INTO orders(orderid, customerid, orderdate, itemcode, itemnum)
 VALUES (new_orderid, curr_custid, curr_orderdate, curr_itemcode, curr_itemnum);
 
@@ -75,9 +74,19 @@ WHERE search_field = LIKE gen_str
 LIMIT 501 OFFSET curr_offset;
 
 --sql used to calculate revenue
-SELECT itemCode
+SELECT COUNT(itemCode)
 FROM orders
 WHERE orderdate BETWEEN date1 and date2;
+
+--sql for trending items
+--gets top 2 and bottom 2
+SELECT itemcode FROM "order count"
+ORDER BY DESC
+LIMIT 2
+UNION ALL
+SELECT itemcode FROM "order count"
+ORDER BY ASC
+LIMIT 2;
 
 --sql used for recommendation table
 SELECT
