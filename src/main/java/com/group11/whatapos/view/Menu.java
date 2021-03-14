@@ -7,6 +7,7 @@ package com.group11.whatapos.view;
 
 // Importing other modules here
 import com.group11.whatapos.controller.*;
+import com.group11.whatapos.model.menuModel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 /**
@@ -76,6 +77,7 @@ public class Menu extends javax.swing.JFrame {
         desertContainer = new javax.swing.JScrollPane();
         desertTable = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
+        refreshItems = new javax.swing.JButton();
         rightBar = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         orderNum = new javax.swing.JLabel();
@@ -382,6 +384,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        refreshItems.setText("Refresh Items");
+        refreshItems.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshItemsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainContentLayout = new javax.swing.GroupLayout(mainContent);
         mainContent.setLayout(mainContentLayout);
         mainContentLayout.setHorizontalGroup(
@@ -393,7 +402,8 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(searchBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1))
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                    .addComponent(refreshItems))
                 .addGap(36, 36, 36))
         );
         mainContentLayout.setVerticalGroup(
@@ -403,8 +413,10 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(mainContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(refreshItems)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
                 .addGap(36, 36, 36))
         );
 
@@ -659,6 +671,12 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         menuTableController.refreshTables(this);
     }//GEN-LAST:event_formComponentShown
+
+    private void refreshItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshItemsActionPerformed
+        // TODO add your handling code here:
+        menuModel.refreshMenu();
+        menuTableController.refreshTables(this);
+    }//GEN-LAST:event_refreshItemsActionPerformed
     public void closeFrame(){
         this.setVisible(false); //you can't see me!
         this.dispose(); //Destroy the JFrame object
@@ -702,6 +720,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JLabel orderNum;
     public javax.swing.JSeparator orderSeperator;
     public javax.swing.JButton ordersPageBtn;
+    public javax.swing.JButton refreshItems;
     public javax.swing.JPanel rightBar;
     public javax.swing.JLabel salesTax;
     public javax.swing.JLabel salesTaxLabel;

@@ -48,17 +48,23 @@ public final class menuTableController {
     
     public static void refreshTables(Menu frame){
         Map<Character, JTable> tables = new HashMap<>();
-        //
+        // Stores all the tables on the Menu page
         tables.put('E', frame.entreesTable);
         tables.put('S', frame.sideTable);
         tables.put('B', frame.drinkTable);
         tables.put('D', frame.desertTable);
         
+        // Iterate through all the tables on Menu Page
         for(var table : tables.entrySet()){
+            int lastColumn = table.getValue().getColumnCount() - 1;
+            // Grab the category
             char category = table.getKey();
+            // Get the models for the populateTable() method
             DefaultTableModel model = (DefaultTableModel) table.getValue().getModel();
+            // Add items to the table
             populateTable(model, category);
-            ButtonColumn buttonColumn = new ButtonColumn(table.getValue(), null, 3);
+            // Set the last column to button
+            ButtonColumn buttonColumn = new ButtonColumn(table.getValue(), null, lastColumn);
         }
         /*DefaultTableModel entreeTable = (DefaultTableModel) frame.entreesTable.getModel();
         clearTable(entreeTable);
