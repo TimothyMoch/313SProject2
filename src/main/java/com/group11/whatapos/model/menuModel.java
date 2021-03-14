@@ -6,14 +6,19 @@ import java.util.*;
 public class menuModel {
     public static Map<String, itemModel> items;
     public static database db;
+    private static menuModel instance = new menuModel();
     
-    public menuModel(database _db){
-        db = _db;
+    public static menuModel getInstance(){
+        return instance;
+    }
+    
+    private menuModel(){
+        db = database.getInstance();
         items = new HashMap<String, itemModel>();
         refreshMenu();
     }
     
-    public void refreshMenu(){
+    public static void refreshMenu(){
         ArrayList<String> itemCodes = queryItemCodes();
         //Query all itemCodes
         
@@ -30,7 +35,7 @@ public class menuModel {
         }
     }
     
-    ArrayList<String> queryItemCodes(){
+    private static ArrayList<String> queryItemCodes(){
         ArrayList<String> itemCodes = new ArrayList<String>();
         Connection conn = db.returnConnection();
         String query =  "SELECT itemcode from item;";
@@ -48,12 +53,5 @@ public class menuModel {
             throwables.printStackTrace();
         }
         return itemCodes;
-    }
-    public void printMenu(){
-        if(!items.isEmpty()){
-            for (Map.Entry<String,itemModel> item : items.entrySet()){
-                item.getValue().printItemDetails();
-            }           
-        }
     }
 }
