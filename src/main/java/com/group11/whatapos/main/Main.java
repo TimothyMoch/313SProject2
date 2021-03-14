@@ -29,7 +29,7 @@ public class Main {
     public static void main(String args[]){
         database db = database.getInstance();
         db.createConnection();
-        menuModel menu = new menuModel(db);
+        menuModel menu = menuModel.getInstance();
         viewController view = new viewController();
     }
 }
