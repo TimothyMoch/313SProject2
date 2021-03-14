@@ -26,6 +26,7 @@ import java.sql.Statement;
  *
  * @author ryanomalley
  */
+<<<<<<< HEAD:src/main/java/com/group11/whatapos/model/orderTableModel.java
 public class orderTableModel {
     public String orderID;
     public String customerID;
@@ -39,3 +40,14 @@ public class orderTableModel {
         itemCode = _itemCode;
     }
 }
+=======
+public class customerModel {
+    public String name;
+    public String customerId;
+    
+    public customerModel(String _name, String _customerId){
+        name = _name;
+        customerId = _customerId;
+    }
+}
+>>>>>>> main:src/main/java/com/group11/whatapos/model/customerModel.java
