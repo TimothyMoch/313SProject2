@@ -4,8 +4,8 @@ import java.sql.*;
 import java.util.*;
 
 public class menuModel {
-    Map<String, itemModel> items;
-    database db;
+    public static Map<String, itemModel> items;
+    public static database db;
     
     public menuModel(database _db){
         db = _db;

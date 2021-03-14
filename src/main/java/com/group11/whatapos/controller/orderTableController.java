@@ -30,6 +30,44 @@ import javax.swing.table.TableModel;
 public final class orderTableController {
     public static int PAGELENGTH = 30;
     
+    public static void handleItemTrends(Orders frame){
+        Connection conn = database.getInstance().returnConnection();
+        String trendingItemQuery = "SELECT *\n" + "FROM \"order count\"\n" + "WHERE ordercount = (SELECT MAX(ordercount) FROM \"order count\");";
+        /* Wrapped in Try/Catch statement due to IDE warning */
+        String trendingItem = "";
+        String trendingItemCount = "";
+        try{
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(trendingItemQuery);
+
+            while (rs.next()) {
+                trendingItem = rs.getString("itemcode");
+                trendingItemCount = rs.getString("ordercount");
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        
+        String trendingNameQuery = "SELECT itemname from item where itemcode = '" + trendingItem + "';";
+        /* Wrapped in Try/Catch statement due to IDE warning */
+        String trendingItemName = "";
+        try{
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(trendingNameQuery);
+
+            while (rs.next()) {
+                trendingItemName = rs.getString("itemname");
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        
+        frame.trendingItemName.setText(trendingItemName);
+        frame.trendingItemCount.setText(trendingItemCount + " sales");
+    }
+    
     public static int numRows(){
         int numberRows = 0;
         database db = database.getInstance();
