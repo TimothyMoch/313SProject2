@@ -24,7 +24,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 /**
- *
+ * Controller for the table within the Customer page
  * @author ryanomalley
  */
 public final class customerTableController {

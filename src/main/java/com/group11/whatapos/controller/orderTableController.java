@@ -24,11 +24,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 /**
- *
+ * Controller for the table on the Order Page
  * @author ryanomalley
  */
 public final class orderTableController {
-    public static int PAGELENGTH = 30;
+    public static int PAGELENGTH; //Updated via GUI
     
     /** 
      * Queries the database for the most order item then updates the labels
@@ -39,7 +39,7 @@ public final class orderTableController {
      */
     public static void handleItemTrends(Orders frame){
         
-        String query = "SELECT * from \"order count\" order by ordercount;";
+
         Connection conn = database.getInstance().returnConnection();
         String bestItemCode = "";
         String bestItemCount = "";
@@ -51,6 +51,11 @@ public final class orderTableController {
         String secondWorstItemCode = "";
         String secondWorstItemCount = "";
         
+        /*                       *
+        *   GRAB THE WORST ITEMS *
+        *                        */   
+        
+        String query = "SELECT * from \"order count\" order by ordercount;";
         /* Wrapped in Try/Catch statement due to IDE warning */
         try{
             Statement stmt = conn.createStatement();
@@ -63,23 +68,20 @@ public final class orderTableController {
             //Advances to 2nd row for 2nd worst item
             rs.next();
             secondWorstItemCode = rs.getString("itemcode");
-            secondWorstItemCount = rs.getString("ordercount");/*
-            //Advances to last row for best item
-            rs.last();
-            bestItemCode = rs.getString("itemcode");
-            bestItemCount = rs.getString("ordercount");
-            //Advances back one for 2nd best item
-            rs.previous();
-            bestItemCode = rs.getString("itemcode");
-            bestItemCount = rs.getString("ordercount");*/
+            secondWorstItemCount = rs.getString("ordercount");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         
+        /*                      *
+        *   GRAB THE BEST ITEMS *
+        *                       */                      
+        
+        
         query = "SELECT * from \"order count\" order by ordercount DESC;";
         
-                /* Wrapped in Try/Catch statement due to IDE warning */
+        /* Wrapped in Try/Catch statement due to IDE warning */
         try{
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -102,6 +104,10 @@ public final class orderTableController {
             menuModel.refreshMenu();
         }
         
+        // Get the itemnames from our menuModel
+        
+        // Uses the menuModel for itemNames to save time
+        
         String bestItemName = menuModel.items.get(bestItemCode).itemName;
         String secondBestItemName = menuModel.items.get(secondBestItemCode).itemName;
         String worstItemName = menuModel.items.get(worstItemCode).itemName;
@@ -118,15 +124,13 @@ public final class orderTableController {
         frame.secondWorstItemCount.setText(secondWorstItemCount + " sales");
     }
     /**
-     * 
+     * Returns the number of rows within the order table on our database
      * @return numbers of rows within the order table
      */
     public static int numRows(){
             int numberRows = 0;
             database db = database.getInstance();
             Connection conn = db.returnConnection();
-
-
             String query = "SELECT COUNT(*) from orders;";
             /* Wrapped in Try/Catch statement due to IDE warning */
             try{
@@ -142,15 +146,21 @@ public final class orderTableController {
             }
             return numberRows;
     }
-    
+    /**
+     * Searches for orders within the orderid column of the order table
+     * @param text string to search for in the orderid column
+     * @return list of orderModels of length PAGELENGTH
+     */
     public static ArrayList<orderTableModel> searchOrder(String text){
+        // Limit to PAGELENGTH to prevent waste
         String query = "SELECT * from orders where orderid LIKE '%" + text + "%' LIMIT " + PAGELENGTH + ";";
         ArrayList<orderTableModel> result = new ArrayList<>();
         Connection conn = database.getInstance().returnConnection();
         try{
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-
+            
+            // Add results to the list of OrderModels
             while (rs.next()) {
                 String orderID = rs.getString("orderid");
                 String customerID = rs.getString("customerid");
@@ -165,6 +175,11 @@ public final class orderTableController {
         return result;
     }
     
+    /**
+     * Grabs PAGELENGTH amount of orders from offset
+     * @param offset offset to grab orders from
+     * @return returns list of orderModels. PAGELENGTH amount of orderModels from offset
+     */
     public static ArrayList<orderTableModel> grabOrders(int offset){
         database db = database.getInstance();
         Connection conn = db.returnConnection();
@@ -191,6 +206,10 @@ public final class orderTableController {
         return orders;
     }
     
+    /**
+     * Clears the order table
+     * @param orderTable Table Model to clear
+     */
     public static void clearTable(DefaultTableModel orderTable){
         int rowCount = orderTable.getRowCount();
         //Remove rows one by one from the end of the table
