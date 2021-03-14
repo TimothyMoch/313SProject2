@@ -2,6 +2,8 @@ package com.group11.whatapos.model;
 
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class management{
     
@@ -80,7 +82,8 @@ public class management{
         double totalRev;
         double newTotalRev;
         double diff;
-        double price;
+        double price = 0;
+        Connection conn = database.getInstance().returnConnection();
         try {
             String query = "SELECT COUNT(\'" + item + "\') FROM orders WHERE orderdate BETWEEN" + date1 + "and" + date2 + ";";
             Statement stmt = conn.createStatement();

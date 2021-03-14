@@ -28,8 +28,13 @@ import javax.swing.table.TableModel;
  * @author ryanomalley
  */
 public final class customerTableController {
-    public static int PAGELENGTH = 30;
+    // The length of pages for Pagination
+    public static int PAGELENGTH; //This value is updated from GUI
     
+    /**
+     * Grabs the number of rows in the customer table
+     * @return number of rows in the customer table
+     */
     public static int numRows(){
         int numberRows = 0;
         database db = database.getInstance();
@@ -51,15 +56,24 @@ public final class customerTableController {
         return numberRows;
     }
     
+    /**
+     * Searches for a string within the customers table, including all fields
+     * @param text Search text
+     * @return Based on the page size, returns top matches to string
+     */
     public static ArrayList<customerModel> searchCustomer(String text){
+        // The limit is the page size because that's all you'll display anyways
+        // More would be a waste of computation
         String query = "SELECT * from customers where CONCAT(customers.customerfirstname, ' ' ,customers.customerlastname) LIKE '%" + text.toUpperCase() + "%' or customers.customerid LIKE '%" + text.toLowerCase() + "%' LIMIT " + PAGELENGTH + ";";
         ArrayList<customerModel> result = new ArrayList<>();
         Connection conn = database.getInstance().returnConnection();
+        // Execute the query
         try{
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()) {
+                // Add the results to an ArrayList of CustomerModels
                 String customerName = rs.getString("customerfirstname") + " " + rs.getString("customerlastname");
                 String customerId = rs.getString("customerid");
                 result.add(new customerModel(customerName, customerId));
@@ -71,6 +85,11 @@ public final class customerTableController {
         return result;
     }
     
+    /**
+     * Grabs PAGELENGTH customers from the database, takes in an offset
+     * @param offset offset to query from
+     * @return ArrayList of customerModels for the page
+     */
     public static ArrayList<customerModel> grabCustomers(int offset){
         database db = database.getInstance();
         Connection conn = db.returnConnection();
@@ -95,6 +114,10 @@ public final class customerTableController {
         return customers;
     }
     
+    /**
+     * Loops through and removes all rows in the given table model
+     * @param customerTable table model of the customer table
+     */
     public static void clearTable(DefaultTableModel customerTable){
         int rowCount = customerTable.getRowCount();
         //Remove rows one by one from the end of the table
@@ -103,14 +126,25 @@ public final class customerTableController {
         }
     }
     
+    /**
+     * Given a list of customers and the table, inserts customers as rows
+     * @param customerTable Table model to insert rows into
+     * @param data The customer models to insert into the table
+     */
     public static void updateTable(DefaultTableModel customerTable, ArrayList<customerModel> data){
         clearTable(customerTable);
         for(int i = 0; i < PAGELENGTH && i < data.size(); ++i){
             customerTable.addRow((new Object[]{data.get(i).name,data.get(i).customerId}));
         }
     }
+    /**
+     * Updates the table based on the offset
+     * @param customerTable Table model to insert rows into
+     * @param offset Offset of models
+     */
     public static void refreshCustomers(DefaultTableModel customerTable, int offset){
         clearTable(customerTable);
+        // Grabs customers based on offset (AKA pagination)
         ArrayList<customerModel> customerList = grabCustomers(offset);
         for(int i = 0; i < customerList.size(); ++i){
             customerTable.addRow((new Object[]{customerList.get(i).name,customerList.get(i).customerId}));
