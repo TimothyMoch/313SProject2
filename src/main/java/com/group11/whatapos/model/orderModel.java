@@ -40,7 +40,6 @@ public class orderModel {
         date = new java.sql.Date(0);
         ArrayList<itemModel> items = new ArrayList<itemModel>();
         ArrayList<itemAttributesModel> itemAttributesList = new ArrayList<itemAttributesModel>();
-        System.out.println("orderModel constructor called!");
     }
 
     /**
