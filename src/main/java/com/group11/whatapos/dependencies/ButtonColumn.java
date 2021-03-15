@@ -6,6 +6,13 @@ import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.*;
 
+/*
+    Note on this dependency from Group 11:
+
+    This class was provided online from Rob Camick
+    at https://tips4java.wordpress.com/2009/07/12/table-button-column/
+*/
+
 /**
  *  The ButtonColumn class provides a renderer and an editor that looks like a
  *  JButton. The renderer and editor will then be used for a specified column

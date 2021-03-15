@@ -24,11 +24,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 /**
- *
+ * Controller for the table on the Order Page
  * @author ryanomalley
  */
 public final class orderTableController {
-    public static int PAGELENGTH = 30;
+    public static int PAGELENGTH; //Updated via GUI
     
     /** 
      * Queries the database for the most order item then updates the labels
@@ -38,65 +38,99 @@ public final class orderTableController {
      * @see JFrame
      */
     public static void handleItemTrends(Orders frame){
+        
+
         Connection conn = database.getInstance().returnConnection();
-        String trendingItemQuery = "SELECT *\n" + "FROM \"order count\"\n" + "WHERE ordercount = (SELECT MAX(ordercount) FROM \"order count\");";
-        /* Wrapped in Try/Catch statement due to IDE warning */
-        String trendingItemCode = "";
-        String trendingItemCount = "";
-        try{
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(trendingItemQuery);
-
-            while (rs.next()) {
-                trendingItemCode = rs.getString("itemcode");
-                trendingItemCount = rs.getString("ordercount");
-            }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        String worstItemQuery = "SELECT *\n" + "FROM \"order count\"\n" + "WHERE ordercount = (SELECT MIN(ordercount) FROM \"order count\");";
-        /* Wrapped in Try/Catch statement due to IDE warning */
+        String bestItemCode = "";
+        String bestItemCount = "";
+        String secondBestItemCode = "";
+        String secondBestItemCount = "";
+        
         String worstItemCode = "";
         String worstItemCount = "";
+        String secondWorstItemCode = "";
+        String secondWorstItemCount = "";
+        
+        /*                       *
+        *   GRAB THE WORST ITEMS *
+        *                        */   
+        
+        String query = "SELECT * from \"order count\" order by ordercount;";
+        /* Wrapped in Try/Catch statement due to IDE warning */
         try{
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(worstItemQuery);
-
-            while (rs.next()) {
-                worstItemCode = rs.getString("itemcode");
-                worstItemCount = rs.getString("ordercount");
-            }
+            ResultSet rs = stmt.executeQuery(query);
+            
+            //Get the first two rows for worst items
+            rs.next();
+            worstItemCode = rs.getString("itemcode");
+            worstItemCount = rs.getString("ordercount");
+            //Advances to 2nd row for 2nd worst item
+            rs.next();
+            secondWorstItemCode = rs.getString("itemcode");
+            secondWorstItemCount = rs.getString("ordercount");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        
+        /*                      *
+        *   GRAB THE BEST ITEMS *
+        *                       */                      
+        
+        
+        query = "SELECT * from \"order count\" order by ordercount DESC;";
+        
+        /* Wrapped in Try/Catch statement due to IDE warning */
+        try{
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            //Advances to first row for best item
+            rs.next();
+            bestItemCode = rs.getString("itemcode");
+            bestItemCount = rs.getString("ordercount");
+            //Advances to second row for 2nd best item
+            rs.next();
+            secondBestItemCode = rs.getString("itemcode");
+            secondBestItemCount = rs.getString("ordercount");
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        
         //Grab menu item names from the map
         if(menuModel.items.size() == 0){
             menuModel.refreshMenu();
         }
-        String trendingItemName = menuModel.items.get(trendingItemCode).itemName;
-        String worstItemName = menuModel.items.get(worstItemCode).itemName;   
         
-
-
+        // Get the itemnames from our menuModel
         
+        // Uses the menuModel for itemNames to save time
+        
+        String bestItemName = menuModel.items.get(bestItemCode).itemName;
+        String secondBestItemName = menuModel.items.get(secondBestItemCode).itemName;
+        String worstItemName = menuModel.items.get(worstItemCode).itemName;
+        String secondWorstItemName = menuModel.items.get(secondWorstItemCode).itemName;  
         //Updates the label text to display trends on screen
-        frame.trendingItemName.setText(trendingItemName);
-        frame.trendingItemCount.setText(trendingItemCount + " sales");
+        frame.trendingItemName.setText(bestItemName);
+        frame.trendingItemCount.setText(bestItemCount + " sales");
+        frame.secondTrendingItemName.setText(secondBestItemName);
+        frame.secondTrendingItemCount.setText(secondBestItemCount + " sales");
+        
         frame.worstItemName.setText(worstItemName);
         frame.worstItemCount.setText(worstItemCount + " sales");
+        frame.secondWorstItemName.setText(secondWorstItemName);
+        frame.secondWorstItemCount.setText(secondWorstItemCount + " sales");
     }
     /**
-     * 
+     * Returns the number of rows within the order table on our database
      * @return numbers of rows within the order table
      */
     public static int numRows(){
             int numberRows = 0;
             database db = database.getInstance();
             Connection conn = db.returnConnection();
-
-
             String query = "SELECT COUNT(*) from orders;";
             /* Wrapped in Try/Catch statement due to IDE warning */
             try{
@@ -112,15 +146,21 @@ public final class orderTableController {
             }
             return numberRows;
     }
-    
+    /**
+     * Searches for orders within the orderid column of the order table
+     * @param text string to search for in the orderid column
+     * @return list of orderModels of length PAGELENGTH
+     */
     public static ArrayList<orderTableModel> searchOrder(String text){
+        // Limit to PAGELENGTH to prevent waste
         String query = "SELECT * from orders where orderid LIKE '%" + text + "%' LIMIT " + PAGELENGTH + ";";
         ArrayList<orderTableModel> result = new ArrayList<>();
         Connection conn = database.getInstance().returnConnection();
         try{
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-
+            
+            // Add results to the list of OrderModels
             while (rs.next()) {
                 String orderID = rs.getString("orderid");
                 String customerID = rs.getString("customerid");
@@ -135,6 +175,11 @@ public final class orderTableController {
         return result;
     }
     
+    /**
+     * Grabs PAGELENGTH amount of orders from offset
+     * @param offset offset to grab orders from
+     * @return returns list of orderModels. PAGELENGTH amount of orderModels from offset
+     */
     public static ArrayList<orderTableModel> grabOrders(int offset){
         database db = database.getInstance();
         Connection conn = db.returnConnection();
@@ -161,6 +206,10 @@ public final class orderTableController {
         return orders;
     }
     
+    /**
+     * Clears the order table
+     * @param orderTable Table Model to clear
+     */
     public static void clearTable(DefaultTableModel orderTable){
         int rowCount = orderTable.getRowCount();
         //Remove rows one by one from the end of the table
@@ -168,13 +217,22 @@ public final class orderTableController {
             orderTable.removeRow(i);
         }
     }
-    
+    /**
+     * Given a list of customers and the table, inserts customers as rows
+     * @param customerTable Table model to insert rows into
+     * @param data The customer models to insert into the table
+     */
     public static void updateTable(DefaultTableModel orderTable, ArrayList<orderTableModel> data){
         clearTable(orderTable);
         for(int i = 0; i < PAGELENGTH && i < data.size(); ++i){
             orderTable.addRow((new Object[]{data.get(i).orderID, data.get(i).customerID, data.get(i).orderDate, data.get(i).itemCode}));
         }
     }
+    /**
+     * Updates the table based on the offset
+     * @param orderTable Table model to insert rows into
+     * @param offset Offset of models
+     */  
     public static void refreshOrders(DefaultTableModel orderTable, int offset){
         clearTable(orderTable);
         ArrayList<orderTableModel> orderList = grabOrders(offset);

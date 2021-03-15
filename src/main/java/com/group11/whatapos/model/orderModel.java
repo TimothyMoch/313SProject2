@@ -27,22 +27,17 @@ public class orderModel {
      * for the given customer. The other argument is to connect to the database
      * The date is added when the customer checks out.
      * Items are added to the item arraylist using the
-     * addItem function. 
-     * NOTE: IF THE CUSTOMER IS NEW, THEY WILL HAVE TO BE GIVEN A NEW UUID
-     *       AND THEY WILL HAVE TO BE ADDED TO THE DATABASE BEFORE THE CUSTOMER ID
-     *       IS PASSED TO THE ORDER.
-     * @param _customerid String
+     * addItem function. Likewise for itemAttributesList.
      */
-    public orderModel(String _customerid){
+    public orderModel(){
         conn = database.getInstance().returnConnection();
         orderid = "order-" + UUID.randomUUID().toString();
-        customerid = _customerid;
+        customerid = "";
         date = new java.sql.Date(0);
-        ArrayList<itemModel> items = new ArrayList<itemModel>();
-        ArrayList<itemAttributesModel> itemAttributesList = new ArrayList<itemAttributesModel>();
-        System.out.println("orderModel constructor called!");
+        items = new ArrayList<itemModel>();
+        itemAttributesList = new ArrayList<itemAttributesModel>();
     }
-
+    
     /**
      * This function adds the given item model to
      * the array of items for this order.
@@ -72,6 +67,17 @@ public class orderModel {
     public void addItemAttributes(String attributes, String comments){
         itemAttributesModel newAttributes = new itemAttributesModel(attributes, comments);
         itemAttributesList.add(newAttributes);
+    }
+
+    /**
+     * Removes attributes for an item from the order.
+     * @param index int
+     * @return itemAttributesModel
+     */
+    public itemAttributesModel removeItemAttributes(int index){
+        itemAttributesModel removedAttributes = itemAttributesList.get(index);
+        itemAttributesList.remove(index);
+        return removedAttributes;
     }
 
     /**

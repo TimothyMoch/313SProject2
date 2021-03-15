@@ -152,6 +152,14 @@ public class Orders extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         trendingItemName = new javax.swing.JLabel();
         trendingItemCount = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        secondTrendingItemName = new javax.swing.JLabel();
+        secondTrendingItemCount = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        secondWorstItemCount = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        secondWorstItemName = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         worstItemCount = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -297,7 +305,7 @@ public class Orders extends javax.swing.JFrame {
                     .addComponent(itemsPerPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addGap(36, 36, 36))
         );
 
@@ -370,7 +378,7 @@ public class Orders extends javax.swing.JFrame {
                 .addComponent(customerPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(orderPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(419, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(3, 13, 36));
@@ -394,12 +402,12 @@ public class Orders extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(trendingItemCount)
                     .addComponent(trendingItemName)
                     .addComponent(jLabel1))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,7 +418,79 @@ public class Orders extends javax.swing.JFrame {
                 .addComponent(trendingItemName)
                 .addGap(4, 4, 4)
                 .addComponent(trendingItemCount)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        jPanel5.setBackground(new java.awt.Color(52, 63, 89));
+
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setText("2nd Best Performing");
+
+        secondTrendingItemName.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        secondTrendingItemName.setForeground(new java.awt.Color(255, 255, 255));
+        secondTrendingItemName.setText("...");
+
+        secondTrendingItemCount.setForeground(new java.awt.Color(255, 255, 255));
+        secondTrendingItemCount.setText("...");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(secondTrendingItemCount)
+                    .addComponent(secondTrendingItemName)
+                    .addComponent(jLabel3))
                 .addContainerGap(36, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel3)
+                .addGap(16, 16, 16)
+                .addComponent(secondTrendingItemName)
+                .addGap(4, 4, 4)
+                .addComponent(secondTrendingItemCount)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        jPanel6.setBackground(new java.awt.Color(52, 63, 89));
+
+        secondWorstItemCount.setForeground(new java.awt.Color(255, 255, 255));
+        secondWorstItemCount.setText("...");
+
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setText("2nd Worst Performing");
+
+        secondWorstItemName.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        secondWorstItemName.setForeground(new java.awt.Color(255, 255, 255));
+        secondWorstItemName.setText("...");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(secondWorstItemCount)
+                    .addComponent(secondWorstItemName)
+                    .addComponent(jLabel4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel4)
+                .addGap(16, 16, 16)
+                .addComponent(secondWorstItemName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(secondWorstItemCount)
+                .addGap(36, 36, 36))
         );
 
         jPanel4.setBackground(new java.awt.Color(52, 63, 89));
@@ -430,12 +510,12 @@ public class Orders extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(worstItemCount)
                     .addComponent(worstItemName)
                     .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -457,17 +537,23 @@ public class Orders extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(36, 36, 36))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(24, 24, 24)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -483,8 +569,8 @@ public class Orders extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -593,12 +679,16 @@ public class Orders extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel10;
     public javax.swing.JLabel jLabel12;
     public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabel8;
     public javax.swing.JLabel jLabel9;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel3;
     public javax.swing.JPanel jPanel4;
+    public javax.swing.JPanel jPanel5;
+    public javax.swing.JPanel jPanel6;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JPanel leftBar;
     public javax.swing.JPanel mainContainer;
@@ -610,6 +700,10 @@ public class Orders extends javax.swing.JFrame {
     public javax.swing.JButton pagination_pageNext;
     public javax.swing.JTextField pagination_pageNum;
     public javax.swing.JTextField searchField;
+    public javax.swing.JLabel secondTrendingItemCount;
+    public javax.swing.JLabel secondTrendingItemName;
+    public javax.swing.JLabel secondWorstItemCount;
+    public javax.swing.JLabel secondWorstItemName;
     public javax.swing.JLabel trendingItemCount;
     public javax.swing.JLabel trendingItemName;
     public javax.swing.JLabel worstItemCount;

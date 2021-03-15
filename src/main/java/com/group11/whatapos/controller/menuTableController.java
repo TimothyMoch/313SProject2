@@ -38,6 +38,10 @@ import javax.swing.JTable;
  * @author ryanomalley
  */
 public final class menuTableController {
+    /**
+     * Clears the table of any rows
+     * @param table Table Model to clear rows from
+     */
     public static void clearTable(DefaultTableModel table){
         int rowCount = table.getRowCount();
         //Remove rows one by one from the end of the table
@@ -45,7 +49,10 @@ public final class menuTableController {
             table.removeRow(i);
         }
     }
-    
+    /**
+     * Refresh the data for the table of items on the menu page
+     * @param frame The Menu page Jframe
+     */
     public static void refreshTables(Menu frame){
         Map<Character, JTable> tables = new HashMap<>();
         // Stores all the tables on the Menu page
@@ -77,6 +84,8 @@ public final class menuTableController {
             char category = table.getKey();
             // Get the models for the populateTable() method
             DefaultTableModel model = (DefaultTableModel) table.getValue().getModel();
+            // Clear the table of existing data
+            clearTable(model);
             // Add items to the table
             populateTable(model, category);
             // Set the last column to button
@@ -86,8 +95,9 @@ public final class menuTableController {
 
     }
     /**
-     * 
-     * @param frame The menu frame in the project
+     * Adds items to the given table and category
+     * @param table The table model to add rows to
+     * @param category The category of items to add
      */
     private static void populateTable(DefaultTableModel table, char category){
         
@@ -95,9 +105,10 @@ public final class menuTableController {
         if(menuModel.items.size() == 0){
             menuModel.refreshMenu();
         }
-        
+        // Iterate through the menuModel items, if the category matches add to our table
         for(itemModel item: menuModel.items.values()){
             if(item.itemCat == category){
+                // The last row is our button column, so give it the text we want for the button!
                 table.addRow(new Object[]{item.itemCode, item.itemName, item.price, "Add to Order"});
             }
         }
