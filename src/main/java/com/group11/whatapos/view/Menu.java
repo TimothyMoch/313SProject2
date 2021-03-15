@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.group11.whatapos.view;
 
 // Importing other modules here
@@ -7,7 +11,10 @@ import com.group11.whatapos.model.menuModel;
 import com.group11.whatapos.model.orderModel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-
+/**
+ *
+ * @author Ryan
+ */
 public class Menu extends javax.swing.JFrame {
 
     /**
@@ -130,6 +137,35 @@ public class Menu extends javax.swing.JFrame {
                 menuPageBtnActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout leftBarLayout = new javax.swing.GroupLayout(leftBar);
+        leftBar.setLayout(leftBarLayout);
+        leftBarLayout.setHorizontalGroup(
+            leftBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(leftBarLayout.createSequentialGroup()
+                .addGroup(leftBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(leftBarLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(appLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 45, Short.MAX_VALUE))
+                    .addComponent(ordersPageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(customersPageBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(menuPageBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        leftBarLayout.setVerticalGroup(
+            leftBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(leftBarLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(appLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(menuPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(customersPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ordersPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(583, Short.MAX_VALUE))
+        );
 
         mainContent.setBackground(new java.awt.Color(30, 42, 70));
 
@@ -383,38 +419,6 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        javax.swing.GroupLayout leftBarLayout = new javax.swing.GroupLayout(leftBar);
-        leftBar.setLayout(leftBarLayout);
-        leftBarLayout.setHorizontalGroup(
-            leftBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(leftBarLayout.createSequentialGroup()
-                .addGroup(leftBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(leftBarLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(appLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 45, Short.MAX_VALUE))
-                    .addComponent(ordersPageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(customersPageBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(menuPageBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        leftBarLayout.setVerticalGroup(
-            leftBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(leftBarLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(appLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(menuPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(customersPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ordersPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(517, Short.MAX_VALUE))
-            .addComponent(mainContent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         rightBar.setBackground(new java.awt.Color(3, 13, 36));
 
         jPanel4.setBackground(new java.awt.Color(39, 49, 70));
@@ -506,25 +510,15 @@ public class Menu extends javax.swing.JFrame {
 
         checkoutBtn.setBackground(new java.awt.Color(255, 119, 15));
         checkoutBtn.setForeground(new java.awt.Color(255, 255, 255));
-        checkoutBtn.setText("Continue Order");
+        checkoutBtn.setText("Complete Order");
         checkoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkoutBtnActionPerformed(evt);
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(30, 42, 70));
-
-        itemPic.setText("jLabel14");
-
-        itemName.setBackground(new java.awt.Color(30, 42, 70));
-        itemName.setForeground(new java.awt.Color(255, 255, 255));
-        itemName.setText("Patty Melt");
-
-        incItemBtn.setBackground(new java.awt.Color(30, 42, 70));
-        incItemBtn.setForeground(new java.awt.Color(255, 255, 255));
-        incItemBtn.setText("+");
-        incItemBtn.setBorder(null);
+        currentOrderTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
             },
             new String [] {
@@ -583,13 +577,16 @@ public class Menu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(leftBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(mainContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(rightBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(leftBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainContent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(rightBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -604,9 +601,6 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void customerFirstNameFieldActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-    } 
     private void customersPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customersPageBtnActionPerformed
         viewController.changeToCustomerView();
     }//GEN-LAST:event_customersPageBtnActionPerformed
@@ -631,6 +625,12 @@ public class Menu extends javax.swing.JFrame {
         menuTableController.refreshTables(this);
         currentOrderController.refreshTable(this);
     }//GEN-LAST:event_refreshItemsActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // Clear all items in currentOrder, giving it a new orderID
+        currentOrderController.currentOrder.deleteOrder();
+        currentOrderController.refreshTable(this);  // Re-render the table so that we can see the new orderID immediately
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
         viewController.changeToCheckoutView();
