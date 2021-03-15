@@ -50,7 +50,7 @@ public final class managerController {
         java.sql.Date date1 = java.sql.Date.valueOf(startDate);
         java.sql.Date date2 = java.sql.Date.valueOf(endDate);
         try {
-            String query = "SELECT COUNT(\'" + item + "\') FROM orders WHERE orderdate BETWEEN" + date1 + "and" + date2 + ";";
+            String query = "SELECT COUNT(\'" + item + "\') FROM orders WHERE orderdate BETWEEN\'" + date1 + "\'and\'" + date2 + "\';";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             totalOrders = rs.getInt("count"); //this line may or may not work
