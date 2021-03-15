@@ -61,6 +61,7 @@ public class Menu extends javax.swing.JFrame {
         customersPageBtn = new javax.swing.JButton();
         ordersPageBtn = new javax.swing.JButton();
         menuPageBtn = new javax.swing.JButton();
+        ManagerPageButton = new javax.swing.JButton();
         mainContent = new javax.swing.JPanel();
         searchBtn = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -112,8 +113,6 @@ public class Menu extends javax.swing.JFrame {
 
         leftBar.setBackground(new java.awt.Color(3, 13, 36));
 
-        appLogo.setIcon(new javax.swing.ImageIcon("/Users/ryanomalley/Documents/College/2020-2021/Spring 2021/CSCE 315/Project 2/313SProject2/src/main/images/logo.png")); // NOI18N
-
         customersPageBtn.setBackground(new java.awt.Color(3, 13, 36));
         customersPageBtn.setForeground(new java.awt.Color(255, 255, 255));
         customersPageBtn.setText("Customers");
@@ -146,6 +145,17 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        ManagerPageButton.setBackground(new java.awt.Color(3, 13, 36));
+        ManagerPageButton.setForeground(new java.awt.Color(255, 255, 255));
+        ManagerPageButton.setText("Management");
+        ManagerPageButton.setToolTipText("");
+        ManagerPageButton.setBorder(null);
+        ManagerPageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManagerPageButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout leftBarLayout = new javax.swing.GroupLayout(leftBar);
         leftBar.setLayout(leftBarLayout);
         leftBarLayout.setHorizontalGroup(
@@ -158,7 +168,8 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(0, 45, Short.MAX_VALUE))
                     .addComponent(ordersPageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(customersPageBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(menuPageBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(menuPageBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ManagerPageButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         leftBarLayout.setVerticalGroup(
@@ -172,7 +183,9 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(customersPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ordersPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(517, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ManagerPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         mainContent.setBackground(new java.awt.Color(30, 42, 70));
@@ -416,7 +429,7 @@ public class Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(refreshItems)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
                 .addGap(36, 36, 36))
         );
 
@@ -521,7 +534,6 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(30, 42, 70));
 
-        itemPic.setIcon(new javax.swing.ImageIcon("/Users/ryanomalley/Documents/College/2020-2021/Spring 2021/CSCE 315/Project 2/313SProject2/src/main/images/Patty Melt.jpg")); // NOI18N
         itemPic.setText("jLabel14");
 
         itemName.setBackground(new java.awt.Color(30, 42, 70));
@@ -677,6 +689,11 @@ public class Menu extends javax.swing.JFrame {
         menuModel.refreshMenu();
         menuTableController.refreshTables(this);
     }//GEN-LAST:event_refreshItemsActionPerformed
+
+    private void ManagerPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerPageButtonActionPerformed
+        // TODO add your handling code here:
+        viewController.changeToManagerView();
+    }//GEN-LAST:event_ManagerPageButtonActionPerformed
     public void closeFrame(){
         this.setVisible(false); //you can't see me!
         this.dispose(); //Destroy the JFrame object
@@ -688,6 +705,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton ManagerPageButton;
     public javax.swing.JLabel appLogo;
     public javax.swing.JButton checkoutBtn;
     public javax.swing.JButton customersPageBtn;
