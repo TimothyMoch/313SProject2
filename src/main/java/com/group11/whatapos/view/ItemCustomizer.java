@@ -115,9 +115,9 @@ public class ItemCustomizer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(doneButton)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(otherCommentsText))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(otherCommentsText)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,9 +125,9 @@ public class ItemCustomizer extends javax.swing.JFrame {
                 .addComponent(doneButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addGap(3, 3, 3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(otherCommentsText, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(nameLabel)
@@ -145,7 +145,7 @@ public class ItemCustomizer extends javax.swing.JFrame {
         DefaultTableModel table = ((DefaultTableModel)this.attributeTable.getModel());
         
         // Write the table values to currentOrder's corresponding element of itemAttributesList
-        System.out.println("Done button pressed! Here is what the user had down for the item: " + currentOrderController.currentOrder.items.get(this.callingTableRow).itemName);
+        //System.out.println("Done button pressed! Here is what the user had down for the item: " + currentOrderController.currentOrder.items.get(this.callingTableRow).itemName);
         
         
         // This attribute string will be a comma-delimited list of all attributes marked as TRUE by the user.
@@ -153,7 +153,7 @@ public class ItemCustomizer extends javax.swing.JFrame {
         
         for (int i = 0; i < table.getRowCount(); i++) {
             // Printing the attribute and its value
-            System.out.println("[Row " + i + "] Attribute: " + table.getValueAt(i, 0) + "; Want it: " + table.getValueAt(i, 1));
+            //System.out.println("[Row " + i + "] Attribute: " + table.getValueAt(i, 0) + "; Want it: " + table.getValueAt(i, 1));
             
             // Next, if current value is true (box ticked yes), then add it to the attr_string
             if ((boolean)table.getValueAt(i, 1)) {
@@ -175,20 +175,22 @@ public class ItemCustomizer extends javax.swing.JFrame {
         attr_string = attr_string.replaceAll(",$", "");
         
         // Now that we are done looking for attributes, we have a complete attribute string that we should write to the corresponding element of currentOrder's itemAttributesList
-        System.out.println("Updating corresponding attribute string with: " + attr_string);
+        //System.out.println("Updating corresponding attribute string with: " + attr_string);
         
         currentOrderController.currentOrder.itemAttributesList.get(this.callingTableRow).itemAttributes = attr_string;
         
         System.out.println("Updated attribute string: " + currentOrderController.currentOrder.itemAttributesList.get(this.callingTableRow).itemAttributes);
         
-        // TODO Don't forget to note the special instructions!
+        // Don't forget to note the special instructions!
+        currentOrderController.currentOrder.itemAttributesList.get(this.callingTableRow).otherComments = this.otherCommentsText.getText();
+        System.out.println("Updated other comments string: " + this.otherCommentsText.getText());
         
         viewController.changeToMenuView();
         
     }//GEN-LAST:event_doneButtonActionPerformed
 
     private void otherCommentsTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherCommentsTextActionPerformed
-        //System.out.println("Text is now:" + evt.toString());
+        
     }//GEN-LAST:event_otherCommentsTextActionPerformed
 
     /**
@@ -232,7 +234,7 @@ public class ItemCustomizer extends javax.swing.JFrame {
     }
     public void runFrame(){
         // Make the window 640x480
-        this.setSize(640, 480);
+        this.setSize(720, 480);
         
         // Refresh table to reflect any changes to what we are currently customizing
         refreshTable();
@@ -245,6 +247,8 @@ public class ItemCustomizer extends javax.swing.JFrame {
         this.nameLabel.setText("Customizing item: " + this.callingTable.getValueAt(this.callingTableRow, 0));
         this.setVisible(true);
         
+        // Clear the text field as well
+        this.otherCommentsText.setText("");
         
         clearTable();
         populateTable();
