@@ -7,10 +7,14 @@ package com.group11.whatapos.view;
 
 // Importing other modules here
 import com.group11.whatapos.controller.*;
-import com.group11.whatapos.model.menuModel;
-import com.group11.whatapos.model.orderModel;
+import com.group11.whatapos.model.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.UUID;
 /**
  *
  * @author Ryan
@@ -63,7 +67,6 @@ public class Menu extends javax.swing.JFrame {
         ordersPageBtn = new javax.swing.JButton();
         menuPageBtn = new javax.swing.JButton();
         mainContent = new javax.swing.JPanel();
-        searchBtn = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         entreesTab = new javax.swing.JPanel();
         entreesContainer = new javax.swing.JScrollPane();
@@ -77,8 +80,13 @@ public class Menu extends javax.swing.JFrame {
         desertTab = new javax.swing.JPanel();
         desertContainer = new javax.swing.JScrollPane();
         desertTable = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
         refreshItems = new javax.swing.JButton();
+        orderNum2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        orderNum3 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        orderNum1 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
         rightBar = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         orderNum = new javax.swing.JLabel();
@@ -168,15 +176,6 @@ public class Menu extends javax.swing.JFrame {
         );
 
         mainContent.setBackground(new java.awt.Color(30, 42, 70));
-
-        searchBtn.setBackground(new java.awt.Color(255, 118, 15));
-        searchBtn.setForeground(new java.awt.Color(255, 255, 255));
-        searchBtn.setText("Search");
-        searchBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtnActionPerformed(evt);
-            }
-        });
 
         jTabbedPane1.setBackground(new java.awt.Color(30, 42, 70));
         jTabbedPane1.setForeground(new java.awt.Color(30, 42, 70));
@@ -377,16 +376,40 @@ public class Menu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Desert", desertTab);
 
+        refreshItems.setText("Refresh Items");
+        refreshItems.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshItemsActionPerformed(evt);
+            }
+        });
+
+        orderNum2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        orderNum2.setForeground(new java.awt.Color(255, 255, 255));
+        orderNum2.setText("First Name");
+
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        refreshItems.setText("Refresh Items");
-        refreshItems.addActionListener(new java.awt.event.ActionListener() {
+        orderNum3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        orderNum3.setForeground(new java.awt.Color(255, 255, 255));
+        orderNum3.setText("Last Name");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshItemsActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        orderNum1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        orderNum1.setForeground(new java.awt.Color(255, 255, 255));
+        orderNum1.setText("Is this your first time ordering with us?");
+
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
             }
         });
 
@@ -396,27 +419,47 @@ public class Menu extends javax.swing.JFrame {
             mainContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainContentLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(mainContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(mainContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainContentLayout.createSequentialGroup()
-                        .addComponent(searchBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1))
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                        .addComponent(orderNum3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(mainContentLayout.createSequentialGroup()
+                        .addComponent(orderNum2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mainContentLayout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(orderNum1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox1))
                     .addComponent(refreshItems))
-                .addGap(36, 36, 36))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         mainContentLayout.setVerticalGroup(
             mainContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainContentLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(65, 65, 65)
                 .addGroup(mainContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orderNum2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(mainContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(orderNum3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(mainContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainContentLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(orderNum1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mainContentLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jCheckBox1)))
+                .addGap(11, 11, 11)
                 .addComponent(refreshItems)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
-                .addGap(36, 36, 36))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         rightBar.setBackground(new java.awt.Color(3, 13, 36));
@@ -563,8 +606,8 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(rightBarLayout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
-                .addGap(0, 31, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addGap(0, 32, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(checkoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -593,14 +636,6 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchBtnActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void customersPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customersPageBtnActionPerformed
         viewController.changeToCustomerView();
     }//GEN-LAST:event_customersPageBtnActionPerformed
@@ -619,13 +654,6 @@ public class Menu extends javax.swing.JFrame {
         currentOrderController.refreshTable(this);
     }//GEN-LAST:event_formComponentShown
 
-    private void refreshItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshItemsActionPerformed
-        // TODO add your handling code here:
-        menuModel.refreshMenu();
-        menuTableController.refreshTables(this);
-        currentOrderController.refreshTable(this);
-    }//GEN-LAST:event_refreshItemsActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // Clear all items in currentOrder, giving it a new orderID
         currentOrderController.currentOrder.deleteOrder();
@@ -633,16 +661,72 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
-        // When checkout button is pressed, send the currentOrder to the database!
-        // XXX TODO TEMP FIXME: USING CUSTOMER ID "DEBUG_CUSTOMER" FOR NOW. DON'T FORGET TO CHANGE IT WHEN WE MERGE WITH THE LOGIN VIEW!!!!
-        currentOrderController.currentOrder.customerid = "DEBUG_CUSTOMER";
-        currentOrderController.currentOrder.writeToDatabase();
         System.out.println("Wrote currentOrder to database!");
+               
+        String customerID = "";
+        String fname = jTextField1.getText().toUpperCase();
+        String lname = jTextField2.getText().toUpperCase();
+
+        database db = database.getInstance();
+        Connection conn = db.returnConnection();
+                
+        if(jCheckBox1.isSelected()) {
+            customerID = "cust-" + UUID.randomUUID().toString();
+            
+            String query = "insert into customers(customerid, customerfirstname, customerlastname) "
+                    + "values('" + customerID + "', '" + fname + "', '" + lname + "')";
+            
+            try{
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(query); 
+            } 
+            catch (SQLException throwables) {
+//                throwables.printStackTrace();
+            }
+        }
+        else {
+            String query = "select customerid "
+                    + "from customers "
+                    + "where customerfirstname like '%" + fname + "%' "
+                    + "and customerlastname like '%" + lname + "%'";
+            
+            try{
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                rs.next();
+                System.out.println(rs.getString("customerid"));
+            } 
+            catch (SQLException throwables) {
+                System.out.println(fname + " " + lname + " isn't in the DB");
+            }
+        }
         
+        currentOrderController.currentOrder.customerid = customerID;
+        currentOrderController.currentOrder.writeToDatabase();
+
         // Don't forget to clear out the order and start again!
         currentOrderController.currentOrder.deleteOrder();
         currentOrderController.refreshTable(this);  // Refresh the table!
     }//GEN-LAST:event_checkoutBtnActionPerformed
+
+    private void refreshItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshItemsActionPerformed
+        // TODO add your handling code here:
+        menuModel.refreshMenu();
+        menuTableController.refreshTables(this);
+        currentOrderController.refreshTable(this);
+    }//GEN-LAST:event_refreshItemsActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
     public void closeFrame(){
         this.setVisible(false); //you can't see me!
         this.dispose(); //Destroy the JFrame object
@@ -668,22 +752,26 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JPanel entreesTab;
     public javax.swing.JTable entreesTable;
     public javax.swing.JButton jButton7;
+    public javax.swing.JCheckBox jCheckBox1;
     public javax.swing.JPanel jPanel4;
     public javax.swing.JPanel jPanel5;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField2;
     public javax.swing.JPanel leftBar;
     public javax.swing.JPanel mainContent;
     public javax.swing.JButton menuPageBtn;
     public javax.swing.JLabel orderNum;
+    public javax.swing.JLabel orderNum1;
+    public javax.swing.JLabel orderNum2;
+    public javax.swing.JLabel orderNum3;
     public javax.swing.JSeparator orderSeperator;
     public javax.swing.JButton ordersPageBtn;
     public javax.swing.JButton refreshItems;
     public javax.swing.JPanel rightBar;
     public javax.swing.JLabel salesTax;
     public javax.swing.JLabel salesTaxLabel;
-    public javax.swing.JButton searchBtn;
     public javax.swing.JScrollPane sideContainer;
     public javax.swing.JPanel sideTab;
     public javax.swing.JTable sideTable;

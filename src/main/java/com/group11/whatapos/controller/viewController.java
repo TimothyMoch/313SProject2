@@ -35,6 +35,7 @@ public final class viewController {
         customerView = new Customers();
         ordersView = new Orders();
         itemView = new ItemCustomizer();
+        
         menuView.runFrame();
     }
     
