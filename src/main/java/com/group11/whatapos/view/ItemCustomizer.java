@@ -56,7 +56,7 @@ public class ItemCustomizer extends javax.swing.JFrame {
         otherCommentsText = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         attributeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
