@@ -101,10 +101,6 @@ public class orderModel {
     public void writeToDatabase(){
         setDate();
         
-        System.out.println("Date is " + this.date);
-        java.sql.Date sqlTS = new java.sql.Date(System.currentTimeMillis());
-        System.out.println("sqlTS is " + sqlTS);
-        
         //update orders and "order count" tables
         for (int i = 0; i < items.size(); ++i){
 
@@ -113,7 +109,7 @@ public class orderModel {
                 String query = "INSERT INTO orders(orderid, customerid, orderdate, itemcode, itemnum) "
                         + "VALUES (\'" + orderid + "\', \'" + customerid + "\', " + "\'" + this.date.toString() + "\', \'" + items.get(i).itemCode + "\', " + (i + 1) + ");";
                 Statement stmt = conn.createStatement();
-                stmt.executeQuery(query);
+                stmt.executeUpdate(query);
             } catch (SQLException ex) {
                 Logger.getLogger(orderModel.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -123,7 +119,7 @@ public class orderModel {
                 String query = "UPDATE \"order count\"" + " SET ordercount = ordercount + 1 "
                             + "WHERE itemcode = \'" + items.get(i).itemCode + "\';";
                 Statement stmt = conn.createStatement();
-                stmt.executeQuery(query);
+                stmt.executeUpdate(query);
             } catch (SQLException ex) {
                 Logger.getLogger(orderModel.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -134,7 +130,7 @@ public class orderModel {
                         + "VALUES (\'" + orderid + "\', " + (i + 1) + ", \'"
                         + itemAttributesList.get(i).getItemAttributes() + "\', \'" + itemAttributesList.get(i).getOtherComments() + "\');";
                 Statement stmt = conn.createStatement();
-                stmt.executeQuery(query);
+                stmt.executeUpdate(query);
             } catch (SQLException ex) {
                 Logger.getLogger(orderModel.class.getName()).log(Level.SEVERE, null, ex);
             }

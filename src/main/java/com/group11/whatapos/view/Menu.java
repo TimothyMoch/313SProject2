@@ -641,6 +641,7 @@ public class Menu extends javax.swing.JFrame {
         
         // Don't forget to clear out the order and start again!
         currentOrderController.currentOrder.deleteOrder();
+        currentOrderController.refreshTable(this);  // Refresh the table!
     }//GEN-LAST:event_checkoutBtnActionPerformed
     public void closeFrame(){
         this.setVisible(false); //you can't see me!
