@@ -53,6 +53,7 @@ public final class managerController {
             String query = "SELECT COUNT(\'" + item + "\') FROM orders WHERE orderdate BETWEEN\'" + date1 + "\'and\'" + date2 + "\';";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
+            rs.next();
             totalOrders = rs.getInt("count"); //this line may or may not work
 
         } catch (SQLException ex) {
@@ -63,14 +64,15 @@ public final class managerController {
             String query = "SELECT price FROM item WHERE itemcode = \'" + item + "\';";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            price = rs.getDouble("price");
-
+            rs.next();
+            price = rs.getDouble("price");            
         } catch (SQLException ex) {
             Logger.getLogger(managerController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         totalRev = totalOrders * price;
         newTotalRev = totalOrders * newPrice;
+        System.out.println("totalRev: " + totalRev + ", newTotalRev: " + newTotalRev);
         diff = newTotalRev - totalRev;
         return diff;
     }

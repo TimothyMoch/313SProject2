@@ -432,9 +432,9 @@ public class Manager extends javax.swing.JFrame {
                             .addGroup(ChangePricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(NewPriceFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(EndDateFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(ProfitLable, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(ChangePricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(PriceChangeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ProfitLable, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(ProfitLableLable, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -589,11 +589,13 @@ public class Manager extends javax.swing.JFrame {
 
     private void PriceChangeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceChangeButtonActionPerformed
        double newPrice = Double.parseDouble(NewPriceFeild.getText());
+       double diffPrice = 0;
        String itemCodePriceChange = CodeFeildChanging.getText();
        String date1 = StartDateFeild.getText();
        String date2 = EndDateFeild.getText();
-       managerController.changePrice(itemCodePriceChange, newPrice);       
-       ProfitLable.setText(String.valueOf(managerController.getRevenueDiff(itemCodePriceChange, newPrice, date1, date2))+"$");
+       diffPrice = managerController.getRevenueDiff(itemCodePriceChange, newPrice, date1, date2);
+       managerController.changePrice(itemCodePriceChange, newPrice); 
+       ProfitLable.setText("$"+diffPrice);
     }//GEN-LAST:event_PriceChangeButtonActionPerformed
 
     private void EndDateFeildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndDateFeildActionPerformed
@@ -604,7 +606,7 @@ public class Manager extends javax.swing.JFrame {
         double newItemPrice = Double.parseDouble(NewItemPriceFeild.getText());
         String itemCodeNewItem = CodeFeildAdding.getText();
         String newItemName = NameFeild.getText();
-        managerController.addItemtoMenu(itemCodeNewItem, newItemName, newItemPrice);
+        managerController.addItemtoMenu(itemCodeNewItem, newItemName, newItemPrice);     
     }//GEN-LAST:event_AddItemButtonActionPerformed
 
     public void closeFrame(){
