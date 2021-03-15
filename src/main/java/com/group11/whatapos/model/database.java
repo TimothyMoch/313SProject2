@@ -2,13 +2,6 @@ package com.group11.whatapos.model;
 
 import java.sql.*;
 
-//import javax.swing.JOptionPane;
-
-/*
-CSCE 315
-9-25-2019 Original
-2/7/2020 Update for AWS
- */
 public class database {
   protected static String database_username;
   protected static String database_password;
@@ -16,11 +9,6 @@ public class database {
   private Connection conn = null;
   private static database instance = new database();
   
-  /*
-  database() : constructor
-  description : creates and configures a database object, which is used to create connections to the AWS database
-  
-  */
   private database(){
       database_username = dbConfig.user;
       database_password = dbConfig.pswd;
