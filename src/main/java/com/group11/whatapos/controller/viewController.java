@@ -85,4 +85,28 @@ public final class viewController {
         ordersView.closeFrame();
     }
     
+    /**
+     * Adds window listeners that close the database connection on program close
+     */
+    public static void createCloseListeners(){
+        customerView.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                database.getInstance().closeConnection();
+            }
+        });
+        menuView.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                database.getInstance().closeConnection();
+            }
+        });
+        ordersView.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                database.getInstance().closeConnection();
+            }
+        });
+    }
+    
 }
