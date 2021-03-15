@@ -44,7 +44,9 @@ public class orderModel {
      * @param item itemModel
      */
     public void addItem(itemModel item) {
+        // Add a new item to the items ArrayList, and also append an empty itemAttributesModel to itemAttributesList
         items.add(item);
+        itemAttributesList.add(new itemAttributesModel("", ""));
     }
 
     /**
@@ -54,8 +56,10 @@ public class orderModel {
      * @return itemModel
      */
     public itemModel removeItem(int index){
+        // Remove the item from the items ArrayList, and also from the itemAttributesList
         itemModel removedItem = items.get(index);
         items.remove(index);
+        itemAttributesList.remove(index);
         return removedItem;
     }
 

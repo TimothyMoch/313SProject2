@@ -53,6 +53,8 @@ public class ItemCustomizer extends javax.swing.JFrame {
         attributeTable = new javax.swing.JTable();
         doneButton = new javax.swing.JButton();
         nameLabel = new javax.swing.JLabel();
+        otherCommentsText = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,6 +92,14 @@ public class ItemCustomizer extends javax.swing.JFrame {
 
         nameLabel.setText("Customizing: ");
 
+        otherCommentsText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                otherCommentsTextActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Other comments about this item:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,13 +113,20 @@ public class ItemCustomizer extends javax.swing.JFrame {
                         .addGap(123, 123, 123)
                         .addComponent(nameLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(doneButton)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(doneButton)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(otherCommentsText))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(doneButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(3, 3, 3)
+                .addComponent(otherCommentsText, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -122,10 +139,57 @@ public class ItemCustomizer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-        // Once "Done" is pressed, switch back to the menu view
+        // Once "Done" is pressed, update the current item's attributes and switch back to the menu view
+        
+        // Define table model so we can read from the table
+        DefaultTableModel table = ((DefaultTableModel)this.attributeTable.getModel());
+        
+        // Write the table values to currentOrder's corresponding element of itemAttributesList
+        System.out.println("Done button pressed! Here is what the user had down for the item: " + currentOrderController.currentOrder.items.get(this.callingTableRow).itemName);
+        
+        
+        // This attribute string will be a comma-delimited list of all attributes marked as TRUE by the user.
+        String attr_string = "";
+        
+        for (int i = 0; i < table.getRowCount(); i++) {
+            // Printing the attribute and its value
+            System.out.println("[Row " + i + "] Attribute: " + table.getValueAt(i, 0) + "; Want it: " + table.getValueAt(i, 1));
+            
+            // Next, if current value is true (box ticked yes), then add it to the attr_string
+            if ((boolean)table.getValueAt(i, 1)) {
+                // If attr_string is empty, no preceding comma needed
+                if (attr_string.equals("")) {
+                    attr_string += (String)table.getValueAt(i, 0);
+                    attr_string += ",";
+                }
+                
+                // Otherwise, put a comma
+                else {
+                    attr_string += (String)table.getValueAt(i, 0);
+                    attr_string += ",";
+                }
+            }
+        }
+        
+        // Remove trailing comma
+        attr_string = attr_string.replaceAll(",$", "");
+        
+        // Now that we are done looking for attributes, we have a complete attribute string that we should write to the corresponding element of currentOrder's itemAttributesList
+        System.out.println("Updating corresponding attribute string with: " + attr_string);
+        
+        currentOrderController.currentOrder.itemAttributesList.get(this.callingTableRow).itemAttributes = attr_string;
+        
+        System.out.println("Updated attribute string: " + currentOrderController.currentOrder.itemAttributesList.get(this.callingTableRow).itemAttributes);
+        
+        // TODO Don't forget to note the special instructions!
+        
         viewController.changeToMenuView();
         
     }//GEN-LAST:event_doneButtonActionPerformed
+
+    private void otherCommentsTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherCommentsTextActionPerformed
+        //System.out.println("Text is now:" + evt.toString());
+    }//GEN-LAST:event_otherCommentsTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,7 +226,7 @@ public class ItemCustomizer extends javax.swing.JFrame {
         });
     }
     
-    public void closeFrame(){
+    public void closeFrame() {
         this.setVisible(false); //you can't see me!
         this.dispose(); //Destroy the JFrame object
     }
@@ -220,7 +284,9 @@ public class ItemCustomizer extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable attributeTable;
     private javax.swing.JButton doneButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField otherCommentsText;
     // End of variables declaration//GEN-END:variables
 }

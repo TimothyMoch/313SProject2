@@ -13,8 +13,8 @@ import java.util.logging.Logger;
 
 public class itemAttributesModel{
     
-    private String itemAttributes;
-    private String otherComments;
+    public String itemAttributes;
+    public String otherComments;
 
     /**
      * Constructor takes attributes and comments for one item
