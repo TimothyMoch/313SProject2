@@ -60,16 +60,8 @@ public final class currentOrderController {
         {
             public void actionPerformed(ActionEvent e)
             {
-                /*
-                // This deletes row data
-                JTable table = (JTable)e.getSource();
-                int modelRow = Integer.valueOf( e.getActionCommand() );
-                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-                */
                 System.out.println("Customize clicked!");
-                //JTable table = (JTable)e.getSource();
-                //int rowClicked = Integer.valueOf(e.getActionCommand());
-                //System.out.println(table.getValueAt(rowClicked, 1));
+                viewController.changeToCustomizerView();
             }
         };
         
