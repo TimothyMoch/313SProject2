@@ -19,6 +19,7 @@ package com.group11.whatapos.controller;
 import com.group11.whatapos.model.database;
 import com.group11.whatapos.view.*;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 /**
  *
  * @author ryanomalley
@@ -71,11 +72,14 @@ public final class viewController {
         itemView.closeFrame();
     }
     
-    public static void changeToCustomizerView() {
+    public static void changeToCustomizerView(JTable table, int row) {
+        // Update the callingTable and callingTableRow so we display the right
+        // info once we show the frame
+        itemView.callingTable = table;
+        itemView.callingTableRow = row;
         itemView.runFrame();
         
-        // Close other framces
-        menuView.closeFrame();
+        // Close other frames, except for the menu frame
         customerView.closeFrame();
         ordersView.closeFrame();
     }

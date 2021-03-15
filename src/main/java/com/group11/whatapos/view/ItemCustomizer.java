@@ -17,8 +17,12 @@
 package com.group11.whatapos.view;
 
 import com.group11.whatapos.controller.viewController;
+import com.group11.whatapos.controller.currentOrderController;
+import static com.group11.whatapos.controller.currentOrderController.currentOrder;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,6 +30,9 @@ import java.awt.Toolkit;
  */
 public class ItemCustomizer extends javax.swing.JFrame {
 
+    public static JTable callingTable;  // This is the order table that the "customize" button click came from
+    public static int callingTableRow;  // This is the row index of callingTable that the "customize" button click came from
+    
     /**
      * Creates new form ItemCustomizer
      */
@@ -43,24 +50,36 @@ public class ItemCustomizer extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        attributeTable = new javax.swing.JTable();
         doneButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        attributeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Attribute Name", "Want it!?"
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(attributeTable);
 
         doneButton.setText("Done");
         doneButton.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +88,7 @@ public class ItemCustomizer extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Customizing: ");
+        nameLabel.setText("Customizing: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,7 +101,7 @@ public class ItemCustomizer extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(123, 123, 123)
-                        .addComponent(jLabel1)))
+                        .addComponent(nameLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(doneButton)
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -94,7 +113,7 @@ public class ItemCustomizer extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(nameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -148,18 +167,60 @@ public class ItemCustomizer extends javax.swing.JFrame {
         this.dispose(); //Destroy the JFrame object
     }
     public void runFrame(){
-        //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        //this.setSize(screenSize.width, screenSize.height);
+        // Make the window 640x480
         this.setSize(640, 480);
         
-        this.setVisible(true);
+        // Refresh table to reflect any changes to what we are currently customizing
+        refreshTable();
+
     }
     
+    public void refreshTable() {
+        // Refresh the title label and table
+        // Change the label to reflect the current item we are customizing
+        this.nameLabel.setText("Customizing item: " + this.callingTable.getValueAt(this.callingTableRow, 0));
+        this.setVisible(true);
+        
+        
+        clearTable();
+        populateTable();
+        
+        
+
+    }
+    
+    private void clearTable() {
+        // Get the number of rows in the table currently, so we can clear them all
+        int rowCount = this.attributeTable.getRowCount();
+        
+        // Define table model so we can modify the table
+        DefaultTableModel table = ((DefaultTableModel)this.attributeTable.getModel());
+        //Remove rows one by one from the end of the table
+        for (int i = rowCount - 1; i >= 0; i--) {
+            table.removeRow(i);
+        }
+    }
+    
+    private void populateTable() {
+        // Next, populate the table
+        // For now, just print the corresponding item attributes
+        
+        // Define table model so we can modify the table
+        DefaultTableModel table = ((DefaultTableModel)this.attributeTable.getModel());
+        
+        System.out.println("Populating itemCustomizer's attributesTable:");
+        for (int i = 0; i < currentOrderController.currentOrder.items.get(this.callingTableRow).allowedItemAttributes.size(); i++) {
+            System.out.println(currentOrderController.currentOrder.items.get(this.callingTableRow).allowedItemAttributes.get(i));
+            table.addRow(new Object[]{currentOrderController.currentOrder.items.get(this.callingTableRow).allowedItemAttributes.get(i), false});
+        }
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable attributeTable;
     private javax.swing.JButton doneButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel nameLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -60,8 +60,11 @@ public final class currentOrderController {
         {
             public void actionPerformed(ActionEvent e)
             {
-                System.out.println("Customize clicked!");
-                viewController.changeToCustomizerView();
+                JTable table = (JTable)e.getSource();
+                int modelRow = Integer.valueOf( e.getActionCommand() );
+                System.out.println("Customize clicked for item: " + table.getValueAt(modelRow, 0));
+                
+                viewController.changeToCustomizerView(table, modelRow);
             }
         };
         
