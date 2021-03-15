@@ -79,7 +79,7 @@ public class orderModel {
      * @return itemAttributesModel
      */
     public itemAttributesModel removeItemAttributes(int index){
-        itemATtributesModel removedAttributes = itemAttributesList.get(index);
+        itemAttributesModel removedAttributes = itemAttributesList.get(index);
         itemAttributesList.remove(index);
         return removedAttributes;
     }
