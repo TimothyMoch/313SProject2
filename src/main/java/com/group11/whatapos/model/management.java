@@ -1,7 +1,6 @@
 package com.group11.whatapos.model;
 
 import java.sql.*;
-import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -75,17 +74,19 @@ public class management{
      * get the difference in revenue. If the result is negative, that means they lost money.
      * @param item String
      * @param newPrice double
-     * @param date1 Date
-     * @param date2 Date
+     * @param startDate String
+     * @param endDate String
      * @return double
      */
-    public double getRevenueDiff(String item, double newPrice, java.sql.Date date1, java.sql.Date date2){
+    public double getRevenueDiff(String item, double newPrice, String startDate, String endDate){
         int totalOrders = 0;
         double totalRev;
         double newTotalRev;
         double diff;
         double price = 0;
         Connection conn = database.getInstance().returnConnection();
+        java.sql.Date date1 = java.sql.Date.valueOf(startDate);
+        java.sql.Date date2 = java.sql.Date.valueOf(endDate);
         try {
             String query = "SELECT COUNT(\'" + item + "\') FROM orders WHERE orderdate BETWEEN" + date1 + "and" + date2 + ";";
             Statement stmt = conn.createStatement();

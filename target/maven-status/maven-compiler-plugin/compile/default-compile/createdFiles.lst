@@ -28,6 +28,7 @@ com\group11\whatapos\view\Menu$3.class
 com\group11\whatapos\view\Menu$10.class
 com\group11\whatapos\view\Orders$6.class
 com\group11\whatapos\view\Manager$15.class
+com\group11\whatapos\view\Manager$18.class
 com\group11\whatapos\view\Menu$7.class
 com\group11\whatapos\view\Customers$7.class
 com\group11\whatapos\view\Manager$2.class
@@ -38,6 +39,7 @@ com\group11\whatapos\view\Orders$3.class
 com\group11\whatapos\model\orderTableModel.class
 com\group11\whatapos\view\Menu$4.class
 com\group11\whatapos\view\Orders$12.class
+com\group11\whatapos\controller\managerController.class
 com\group11\whatapos\view\Manager$12.class
 com\group11\whatapos\view\Manager$5.class
 com\group11\whatapos\view\Customers$6.class

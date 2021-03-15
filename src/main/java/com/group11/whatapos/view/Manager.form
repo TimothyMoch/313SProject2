@@ -103,9 +103,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="PriceChangeLable1" min="-2" pref="26" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="NewPriceFeild1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="CodeFeildChanging1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="NewPriceFeild1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <Component id="ProfitLable1" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
@@ -397,22 +399,21 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="NewItemLabel" min="-2" pref="119" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="NameFeild3" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="NameFeild" min="-2" pref="200" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jTextField2" max="32767" attributes="0"/>
+                                      <Component id="NewItemPriceFeild" min="-2" pref="516" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="CodeFeildAdding" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="188" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="AddItemButton" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -425,13 +426,13 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="NameFeild3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="NewItemPriceFeild" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="NameFeild" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="CodeFeildAdding" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jButton1" max="32767" attributes="0"/>
+                          <Component id="AddItemButton" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="17" max="32767" attributes="0"/>
                   </Group>
@@ -447,12 +448,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CodeFeildAddingActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="NewItemPriceFeild">
               <Properties>
                 <Property name="text" type="java.lang.String" value="New Item Price"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="AddItemButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="24" green="d" red="3" type="rgb"/>
@@ -462,6 +463,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Add Item"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddItemButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="NewItemLabel">
               <Properties>
@@ -476,12 +480,12 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="NameFeild3">
+            <Component class="javax.swing.JTextField" name="NameFeild">
               <Properties>
                 <Property name="text" type="java.lang.String" value="New Item Name"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NameFeild3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NameFeildActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -502,38 +506,48 @@
                           <Group type="102" attributes="0">
                               <Component id="CodeFeildChanging" min="-2" pref="119" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="NewPriceFeild" max="32767" attributes="0"/>
+                              <Component id="NewPriceFeild" min="-2" pref="113" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="PriceChangeLable" min="-2" pref="238" max="-2" attributes="0"/>
+                          <Component id="PriceChangeLable" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="StartDateFeild" pref="137" max="32767" attributes="0"/>
-                          <Component id="EndDateFeild1" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="StartDateFeild" min="-2" pref="137" max="-2" attributes="0"/>
+                          <Component id="EndDateFeild" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ProfitLable" pref="237" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="ProfitLableLable" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ProfitLable" pref="147" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="PriceChangeButton" min="-2" pref="246" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="ProfitLable" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="PriceChangeLable" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="StartDateFeild" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="NewPriceFeild" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="CodeFeildChanging" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EndDateFeild1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="NewPriceFeild" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EndDateFeild" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="PriceChangeButton" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                              <Component id="ProfitLable" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
+                              <Component id="ProfitLableLable" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -576,7 +590,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f0" green="f0" red="f0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Expected profit, 1 week extrapolation:"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
                     <BevelBorder>
@@ -588,19 +601,48 @@
             </Component>
             <Component class="javax.swing.JTextField" name="StartDateFeild">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Start Date: yyyy/mm/dd"/>
+                <Property name="text" type="java.lang.String" value="Start Date: yyyy-mm-dd"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StartDateFeildActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="EndDateFeild1">
+            <Component class="javax.swing.JButton" name="PriceChangeButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="End Date: yyyy/mm/dd"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="24" green="d" red="3" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Change Price"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EndDateFeild1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PriceChangeButtonActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="EndDateFeild">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="End Date: yyyy-mm-dd"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EndDateFeildActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ProfitLableLable">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Expected profit, 1 week extrapolation:"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder>
+                      <Color PropertyName="highlightInner" blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
+                    </BevelBorder>
+                  </Border>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -620,8 +662,8 @@
                           <Component id="PriceChangeLable3" max="32767" attributes="0"/>
                           <Component id="CodeFeildAvailability" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="AvailabilityButton" min="-2" pref="206" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AvailabilityButton" min="-2" pref="210" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>

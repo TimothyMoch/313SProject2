@@ -1,7 +1,8 @@
 package com.group11.whatapos.view;
 
 import com.group11.whatapos.controller.*;
-import com.group11.whatapos.model.menuModel;
+import com.group11.whatapos.model.*;
+import com.group11.whatapos.controller.managerController;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 /*
@@ -65,17 +66,19 @@ public class Manager extends javax.swing.JFrame {
         MainContentPanel = new javax.swing.JPanel();
         AddItemPanel = new javax.swing.JPanel();
         CodeFeildAdding = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        NewItemPriceFeild = new javax.swing.JTextField();
+        AddItemButton = new javax.swing.JButton();
         NewItemLabel = new javax.swing.JLabel();
-        NameFeild3 = new javax.swing.JTextField();
+        NameFeild = new javax.swing.JTextField();
         ChangePricePanel = new javax.swing.JPanel();
         PriceChangeLable = new javax.swing.JLabel();
         CodeFeildChanging = new javax.swing.JTextField();
         NewPriceFeild = new javax.swing.JTextField();
         ProfitLable = new javax.swing.JLabel();
         StartDateFeild = new javax.swing.JTextField();
-        EndDateFeild1 = new javax.swing.JTextField();
+        PriceChangeButton = new javax.swing.JButton();
+        EndDateFeild = new javax.swing.JTextField();
+        ProfitLableLable = new javax.swing.JLabel();
         ChangePricePanel3 = new javax.swing.JPanel();
         PriceChangeLable3 = new javax.swing.JLabel();
         CodeFeildAvailability = new javax.swing.JTextField();
@@ -172,9 +175,10 @@ public class Manager extends javax.swing.JFrame {
                     .addGroup(ChangePricePanel1Layout.createSequentialGroup()
                         .addComponent(PriceChangeLable1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(ChangePricePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NewPriceFeild1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CodeFeildChanging1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(ChangePricePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CodeFeildChanging1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(ChangePricePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(NewPriceFeild1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(ProfitLable1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -282,20 +286,25 @@ public class Manager extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.setText("New Item Price");
+        NewItemPriceFeild.setText("New Item Price");
 
-        jButton1.setBackground(new java.awt.Color(3, 13, 36));
-        jButton1.setForeground(new java.awt.Color(240, 240, 240));
-        jButton1.setText("Add Item");
+        AddItemButton.setBackground(new java.awt.Color(3, 13, 36));
+        AddItemButton.setForeground(new java.awt.Color(240, 240, 240));
+        AddItemButton.setText("Add Item");
+        AddItemButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddItemButtonActionPerformed(evt);
+            }
+        });
 
         NewItemLabel.setForeground(new java.awt.Color(255, 119, 15));
         NewItemLabel.setText("Add a new item:");
         NewItemLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        NameFeild3.setText("New Item Name");
-        NameFeild3.addActionListener(new java.awt.event.ActionListener() {
+        NameFeild.setText("New Item Name");
+        NameFeild.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NameFeild3ActionPerformed(evt);
+                NameFeildActionPerformed(evt);
             }
         });
 
@@ -308,17 +317,16 @@ public class Manager extends javax.swing.JFrame {
                 .addGroup(AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddItemPanelLayout.createSequentialGroup()
                         .addComponent(NewItemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(AddItemPanelLayout.createSequentialGroup()
-                        .addGroup(AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(AddItemPanelLayout.createSequentialGroup()
-                                .addComponent(NameFeild3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(NameFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField2))
+                                .addComponent(NewItemPriceFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(CodeFeildAdding))
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(AddItemButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         AddItemPanelLayout.setVerticalGroup(
             AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,11 +337,11 @@ public class Manager extends javax.swing.JFrame {
                 .addGroup(AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(AddItemPanelLayout.createSequentialGroup()
                         .addGroup(AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NameFeild3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NewItemPriceFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NameFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(CodeFeildAdding, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(AddItemButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -358,22 +366,34 @@ public class Manager extends javax.swing.JFrame {
         });
 
         ProfitLable.setForeground(new java.awt.Color(240, 240, 240));
-        ProfitLable.setText("Expected profit, 1 week extrapolation:");
         ProfitLable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
 
-        StartDateFeild.setText("Start Date: yyyy/mm/dd");
+        StartDateFeild.setText("Start Date: yyyy-mm-dd");
         StartDateFeild.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StartDateFeildActionPerformed(evt);
             }
         });
 
-        EndDateFeild1.setText("End Date: yyyy/mm/dd");
-        EndDateFeild1.addActionListener(new java.awt.event.ActionListener() {
+        PriceChangeButton.setBackground(new java.awt.Color(3, 13, 36));
+        PriceChangeButton.setForeground(new java.awt.Color(240, 240, 240));
+        PriceChangeButton.setText("Change Price");
+        PriceChangeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EndDateFeild1ActionPerformed(evt);
+                PriceChangeButtonActionPerformed(evt);
             }
         });
+
+        EndDateFeild.setText("End Date: yyyy-mm-dd");
+        EndDateFeild.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EndDateFeildActionPerformed(evt);
+            }
+        });
+
+        ProfitLableLable.setForeground(new java.awt.Color(240, 240, 240));
+        ProfitLableLable.setText("Expected profit, 1 week extrapolation:");
+        ProfitLableLable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
 
         javax.swing.GroupLayout ChangePricePanelLayout = new javax.swing.GroupLayout(ChangePricePanel);
         ChangePricePanel.setLayout(ChangePricePanelLayout);
@@ -385,31 +405,39 @@ public class Manager extends javax.swing.JFrame {
                     .addGroup(ChangePricePanelLayout.createSequentialGroup()
                         .addComponent(CodeFeildChanging, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NewPriceFeild))
-                    .addComponent(PriceChangeLable, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(NewPriceFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PriceChangeLable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ChangePricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(StartDateFeild, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                    .addComponent(EndDateFeild1))
-                .addGap(18, 18, 18)
-                .addComponent(ProfitLable, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addGroup(ChangePricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(StartDateFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EndDateFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ProfitLableLable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ProfitLable, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PriceChangeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         ChangePricePanelLayout.setVerticalGroup(
             ChangePricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ChangePricePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ChangePricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ProfitLable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ChangePricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ChangePricePanelLayout.createSequentialGroup()
                         .addGroup(ChangePricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(PriceChangeLable, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(StartDateFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(ChangePricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NewPriceFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(ChangePricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CodeFeildChanging, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EndDateFeild1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(ChangePricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(NewPriceFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(EndDateFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(ChangePricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(PriceChangeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ProfitLable, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ProfitLableLable, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -439,8 +467,8 @@ public class Manager extends javax.swing.JFrame {
                 .addGroup(ChangePricePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PriceChangeLable3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(CodeFeildAvailability))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AvailabilityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AvailabilityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         ChangePricePanel3Layout.setVerticalGroup(
@@ -509,6 +537,7 @@ public class Manager extends javax.swing.JFrame {
 
     private void menuPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPageBtnActionPerformed
         // TODO add your handling code here:
+        viewController.changeToMenuView();
     }//GEN-LAST:event_menuPageBtnActionPerformed
 
     private void ManagerPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerPageButtonActionPerformed
@@ -521,83 +550,65 @@ public class Manager extends javax.swing.JFrame {
     }//GEN-LAST:event_CodeFeildAddingActionPerformed
 
     private void NameFeild1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameFeild1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_NameFeild1ActionPerformed
 
     private void NameFeild2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameFeild2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_NameFeild2ActionPerformed
 
-    private void NameFeild3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameFeild3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NameFeild3ActionPerformed
+    private void NameFeildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameFeildActionPerformed
+
+    }//GEN-LAST:event_NameFeildActionPerformed
 
     private void CodeFeildChangingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodeFeildChangingActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_CodeFeildChangingActionPerformed
 
     private void NewPriceFeildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewPriceFeildActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_NewPriceFeildActionPerformed
 
     private void CodeFeildChanging1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodeFeildChanging1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_CodeFeildChanging1ActionPerformed
 
     private void NewPriceFeild1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewPriceFeild1ActionPerformed
-        // TODO add your handling code here:
+   
     }//GEN-LAST:event_NewPriceFeild1ActionPerformed
 
     private void CodeFeildAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodeFeildAvailabilityActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_CodeFeildAvailabilityActionPerformed
 
     private void NewPriceFeild2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewPriceFeild2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_NewPriceFeild2ActionPerformed
 
     private void StartDateFeildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartDateFeildActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_StartDateFeildActionPerformed
 
-    private void EndDateFeild1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndDateFeild1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EndDateFeild1ActionPerformed
+    private void PriceChangeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceChangeButtonActionPerformed
+       double newPrice = Double.parseDouble(NewPriceFeild.getText());
+       String itemCodePriceChange = CodeFeildChanging.getText();
+       String date1 = StartDateFeild.getText();
+       String date2 = EndDateFeild.getText();
+       changePrice(itemCodePriceChange, newPrice);       
+       ProfitLable.setText(String.valueOf(getRevenueDiff(itemCodePriceChange, newPrice, date1, date2))+"$");
+    }//GEN-LAST:event_PriceChangeButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Manager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Manager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Manager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Manager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void EndDateFeildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndDateFeildActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Manager().setVisible(true);
-            }
-        });
-    }
+    }//GEN-LAST:event_EndDateFeildActionPerformed
+
+    private void AddItemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddItemButtonActionPerformed
+        double newItemPrice = Double.parseDouble(NewItemPriceFeild.getText());
+        String itemCodeNewItem = CodeFeildAdding.getText();
+        String newItemName = NameFeild.getText();
+        addItemtoMenu(itemCodeNewItem, newItemName, newItemPrice);
+    }//GEN-LAST:event_AddItemButtonActionPerformed
+
     public void closeFrame(){
         this.setVisible(false); //you can't see me!
         this.dispose(); //Destroy the JFrame object
@@ -608,6 +619,7 @@ public class Manager extends javax.swing.JFrame {
         this.setVisible(true);
     }    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddItemButton;
     private javax.swing.JPanel AddItemPanel;
     private javax.swing.JButton AvailabilityButton;
     private javax.swing.JPanel ChangePricePanel;
@@ -617,31 +629,32 @@ public class Manager extends javax.swing.JFrame {
     private javax.swing.JTextField CodeFeildAvailability;
     private javax.swing.JTextField CodeFeildChanging;
     private javax.swing.JTextField CodeFeildChanging1;
-    private javax.swing.JTextField EndDateFeild1;
+    private javax.swing.JTextField EndDateFeild;
     private javax.swing.JPanel MainContentPanel;
     private javax.swing.JButton ManagerPageButton;
+    private javax.swing.JTextField NameFeild;
     private javax.swing.JTextField NameFeild1;
     private javax.swing.JTextField NameFeild2;
-    private javax.swing.JTextField NameFeild3;
     private javax.swing.JLabel NewItemLabel;
+    private javax.swing.JTextField NewItemPriceFeild;
     private javax.swing.JTextField NewPriceFeild;
     private javax.swing.JTextField NewPriceFeild1;
     private javax.swing.JTextField NewPriceFeild2;
     private javax.swing.JLabel PriceChange1;
+    private javax.swing.JButton PriceChangeButton;
     private javax.swing.JLabel PriceChangeLable;
     private javax.swing.JLabel PriceChangeLable1;
     private javax.swing.JLabel PriceChangeLable3;
     private javax.swing.JLabel ProfitLable;
     private javax.swing.JLabel ProfitLable1;
+    private javax.swing.JLabel ProfitLableLable;
     private javax.swing.JTextField StartDateFeild;
     private javax.swing.JLabel appLogo;
     private javax.swing.JButton customersPageBtn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel leftBar;
     private javax.swing.JButton menuPageBtn;
     private javax.swing.JButton ordersPageBtn;
