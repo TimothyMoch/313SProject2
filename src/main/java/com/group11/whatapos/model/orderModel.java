@@ -100,13 +100,18 @@ public class orderModel {
      */
     public void writeToDatabase(){
         setDate();
+        
+        System.out.println("Date is " + this.date);
+        java.sql.Date sqlTS = new java.sql.Date(System.currentTimeMillis());
+        System.out.println("sqlTS is " + sqlTS);
+        
         //update orders and "order count" tables
         for (int i = 0; i < items.size(); ++i){
 
             //this statement updates the orders table in the database
             try {
                 String query = "INSERT INTO orders(orderid, customerid, orderdate, itemcode, itemnum) "
-                        + "VALUES (\'" + orderid + "\', \'" + customerid + "\', " + date + ", \'" + items.get(i).itemCode + "\', " + (i + 1) + ");";
+                        + "VALUES (\'" + orderid + "\', \'" + customerid + "\', " + "\'" + this.date.toString() + "\', \'" + items.get(i).itemCode + "\', " + (i + 1) + ");";
                 Statement stmt = conn.createStatement();
                 stmt.executeQuery(query);
             } catch (SQLException ex) {
@@ -126,7 +131,7 @@ public class orderModel {
             //this statement updates the item attribute table in the database
             try {
                 String query = "INSERT INTO \"item attributes\"(orderid, itemnum, attributelist, othercomments)"
-                        + "VALUES (\'" + orderid + "\', " + (i + 1) + ", " + date + ", \'"
+                        + "VALUES (\'" + orderid + "\', " + (i + 1) + ", \'"
                         + itemAttributesList.get(i).getItemAttributes() + "\', \'" + itemAttributesList.get(i).getOtherComments() + "\');";
                 Statement stmt = conn.createStatement();
                 stmt.executeQuery(query);
