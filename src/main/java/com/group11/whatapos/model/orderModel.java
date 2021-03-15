@@ -44,7 +44,9 @@ public class orderModel {
      * @param item itemModel
      */
     public void addItem(itemModel item) {
+        // Add a new item to the items ArrayList, and also append an empty itemAttributesModel to itemAttributesList
         items.add(item);
+        itemAttributesList.add(new itemAttributesModel("", ""));
     }
 
     /**
@@ -54,8 +56,10 @@ public class orderModel {
      * @return itemModel
      */
     public itemModel removeItem(int index){
+        // Remove the item from the items ArrayList, and also from the itemAttributesList
         itemModel removedItem = items.get(index);
         items.remove(index);
+        itemAttributesList.remove(index);
         return removedItem;
     }
 
@@ -96,15 +100,16 @@ public class orderModel {
      */
     public void writeToDatabase(){
         setDate();
+        
         //update orders and "order count" tables
         for (int i = 0; i < items.size(); ++i){
 
             //this statement updates the orders table in the database
             try {
                 String query = "INSERT INTO orders(orderid, customerid, orderdate, itemcode, itemnum) "
-                        + "VALUES (\'" + orderid + "\', \'" + customerid + "\', " + date + ", \'" + items.get(i).itemCode + "\', " + (i + 1) + ");";
+                        + "VALUES (\'" + orderid + "\', \'" + customerid + "\', " + "\'" + this.date.toString() + "\', \'" + items.get(i).itemCode + "\', " + (i + 1) + ");";
                 Statement stmt = conn.createStatement();
-                stmt.executeQuery(query);
+                stmt.executeUpdate(query);
             } catch (SQLException ex) {
                 Logger.getLogger(orderModel.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -114,7 +119,7 @@ public class orderModel {
                 String query = "UPDATE \"order count\"" + " SET ordercount = ordercount + 1 "
                             + "WHERE itemcode = \'" + items.get(i).itemCode + "\';";
                 Statement stmt = conn.createStatement();
-                stmt.executeQuery(query);
+                stmt.executeUpdate(query);
             } catch (SQLException ex) {
                 Logger.getLogger(orderModel.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -122,10 +127,10 @@ public class orderModel {
             //this statement updates the item attribute table in the database
             try {
                 String query = "INSERT INTO \"item attributes\"(orderid, itemnum, attributelist, othercomments)"
-                        + "VALUES (\'" + orderid + "\', " + (i + 1) + ", " + date + ", \'"
+                        + "VALUES (\'" + orderid + "\', " + (i + 1) + ", \'"
                         + itemAttributesList.get(i).getItemAttributes() + "\', \'" + itemAttributesList.get(i).getOtherComments() + "\');";
                 Statement stmt = conn.createStatement();
-                stmt.executeQuery(query);
+                stmt.executeUpdate(query);
             } catch (SQLException ex) {
                 Logger.getLogger(orderModel.class.getName()).log(Level.SEVERE, null, ex);
             }

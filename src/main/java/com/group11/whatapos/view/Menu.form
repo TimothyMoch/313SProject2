@@ -716,17 +716,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="subtotal">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel5"/>
+                <Property name="text" type="java.lang.String" value="$0.00"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="salesTax">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel6"/>
+                <Property name="text" type="java.lang.String" value="$0.00"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="total">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel7"/>
+                <Property name="text" type="java.lang.String" value="$0.00"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="orderSeperator">

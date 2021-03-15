@@ -26,6 +26,7 @@ import com.group11.whatapos.dependencies.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
@@ -60,16 +61,11 @@ public final class currentOrderController {
         {
             public void actionPerformed(ActionEvent e)
             {
-                /*
-                // This deletes row data
                 JTable table = (JTable)e.getSource();
                 int modelRow = Integer.valueOf( e.getActionCommand() );
-                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-                */
-                System.out.println("Customize clicked!");
-                //JTable table = (JTable)e.getSource();
-                //int rowClicked = Integer.valueOf(e.getActionCommand());
-                //System.out.println(table.getValueAt(rowClicked, 1));
+                System.out.println("Customize clicked for item: " + table.getValueAt(modelRow, 0));
+                
+                viewController.changeToCustomizerView(table, modelRow);
             }
         };
         
@@ -106,6 +102,30 @@ public final class currentOrderController {
         // Set the 3rd, 5th, and 6th columns to buttons (-, +, and x)
         ButtonColumn customizeColumn = new ButtonColumn(table, customizePressed, 2);
         ButtonColumn xColumn = new ButtonColumn(table, xPressed, 3);
+        
+        
+        // Next, update the price (subtotal and total) information. We will calculate this here because
+        // whenever the list of items in the current order needs to be refreshed, so too does the price
+        
+        // First, sum all the prices of the items in currentOrder to get the subtotal
+        double subtotal = 0.00;
+        double sales_tax = 0.00;
+        double total = 0.00;
+        for (int i = 0; i < currentOrderController.currentOrder.items.size(); i++) {
+            System.out.println("Price of item w/ index " + i + ": $" + currentOrderController.currentOrder.items.get(i).price);
+            subtotal += currentOrderController.currentOrder.items.get(i).price;
+        }
+        
+        // The total is the subtotal, increased by 8% for sales tax in Texas
+        
+        sales_tax = 0.08 * subtotal;
+        total = sales_tax + subtotal;
+        
+        // Update the JLabels for subtotal and total
+        DecimalFormat usd = new DecimalFormat("###.##");
+        frame.subtotal.setText("$" + usd.format(subtotal));
+        frame.salesTax.setText("$" + usd.format(sales_tax));
+        frame.total.setText("$" + usd.format(total));
     }
     /**
      * 
