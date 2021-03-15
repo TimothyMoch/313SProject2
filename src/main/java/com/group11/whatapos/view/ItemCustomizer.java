@@ -233,7 +233,7 @@ public class ItemCustomizer extends javax.swing.JFrame {
         this.dispose(); //Destroy the JFrame object
     }
     public void runFrame(){
-        // Make the window 640x480
+        // Make the window 720x480. It should do the trick
         this.setSize(720, 480);
         
         // Refresh table to reflect any changes to what we are currently customizing
