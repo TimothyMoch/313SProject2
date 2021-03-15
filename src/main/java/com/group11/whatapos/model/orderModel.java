@@ -22,26 +22,21 @@ public class orderModel {
     public ArrayList<itemAttributesModel> itemAttributesList; //represents item attributes for all items of one order, index rules still follow
 
     /**
-     * order constructor takes 2 argument
-     * and creates a new order with a new orderid
-     * for the given customer. The other argument is to connect to the database
-     * The date is added when the customer checks out.
+     * order constructor creates a new order with a new orderid
+     * for the given customer. The customer will be added
+     * once the customer checks out.
      * Items are added to the item arraylist using the
-     * addItem function. 
-     * NOTE: IF THE CUSTOMER IS NEW, THEY WILL HAVE TO BE GIVEN A NEW UUID
-     *       AND THEY WILL HAVE TO BE ADDED TO THE DATABASE BEFORE THE CUSTOMER ID
-     *       IS PASSED TO THE ORDER.
-     * @param _customerid String
+     * addItem function. Likewise for itemAttributesList.
      */
-    public orderModel(String _customerid){
+    public orderModel(){
         conn = database.getInstance().returnConnection();
         orderid = "order-" + UUID.randomUUID().toString();
-        customerid = _customerid;
+        customerid = "";
         date = new java.sql.Date(0);
         items = new ArrayList<itemModel>();
         itemAttributesList = new ArrayList<itemAttributesModel>();
     }
-
+    
     /**
      * This function adds the given item model to
      * the array of items for this order.
