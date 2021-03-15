@@ -603,14 +603,14 @@ public class Menu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Item Name", "Item Price", "-", "Quantity", "+", "X"
+                "Item Name", "Item Price", "Customize", "X"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true, true
+                false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {

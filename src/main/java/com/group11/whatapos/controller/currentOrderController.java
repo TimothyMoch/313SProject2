@@ -28,9 +28,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JTable;
+
 
 /**
  *
@@ -38,7 +43,7 @@ import javax.swing.JTable;
  */
 public final class currentOrderController {
     // There will only be one current order at a time, so it is static and publicly accessible through the currentOrderController
-    public static orderModel currentOrder = new orderModel("DEBUG_CUSTOMERID");  // TODO: PUT ACTUAL CUSTOMER ID HERE LATER
+    public static orderModel currentOrder = new orderModel("");
     
     public static void clearTable(DefaultTableModel table){
         int rowCount = table.getRowCount();
@@ -50,24 +55,8 @@ public final class currentOrderController {
     
     public static void refreshTable(Menu frame) {
         // Define callbacks for each button click    
-        Action minusPressed = new AbstractAction()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                /*
-                // This deletes row data
-                JTable table = (JTable)e.getSource();
-                int modelRow = Integer.valueOf( e.getActionCommand() );
-                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-                */
-                System.out.println("Minus clicked!");
-                //JTable table = (JTable)e.getSource();
-                //int rowClicked = Integer.valueOf(e.getActionCommand());
-                //System.out.println(table.getValueAt(rowClicked, 1));
-            }
-        };
         
-        Action plusPressed = new AbstractAction()
+        Action customizePressed = new AbstractAction()
         {
             public void actionPerformed(ActionEvent e)
             {
@@ -77,7 +66,7 @@ public final class currentOrderController {
                 int modelRow = Integer.valueOf( e.getActionCommand() );
                 ((DefaultTableModel)table.getModel()).removeRow(modelRow);
                 */
-                System.out.println("Plus clicked!");
+                System.out.println("Customize clicked!");
                 //JTable table = (JTable)e.getSource();
                 //int rowClicked = Integer.valueOf(e.getActionCommand());
                 //System.out.println(table.getValueAt(rowClicked, 1));
@@ -88,13 +77,16 @@ public final class currentOrderController {
         {
             public void actionPerformed(ActionEvent e)
             {
-                /*
-                // This deletes row data
+                System.out.println("X clicked!");                
+                
+                // Delete the row data from the table
                 JTable table = (JTable)e.getSource();
                 int modelRow = Integer.valueOf( e.getActionCommand() );
                 ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-                */
-                System.out.println("X clicked!");
+                
+                // Then, delete the corresponding element from currentOrder.items
+                currentOrder.items.remove(modelRow);
+                
                 // FIXME: WANT TO USE THIS BUT HOW? System.out.println(orderModel.customerid);
                 //JTable table = (JTable)e.getSource();
                 //int rowClicked = Integer.valueOf(e.getActionCommand());
@@ -113,9 +105,8 @@ public final class currentOrderController {
         populateTable(model);
         
         // Set the 3rd, 5th, and 6th columns to buttons (-, +, and x)
-        ButtonColumn minusColumn = new ButtonColumn(table, minusPressed, 2);
-        ButtonColumn plusColumn = new ButtonColumn(table, plusPressed, 4);
-        ButtonColumn xColumn = new ButtonColumn(table, xPressed, 5);
+        ButtonColumn customizeColumn = new ButtonColumn(table, customizePressed, 2);
+        ButtonColumn xColumn = new ButtonColumn(table, xPressed, 3);
     }
     /**
      * 
@@ -124,12 +115,26 @@ public final class currentOrderController {
     private static void populateTable(DefaultTableModel table) {
         System.out.println("Populating table...");
         
-        // Iterate through all items in currentOrder, populating the table with their data
-        // TODO: HANDLE CASE FOR CLICKING "ADD TO ORDER" WHEN ITEM ALREADY ON LIST
+        // Add each item in currentOrder to the table
         for (int i = 0; i < currentOrder.items.size(); i++) {
-            table.addRow(new Object[]{currentOrder.items.get(i).itemName, currentOrder.items.get(i).price, "-", "1", "+", "X"});
-            
+            System.out.println("Rendering this item on table:");
+            currentOrder.items.get(i).printItemDetails();
+            table.addRow(new Object[]{currentOrder.items.get(i).itemName, currentOrder.items.get(i).price, "Customize...", "X"});
         }
+        
+    }
+    
+    private static int numItemOccurrences(itemModel itemToCheck, ArrayList<itemModel> itemsToSearch) {
+        // Look through itemsToSearch. Count how many times itemToCheck occurs in itemsToSearch
+        // This works by checking the itemModels' item codes
+        int numOccurrences = 0;
+        for (int i = 0; i < itemsToSearch.size(); i++) {
+            if (itemToCheck.itemCode.equals(itemsToSearch.get(i).itemCode)) {
+                numOccurrences++;  // Increment if item codes are the same
+            }
+        }
+        
+        return numOccurrences;
     }
     
 }
