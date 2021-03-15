@@ -100,9 +100,9 @@ public final class orderTableController {
         }
         
         //Grab menu item names from the map
-        if(menuModel.items.size() == 0){
-            menuModel.refreshMenu();
-        }
+        
+        menuModel.refreshMenu();
+        
         
         // Get the itemnames from our menuModel
         
