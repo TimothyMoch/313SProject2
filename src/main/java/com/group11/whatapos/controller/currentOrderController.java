@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JTable;
-
+import javax.swing.JLabel;
 
 /**
  *
@@ -87,6 +87,9 @@ public final class currentOrderController {
                 // Then, delete the corresponding element from currentOrder.items
                 currentOrder.items.remove(modelRow);
                 
+                
+                // frame.orderNum.setText("hi");
+                
                 // FIXME: WANT TO USE THIS BUT HOW? System.out.println(orderModel.customerid);
                 //JTable table = (JTable)e.getSource();
                 //int rowClicked = Integer.valueOf(e.getActionCommand());
@@ -100,6 +103,10 @@ public final class currentOrderController {
         //int lastColumn = table.getColumnCount() - 1;
         // Get the models for the populateTable() method
         DefaultTableModel model = (DefaultTableModel) table.getModel();
+        
+        // Update the title of the title bar for the current order section, in case it changed
+        frame.orderNum.setText("Your order ID: " + currentOrder.orderid);
+        
         // Add items to the table
         clearTable(model);
         populateTable(model);
@@ -117,7 +124,7 @@ public final class currentOrderController {
         
         // Add each item in currentOrder to the table
         for (int i = 0; i < currentOrder.items.size(); i++) {
-            System.out.println("Rendering this item on table:");
+            System.out.println("Rendering this item on order table:");
             currentOrder.items.get(i).printItemDetails();
             table.addRow(new Object[]{currentOrder.items.get(i).itemName, currentOrder.items.get(i).price, "Customize...", "X"});
         }
