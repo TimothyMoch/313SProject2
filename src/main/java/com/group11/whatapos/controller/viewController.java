@@ -29,13 +29,14 @@ public final class viewController {
     private static Menu menuView = null;
     private static Orders ordersView = null;
     private static ItemCustomizer itemView = null;
+    private static Manager managerView = null;
     
     public viewController(){
         menuView = new Menu();
         customerView = new Customers();
         ordersView = new Orders();
-        itemView = new ItemCustomizer();
-        
+        itemView = new ItemCustomizer();        
+        managerView = new Manager();
         menuView.runFrame();
     }
     
@@ -44,6 +45,7 @@ public final class viewController {
         ordersView.closeFrame();
         menuView.closeFrame();
         itemView.closeFrame();
+        managerView.closeFrame();        
     }
     
     public static void changeToCustomerView(){
@@ -53,6 +55,7 @@ public final class viewController {
         ordersView.closeFrame();
         menuView.closeFrame();
         itemView.closeFrame();
+        managerView.closeFrame();
     }
     
     public static void changeToMenuView(){
@@ -62,6 +65,7 @@ public final class viewController {
         customerView.closeFrame();
         ordersView.closeFrame();
         itemView.closeFrame();
+        managerView.closeFrame();
     }
     
     public static void changeToOrdersView(){
@@ -71,6 +75,7 @@ public final class viewController {
         customerView.closeFrame();
         menuView.closeFrame();
         itemView.closeFrame();
+        managerView.closeFrame();
     }
     
     public static void changeToCustomizerView(JTable table, int row) {
@@ -83,6 +88,15 @@ public final class viewController {
         // Close other frames, except for the menu frame
         customerView.closeFrame();
         ordersView.closeFrame();
+        managerView.closeFrame();
     }
     
+    public static void changeToManagerView(){
+        managerView.runFrame();  
+        
+        //Close other frames
+        customerView.closeFrame();
+        menuView.closeFrame();
+        ordersView.closeFrame();
+    } 
 }

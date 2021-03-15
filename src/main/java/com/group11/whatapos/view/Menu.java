@@ -66,6 +66,7 @@ public class Menu extends javax.swing.JFrame {
         customersPageBtn = new javax.swing.JButton();
         ordersPageBtn = new javax.swing.JButton();
         menuPageBtn = new javax.swing.JButton();
+        ManagerPageButton = new javax.swing.JButton();
         mainContent = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         entreesTab = new javax.swing.JPanel();
@@ -146,6 +147,16 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        ManagerPageButton.setBackground(new java.awt.Color(3, 13, 36));
+        ManagerPageButton.setForeground(new java.awt.Color(255, 255, 255));
+        ManagerPageButton.setText("Manager");
+        ManagerPageButton.setToolTipText("");
+        ManagerPageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManagerPageButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout leftBarLayout = new javax.swing.GroupLayout(leftBar);
         leftBar.setLayout(leftBarLayout);
         leftBarLayout.setHorizontalGroup(
@@ -158,7 +169,8 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(0, 45, Short.MAX_VALUE))
                     .addComponent(ordersPageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(customersPageBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(menuPageBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(menuPageBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ManagerPageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         leftBarLayout.setVerticalGroup(
@@ -172,7 +184,9 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(customersPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ordersPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(583, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ManagerPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         mainContent.setBackground(new java.awt.Color(30, 42, 70));
@@ -727,6 +741,10 @@ public class Menu extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void ManagerPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerPageButtonActionPerformed
+        viewController.changeToManagerView();
+    }//GEN-LAST:event_ManagerPageButtonActionPerformed
     public void closeFrame(){
         this.setVisible(false); //you can't see me!
         this.dispose(); //Destroy the JFrame object
@@ -738,6 +756,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton ManagerPageButton;
     public javax.swing.JLabel appLogo;
     public javax.swing.JButton checkoutBtn;
     public javax.swing.JTable currentOrderTable;

@@ -141,8 +141,9 @@ public class Customers extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         Button5 = new javax.swing.JButton();
-        Button6 = new javax.swing.JButton();
+        ManagerPageButton = new javax.swing.JButton();
         Button7 = new javax.swing.JButton();
+        Button8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -284,13 +285,11 @@ public class Customers extends javax.swing.JFrame {
                     .addComponent(itemsPerPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
                 .addGap(36, 36, 36))
         );
 
         leftBar.setBackground(new java.awt.Color(3, 13, 36));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon("/Users/ryanomalley/Documents/College/2020-2021/Spring 2021/CSCE 315/Project 2/313SProject2/src/main/images/logo.png")); // NOI18N
 
         Button5.setBackground(new java.awt.Color(3, 13, 36));
         Button5.setForeground(new java.awt.Color(255, 119, 15));
@@ -303,13 +302,13 @@ public class Customers extends javax.swing.JFrame {
             }
         });
 
-        Button6.setBackground(new java.awt.Color(3, 13, 36));
-        Button6.setForeground(new java.awt.Color(255, 255, 255));
-        Button6.setText("Orders & Trends");
-        Button6.setToolTipText("");
-        Button6.addActionListener(new java.awt.event.ActionListener() {
+        ManagerPageButton.setBackground(new java.awt.Color(3, 13, 36));
+        ManagerPageButton.setForeground(new java.awt.Color(255, 255, 255));
+        ManagerPageButton.setText("Manager");
+        ManagerPageButton.setToolTipText("");
+        ManagerPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button6ActionPerformed(evt);
+                ManagerPageButtonActionPerformed(evt);
             }
         });
 
@@ -321,6 +320,16 @@ public class Customers extends javax.swing.JFrame {
         Button7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button7ActionPerformed(evt);
+            }
+        });
+
+        Button8.setBackground(new java.awt.Color(3, 13, 36));
+        Button8.setForeground(new java.awt.Color(255, 255, 255));
+        Button8.setText("Orders & Trends");
+        Button8.setToolTipText("");
+        Button8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button8ActionPerformed(evt);
             }
         });
 
@@ -339,9 +348,10 @@ public class Customers extends javax.swing.JFrame {
                                 .addGap(69, 69, 69)
                                 .addComponent(jLabel8)))
                         .addGap(0, 45, Short.MAX_VALUE))
-                    .addComponent(Button6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Button5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Button7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Button7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Button8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ManagerPageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         leftBarLayout.setVerticalGroup(
@@ -356,8 +366,10 @@ public class Customers extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Button5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addComponent(Button8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ManagerPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -383,9 +395,9 @@ public class Customers extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Button5ActionPerformed
 
-    private void Button6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button6ActionPerformed
-        viewController.changeToOrdersView();
-    }//GEN-LAST:event_Button6ActionPerformed
+    private void ManagerPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerPageButtonActionPerformed
+        viewController.changeToManagerView();
+    }//GEN-LAST:event_ManagerPageButtonActionPerformed
 
     private void Button7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button7ActionPerformed
         viewController.changeToMenuView();
@@ -438,6 +450,10 @@ public class Customers extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pagination_pageNumActionPerformed
 
+    private void Button8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button8ActionPerformed
+
     public void closeFrame(){
         this.setVisible(false); //you can't see me!
         this.dispose(); //Destroy the JFrame object
@@ -452,8 +468,9 @@ public class Customers extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton Button5;
-    public javax.swing.JButton Button6;
     public javax.swing.JButton Button7;
+    public javax.swing.JButton Button8;
+    public javax.swing.JButton ManagerPageButton;
     public javax.swing.JTable customerTable;
     public javax.swing.JComboBox<String> itemsPerPage;
     public javax.swing.JLabel jLabel10;
