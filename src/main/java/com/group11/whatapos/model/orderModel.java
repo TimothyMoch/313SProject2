@@ -38,8 +38,8 @@ public class orderModel {
         orderid = "order-" + UUID.randomUUID().toString();
         customerid = _customerid;
         date = new java.sql.Date(0);
-        ArrayList<itemModel> items = new ArrayList<itemModel>();
-        ArrayList<itemAttributesModel> itemAttributesList = new ArrayList<itemAttributesModel>();
+        items = new ArrayList<itemModel>();
+        itemAttributesList = new ArrayList<itemAttributesModel>();
     }
 
     /**
@@ -47,7 +47,7 @@ public class orderModel {
      * the array of items for this order.
      * @param item itemModel
      */
-    public void addItem(itemModel item){
+    public void addItem(itemModel item) {
         items.add(item);
     }
 

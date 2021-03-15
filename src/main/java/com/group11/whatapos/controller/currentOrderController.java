@@ -95,8 +95,6 @@ public final class currentOrderController {
                 ((DefaultTableModel)table.getModel()).removeRow(modelRow);
                 */
                 System.out.println("X clicked!");
-                System.out.println("Testing interfacing with orderModel class...\nCurrent Customer ID is:");
-                System.out.println(currentOrderController.currentOrder.customerid);
                 // FIXME: WANT TO USE THIS BUT HOW? System.out.println(orderModel.customerid);
                 //JTable table = (JTable)e.getSource();
                 //int rowClicked = Integer.valueOf(e.getActionCommand());
@@ -111,6 +109,7 @@ public final class currentOrderController {
         // Get the models for the populateTable() method
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         // Add items to the table
+        clearTable(model);
         populateTable(model);
         
         // Set the 3rd, 5th, and 6th columns to buttons (-, +, and x)
@@ -123,7 +122,14 @@ public final class currentOrderController {
      * @param frame The menu frame in the project
      */
     private static void populateTable(DefaultTableModel table) {
-        table.addRow(new Object[]{"Patty Melt", "3.99", "-", "1", "+", "X"});
+        System.out.println("Populating table...");
+        
+        // Iterate through all items in currentOrder, populating the table with their data
+        // TODO: HANDLE CASE FOR CLICKING "ADD TO ORDER" WHEN ITEM ALREADY ON LIST
+        for (int i = 0; i < currentOrder.items.size(); i++) {
+            table.addRow(new Object[]{currentOrder.items.get(i).itemName, currentOrder.items.get(i).price, "-", "1", "+", "X"});
+            
+        }
     }
     
 }

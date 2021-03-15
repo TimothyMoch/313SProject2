@@ -54,8 +54,10 @@ public final class menuTableController {
         tables.put('B', frame.drinkTable);
         tables.put('D', frame.desertTable);
         
+        // Defining Action events for clicking the ColumnButton
         Action saySomething = new AbstractAction()
         {
+            // This one is just for testing, really...
             public void actionPerformed(ActionEvent e)
             {
                 /*
@@ -70,6 +72,34 @@ public final class menuTableController {
                 System.out.println(table.getValueAt(rowClicked, 1));
             }
         };
+        
+        Action addToCurrentOrder = new AbstractAction()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                /*
+                // This deletes row data
+                JTable table = (JTable)e.getSource();
+                int modelRow = Integer.valueOf( e.getActionCommand() );
+                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                */
+
+                
+                JTable table = (JTable)e.getSource();
+                int rowClicked = Integer.valueOf(e.getActionCommand());
+                System.out.println("Appending this to currentOrder:");
+                System.out.println(table.getValueAt(rowClicked, 0) + " (" + table.getValueAt(rowClicked, 1) + ")");
+                
+                // Construct the item
+                itemModel itemToAdd = new itemModel("" + table.getValueAt(rowClicked, 0));
+                
+                // Add the item to currentOrder via the currentOrderController, and tell it to refresh
+                currentOrderController.currentOrder.addItem(itemToAdd);
+                currentOrderController.refreshTable(frame);
+                
+            }
+        };
+                
         // Iterate through all the tables on Menu Page
         for(var table : tables.entrySet()){
             int lastColumn = table.getValue().getColumnCount() - 1;
@@ -77,10 +107,11 @@ public final class menuTableController {
             char category = table.getKey();
             // Get the models for the populateTable() method
             DefaultTableModel model = (DefaultTableModel) table.getValue().getModel();
-            // Add items to the table
+            // Add items to the table, but clear it first to avoid duplication of items
+            clearTable(model);
             populateTable(model, category);
             // Set the last column to button
-            ButtonColumn buttonColumn = new ButtonColumn(table.getValue(), saySomething, lastColumn);
+            ButtonColumn buttonColumn = new ButtonColumn(table.getValue(), addToCurrentOrder, lastColumn);
         }
 
 

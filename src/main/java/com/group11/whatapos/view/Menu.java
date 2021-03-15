@@ -711,6 +711,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         menuModel.refreshMenu();
         menuTableController.refreshTables(this);
+        currentOrderController.refreshTable(this);
     }//GEN-LAST:event_refreshItemsActionPerformed
 
     private void decItemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decItemBtnActionPerformed
