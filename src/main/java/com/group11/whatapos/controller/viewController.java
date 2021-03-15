@@ -25,19 +25,22 @@ import javax.swing.JTable;
  * @author ryanomalley
  */
 public final class viewController {
-    private static Customers customerView = null;
-    private static Menu menuView = null;
-    private static Orders ordersView = null;
-    private static ItemCustomizer itemView = null;
-    private static Manager managerView = null;
+
+    public static Customers customerView = null;
+    public static Menu menuView = null;
+    public static Orders ordersView = null;
+    public static ItemCustomizer itemView = null;
+    public static Manager managerView = null;
     
     public viewController(){
         menuView = new Menu();
         customerView = new Customers();
         ordersView = new Orders();
+
         itemView = new ItemCustomizer();        
         managerView = new Manager();
         menuView.runFrame();
+        createCloseListeners();
     }
     
     public static void closeAllFrames(){
@@ -99,4 +102,34 @@ public final class viewController {
         menuView.closeFrame();
         ordersView.closeFrame();
     } 
+    /**
+     * Adds window listeners that close the database connection on program close
+     */
+    public static void createCloseListeners(){
+        customerView.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                database.getInstance().closeConnection();
+            }
+        });
+        menuView.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                database.getInstance().closeConnection();
+            }
+        });
+        ordersView.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                database.getInstance().closeConnection();
+            }
+        });
+        managerView.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                database.getInstance().closeConnection();
+            }
+        });        
+    }
+    
 }

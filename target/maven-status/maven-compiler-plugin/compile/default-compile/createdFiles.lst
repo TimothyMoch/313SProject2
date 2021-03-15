@@ -14,6 +14,7 @@ com\group11\whatapos\view\Customers$Pagination.class
 com\group11\whatapos\view\Manager$11.class
 com\group11\whatapos\view\Manager$3.class
 com\group11\whatapos\view\Manager$17.class
+com\group11\whatapos\controller\viewController$4.class
 com\group11\whatapos\view\Menu$16.class
 com\group11\whatapos\controller\orderTableController.class
 com\group11\whatapos\view\Menu$6.class
@@ -29,6 +30,7 @@ com\group11\whatapos\view\Menu.class
 com\group11\whatapos\view\Menu$13.class
 com\group11\whatapos\view\Menu$3.class
 com\group11\whatapos\view\Menu$10.class
+com\group11\whatapos\controller\viewController$1.class
 com\group11\whatapos\view\ItemCustomizer.class
 com\group11\whatapos\view\Orders$6.class
 com\group11\whatapos\view\Manager$15.class
@@ -40,6 +42,7 @@ com\group11\whatapos\view\Customers$4.class
 com\group11\whatapos\model\customerModel.class
 com\group11\whatapos\view\Orders$9.class
 com\group11\whatapos\controller\customerTableController.class
+com\group11\whatapos\controller\viewController$2.class
 com\group11\whatapos\view\Manager.class
 com\group11\whatapos\view\Orders$3.class
 com\group11\whatapos\model\orderTableModel.class
@@ -86,4 +89,5 @@ com\group11\whatapos\view\Orders$1.class
 com\group11\whatapos\view\Orders$4.class
 com\group11\whatapos\view\Menu$12.class
 com\group11\whatapos\controller\currentOrderController.class
+com\group11\whatapos\controller\viewController$3.class
 com\group11\whatapos\view\Menu$2.class

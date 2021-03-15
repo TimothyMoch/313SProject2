@@ -19,6 +19,8 @@ package com.group11.whatapos.main;
 import com.group11.whatapos.model.*;
 import com.group11.whatapos.view.*;
 import com.group11.whatapos.controller.*;
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
+import javax.swing.JOptionPane;
 
 
 /**
