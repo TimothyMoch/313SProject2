@@ -25,10 +25,10 @@ import javax.swing.JTable;
  * @author ryanomalley
  */
 public final class viewController {
-    private static Customers customerView = null;
-    private static Menu menuView = null;
-    private static Orders ordersView = null;
-    private static ItemCustomizer itemView = null;
+    public static Customers customerView = null;
+    public static Menu menuView = null;
+    public static Orders ordersView = null;
+    public static ItemCustomizer itemView = null;
     
     public viewController(){
         menuView = new Menu();

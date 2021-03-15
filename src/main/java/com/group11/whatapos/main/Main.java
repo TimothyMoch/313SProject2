@@ -19,6 +19,8 @@ package com.group11.whatapos.main;
 import com.group11.whatapos.model.*;
 import com.group11.whatapos.view.*;
 import com.group11.whatapos.controller.*;
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -31,5 +33,25 @@ public class Main {
         db.createConnection();
         menuModel menu = menuModel.getInstance();
         viewController view = new viewController();
+        
+        // Creating event listeners to close database
+        viewController.customerView.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                db.closeConnection();
+            }
+        });
+        viewController.menuView.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                db.closeConnection();
+            }
+        });
+        viewController.ordersView.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                db.closeConnection();
+            }
+        });
     }
 }
