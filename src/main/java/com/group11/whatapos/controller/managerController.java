@@ -17,12 +17,8 @@
 package com.group11.whatapos.controller;
 
 import com.group11.whatapos.model.database;
-import com.group11.whatapos.model.management;
-import static com.group11.whatapos.model.management.conn;
-import com.group11.whatapos.view.*;
 import java.sql.*;
 import java.util.logging.*;
-import javax.swing.JOptionPane;
 /**
  *
  * @author Timot
@@ -33,13 +29,14 @@ import javax.swing.JOptionPane;
 public final class managerController {
     
     public static void changePrice(String item, double newPrice){
+        Connection conn = database.getInstance().returnConnection();
         try {
             String query = "UPDATE item SET price = " + newPrice + "WHERE itemcode = \'" + item + "\';";
             Statement stmt = conn.createStatement();
             stmt.executeQuery(query);
 
         } catch (SQLException ex) {
-            Logger.getLogger(management.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(managerController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -59,7 +56,7 @@ public final class managerController {
             totalOrders = rs.getInt("count"); //this line may or may not work
 
         } catch (SQLException ex) {
-            Logger.getLogger(management.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(managerController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try {
@@ -69,7 +66,7 @@ public final class managerController {
             price = rs.getDouble("price");
 
         } catch (SQLException ex) {
-            Logger.getLogger(management.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(managerController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         totalRev = totalOrders * price;
@@ -79,13 +76,14 @@ public final class managerController {
     }
     
     public static void addItemtoMenu(String itemCode, String itemName, double price){
+        Connection conn = database.getInstance().returnConnection();
         try {
             String query = "INSERT INTO item(itemname, itemcode, price) VALUES (\'" + itemName + "\', \'" + itemCode +"\', " + price + ");";
             Statement stmt = conn.createStatement();
             stmt.executeQuery(query);
 
         } catch (SQLException ex) {
-            Logger.getLogger(management.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(managerController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try {
@@ -94,7 +92,7 @@ public final class managerController {
             stmt.executeQuery(query);
 
         } catch (SQLException ex) {
-            Logger.getLogger(management.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(managerController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
