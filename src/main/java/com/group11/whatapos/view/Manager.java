@@ -1,8 +1,6 @@
 package com.group11.whatapos.view;
 
 import com.group11.whatapos.controller.*;
-import com.group11.whatapos.model.*;
-import com.group11.whatapos.controller.managerController;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 /*
@@ -594,8 +592,8 @@ public class Manager extends javax.swing.JFrame {
        String itemCodePriceChange = CodeFeildChanging.getText();
        String date1 = StartDateFeild.getText();
        String date2 = EndDateFeild.getText();
-       changePrice(itemCodePriceChange, newPrice);       
-       ProfitLable.setText(String.valueOf(getRevenueDiff(itemCodePriceChange, newPrice, date1, date2))+"$");
+       managerController.changePrice(itemCodePriceChange, newPrice);       
+       ProfitLable.setText(String.valueOf(managerController.getRevenueDiff(itemCodePriceChange, newPrice, date1, date2))+"$");
     }//GEN-LAST:event_PriceChangeButtonActionPerformed
 
     private void EndDateFeildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndDateFeildActionPerformed
@@ -606,7 +604,7 @@ public class Manager extends javax.swing.JFrame {
         double newItemPrice = Double.parseDouble(NewItemPriceFeild.getText());
         String itemCodeNewItem = CodeFeildAdding.getText();
         String newItemName = NameFeild.getText();
-        addItemtoMenu(itemCodeNewItem, newItemName, newItemPrice);
+        managerController.addItemtoMenu(itemCodeNewItem, newItemName, newItemPrice);
     }//GEN-LAST:event_AddItemButtonActionPerformed
 
     public void closeFrame(){

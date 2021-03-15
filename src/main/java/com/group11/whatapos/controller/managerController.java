@@ -43,13 +43,15 @@ public final class managerController {
         }
     }
     
-    public static double getRevenueDiff(String item, double newPrice, java.sql.Date date1, java.sql.Date date2){
+    public static double getRevenueDiff(String item, double newPrice, String startDate, String endDate){
         int totalOrders = 0;
         double totalRev;
         double newTotalRev;
         double diff;
         double price = 0;
         Connection conn = database.getInstance().returnConnection();
+        java.sql.Date date1 = java.sql.Date.valueOf(startDate);
+        java.sql.Date date2 = java.sql.Date.valueOf(endDate);
         try {
             String query = "SELECT COUNT(\'" + item + "\') FROM orders WHERE orderdate BETWEEN" + date1 + "and" + date2 + ";";
             Statement stmt = conn.createStatement();
@@ -76,7 +78,7 @@ public final class managerController {
         return diff;
     }
     
-    public void addItemtoMenu(String itemCode, String itemName, double price){
+    public static void addItemtoMenu(String itemCode, String itemName, double price){
         try {
             String query = "INSERT INTO item(itemname, itemcode, price) VALUES (\'" + itemName + "\', \'" + itemCode +"\', " + price + ");";
             Statement stmt = conn.createStatement();
