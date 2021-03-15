@@ -28,32 +28,35 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JTable;
+import javax.swing.JLabel;
 
 /**
  *
  * @author Scott Carrion
  */
 public final class currentOrderController {
-        public static void clearTable(DefaultTableModel table){
+    // There will only be one current order at a time, so it is static and publicly accessible through the currentOrderController
+    public static orderModel currentOrder = new orderModel("");
+    
+    public static void clearTable(DefaultTableModel table){
         int rowCount = table.getRowCount();
         //Remove rows one by one from the end of the table
         for (int i = rowCount - 1; i >= 0; i--) {
             table.removeRow(i);
         }
     }
+    
+    public static void refreshTable(Menu frame) {
+        // Define callbacks for each button click    
         
-        public static void refreshTables(Menu frame){
-        Map<Character, JTable> tables = new HashMap<>();
-        // Stores all the tables on the Menu page
-        tables.put('E', frame.entreesTable);
-        tables.put('S', frame.sideTable);
-        tables.put('B', frame.drinkTable);
-        tables.put('D', frame.desertTable);
-        
-        Action saySomething = new AbstractAction()
+        Action customizePressed = new AbstractAction()
         {
             public void actionPerformed(ActionEvent e)
             {
@@ -63,43 +66,74 @@ public final class currentOrderController {
                 int modelRow = Integer.valueOf( e.getActionCommand() );
                 ((DefaultTableModel)table.getModel()).removeRow(modelRow);
                 */
-                System.out.println("Hi you clicked on an item! Check it out:");
-                JTable table = (JTable)e.getSource();
-                int rowClicked = Integer.valueOf(e.getActionCommand());
-                System.out.println(table.getValueAt(rowClicked, 1));
+                System.out.println("Customize clicked!");
+                //JTable table = (JTable)e.getSource();
+                //int rowClicked = Integer.valueOf(e.getActionCommand());
+                //System.out.println(table.getValueAt(rowClicked, 1));
             }
         };
+        
+        Action xPressed = new AbstractAction()
+        {
+            public void actionPerformed(ActionEvent e)
+            {               
+                // Delete the row data from the table
+                JTable table = (JTable)e.getSource();
+                int modelRow = Integer.valueOf( e.getActionCommand() );
+                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                
+                // Then, delete the corresponding element from currentOrder.items
+                currentOrder.items.remove(modelRow);
+                
+                System.out.println("Deleted row index " + modelRow);    
+            }
+        };
+        
+        
         // Iterate through all the tables on Menu Page
-        for(var table : tables.entrySet()){
-            int lastColumn = table.getValue().getColumnCount() - 1;
-            // Grab the category
-            char category = table.getKey();
-            // Get the models for the populateTable() method
-            DefaultTableModel model = (DefaultTableModel) table.getValue().getModel();
-            // Add items to the table
-            populateTable(model, category);
-            // Set the last column to button
-            ButtonColumn buttonColumn = new ButtonColumn(table.getValue(), saySomething, lastColumn);
-        }
-
-
+        JTable table = frame.currentOrderTable;
+        //int lastColumn = table.getColumnCount() - 1;
+        // Get the models for the populateTable() method
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        
+        // Update the title of the title bar for the current order section, in case it changed
+        frame.orderNum.setText("Your order ID: " + currentOrder.orderid);
+        
+        // Add items to the table
+        clearTable(model);
+        populateTable(model);
+        
+        // Set the 3rd, 5th, and 6th columns to buttons (-, +, and x)
+        ButtonColumn customizeColumn = new ButtonColumn(table, customizePressed, 2);
+        ButtonColumn xColumn = new ButtonColumn(table, xPressed, 3);
     }
     /**
      * 
      * @param frame The menu frame in the project
      */
-    private static void populateTable(DefaultTableModel table, char category){
+    private static void populateTable(DefaultTableModel table) {
+        System.out.println("Populating table...");
         
-        // Grab items from database if menuModel is blank
-        if(menuModel.items.size() == 0){
-            menuModel.refreshMenu();
+        // Add each item in currentOrder to the table
+        for (int i = 0; i < currentOrder.items.size(); i++) {
+            System.out.println("Rendering this item on order table:");
+            currentOrder.items.get(i).printItemDetails();
+            table.addRow(new Object[]{currentOrder.items.get(i).itemName, currentOrder.items.get(i).price, "Customize...", "X"});
         }
         
-        for(itemModel item: menuModel.items.values()){
-            if(item.itemCat == category){
-                table.addRow(new Object[]{item.itemCode, item.itemName, item.price, "Add to Order"});
+    }
+    
+    private static int numItemOccurrences(itemModel itemToCheck, ArrayList<itemModel> itemsToSearch) {
+        // Look through itemsToSearch. Count how many times itemToCheck occurs in itemsToSearch
+        // This works by checking the itemModels' item codes
+        int numOccurrences = 0;
+        for (int i = 0; i < itemsToSearch.size(); i++) {
+            if (itemToCheck.itemCode.equals(itemsToSearch.get(i).itemCode)) {
+                numOccurrences++;  // Increment if item codes are the same
             }
         }
+        
+        return numOccurrences;
     }
     
 }

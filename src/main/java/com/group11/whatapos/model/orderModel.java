@@ -43,7 +43,7 @@ public class orderModel {
      * the array of items for this order.
      * @param item itemModel
      */
-    public void addItem(itemModel item){
+    public void addItem(itemModel item) {
         items.add(item);
     }
 
@@ -136,10 +136,10 @@ public class orderModel {
      * clears the order of all information.
      */
     public void deleteOrder(){
-        //conn;
-        orderid = "";
+        orderid = "order-" + UUID.randomUUID().toString();
         customerid = "";
         items.clear();
+        date = new java.sql.Date(0);
         itemAttributesList.clear();
     }
 }

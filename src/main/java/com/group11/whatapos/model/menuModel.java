@@ -18,7 +18,7 @@ public class menuModel {
         refreshMenu();
     }
     
-    public static void refreshMenu(){
+    public static void refreshMenu() {
         ArrayList<String> itemCodes = queryItemCodes();
         //Query all itemCodes
         
