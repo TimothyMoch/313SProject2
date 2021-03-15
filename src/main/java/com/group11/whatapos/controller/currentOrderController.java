@@ -76,9 +76,7 @@ public final class currentOrderController {
         Action xPressed = new AbstractAction()
         {
             public void actionPerformed(ActionEvent e)
-            {
-                System.out.println("X clicked!");                
-                
+            {               
                 // Delete the row data from the table
                 JTable table = (JTable)e.getSource();
                 int modelRow = Integer.valueOf( e.getActionCommand() );
@@ -87,13 +85,7 @@ public final class currentOrderController {
                 // Then, delete the corresponding element from currentOrder.items
                 currentOrder.items.remove(modelRow);
                 
-                
-                // frame.orderNum.setText("hi");
-                
-                // FIXME: WANT TO USE THIS BUT HOW? System.out.println(orderModel.customerid);
-                //JTable table = (JTable)e.getSource();
-                //int rowClicked = Integer.valueOf(e.getActionCommand());
-                //System.out.println(table.getValueAt(rowClicked, 1));
+                System.out.println("Deleted row index " + modelRow);    
             }
         };
         
