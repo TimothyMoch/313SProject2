@@ -82,8 +82,6 @@ public class Menu extends javax.swing.JFrame {
         rightBar = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         orderNum = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         subtotalLabel = new javax.swing.JLabel();
@@ -427,13 +425,14 @@ public class Menu extends javax.swing.JFrame {
 
         orderNum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         orderNum.setForeground(new java.awt.Color(255, 255, 255));
-        orderNum.setText("Order #424");
+        orderNum.setText("Your Order ID: ");
 
-        jButton5.setText("jButton5");
-
-        jButton6.setText("jButton6");
-
-        jButton7.setText("jButton7");
+        jButton7.setText("Clear all items");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -442,22 +441,15 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(orderNum)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 483, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton7)
                 .addGap(24, 24, 24))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
+                .addComponent(jButton7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(orderNum, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -558,7 +550,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
             .addGroup(rightBarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
                 .addGap(36, 36, 36))
         );
         rightBarLayout.setVerticalGroup(
@@ -628,6 +620,12 @@ public class Menu extends javax.swing.JFrame {
         menuTableController.refreshTables(this);
         currentOrderController.refreshTable(this);
     }//GEN-LAST:event_refreshItemsActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // Clear all items in currentOrder, giving it a new orderID
+        currentOrderController.currentOrder.deleteOrder();
+        currentOrderController.refreshTable(this);  // Re-render the table so that we can see the new orderID immediately
+    }//GEN-LAST:event_jButton7ActionPerformed
     public void closeFrame(){
         this.setVisible(false); //you can't see me!
         this.dispose(); //Destroy the JFrame object
@@ -652,8 +650,6 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JScrollPane entreesContainer;
     public javax.swing.JPanel entreesTab;
     public javax.swing.JTable entreesTable;
-    public javax.swing.JButton jButton5;
-    public javax.swing.JButton jButton6;
     public javax.swing.JButton jButton7;
     public javax.swing.JPanel jPanel4;
     public javax.swing.JPanel jPanel5;
