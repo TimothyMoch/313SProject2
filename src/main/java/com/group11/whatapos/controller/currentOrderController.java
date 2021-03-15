@@ -43,7 +43,7 @@ import javax.swing.JLabel;
  */
 public final class currentOrderController {
     // There will only be one current order at a time, so it is static and publicly accessible through the currentOrderController
-    public static orderModel currentOrder = new orderModel("");
+    public static orderModel currentOrder = new orderModel();
     
     public static void clearTable(DefaultTableModel table){
         int rowCount = table.getRowCount();
