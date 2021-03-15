@@ -460,11 +460,11 @@ public class Menu extends javax.swing.JFrame {
 
         totalLabel.setText("Total");
 
-        subtotal.setText("jLabel5");
+        subtotal.setText("$0.00");
 
-        salesTax.setText("jLabel6");
+        salesTax.setText("$0.00");
 
-        total.setText("jLabel7");
+        total.setText("$0.00");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -511,6 +511,11 @@ public class Menu extends javax.swing.JFrame {
         checkoutBtn.setBackground(new java.awt.Color(255, 119, 15));
         checkoutBtn.setForeground(new java.awt.Color(255, 255, 255));
         checkoutBtn.setText("Complete Order");
+        checkoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkoutBtnActionPerformed(evt);
+            }
+        });
 
         currentOrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -626,6 +631,17 @@ public class Menu extends javax.swing.JFrame {
         currentOrderController.currentOrder.deleteOrder();
         currentOrderController.refreshTable(this);  // Re-render the table so that we can see the new orderID immediately
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
+        // When checkout button is pressed, send the currentOrder to the database!
+        // XXX TODO TEMP FIXME: USING CUSTOMER ID "DEBUG_CUSTOMER" FOR NOW. DON'T FORGET TO CHANGE IT WHEN WE MERGE WITH THE LOGIN VIEW!!!!
+        currentOrderController.currentOrder.customerid = "DEBUG_CUSTOMER";
+        currentOrderController.currentOrder.writeToDatabase();
+        System.out.println("Wrote currentOrder to database!");
+        
+        // Don't forget to clear out the order and start again!
+        currentOrderController.currentOrder.deleteOrder();
+    }//GEN-LAST:event_checkoutBtnActionPerformed
     public void closeFrame(){
         this.setVisible(false); //you can't see me!
         this.dispose(); //Destroy the JFrame object
